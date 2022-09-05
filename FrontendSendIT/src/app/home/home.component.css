@@ -1,0 +1,26 @@
+:host {
+  height: 100%;
+  overflow: hidden;
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+.container {
+  display: flex;
+  color: #fff;
+}
+.brown-text {
+  color: #d08d57;
+}
+img {
+  width: 20px;
+  color: #fff;
+}
+.social-icons i{
+  padding: 8px;
+}
+.social-icons i:hover{
+  transform: scale(1.5);
+}

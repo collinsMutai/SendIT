@@ -1,0 +1,35 @@
+
+
+.container{
+    background-color: #004138;
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+color: #fff;
+}
+button{
+    background-color: #359e88;
+    /* padding: 8px; */
+    text-decoration: none;
+    font-family: 'Montserrat', sans-serif;
+    margin: 10px;
+    border-radius: 50px;
+    outline: none;
+    border: none;
+    width: 100px;
+    height: 40px;
+}
+button:hover{
+    transform: scale(1.1);
+}
+button a{
+    text-decoration: none;
+    text-align: center;
+    color: #fff;
+    background: none;
+    
+}
+a:hover{
+    text-decoration: underline;
+}
+/* 359e88 */
