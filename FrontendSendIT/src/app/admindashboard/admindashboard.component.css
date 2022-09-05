@@ -1,0 +1,49 @@
+.container {
+  display: flex;
+}
+.content {
+  flex: 1;
+}
+
+.brown-text {
+  color: #d08d57;
+}
+.image {
+  position: relative;
+  height: 450px;
+  width: 500px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+.image::before {
+  content: "";
+  background: url("/assets/images/truck-background.jpg");
+  background-size: cover;
+  background-position: right bottom;
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+  left: 0px;
+  opacity: 0.75;
+  width: 500px;
+  height: 450px;
+}
+.adminBtns {
+  position: relative;
+  color: #ffffff;
+  font-size: 18px;
+  text-transform: uppercase;
+  font-weight: 700;
+  line-height: 0.9;
+  text-align: center;
+  background-color: #d08d57;
+  padding: 15px;
+  width: 250px;
+}
+.map img{
+    width: 100%;
+    height: 250px;
+}

@@ -1,0 +1,25 @@
+.container {
+  padding: 100px;
+  justify-content: center;
+}
+.content {
+  display: flex;
+}
+.image {
+  flex: 1;
+}
+.form {
+  flex: 1;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+input {
+  padding: 5px;
+  margin-bottom: 5px;
+}
+button{
+    margin-top: 15px;
+}

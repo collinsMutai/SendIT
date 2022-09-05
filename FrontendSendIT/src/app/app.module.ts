@@ -12,6 +12,11 @@ import { CommonModule } from '@angular/common';
 
 import { LottieModule } from 'ngx-lottie';
 import player from 'lottie-web';
+import { OrdersComponent } from './orders/orders.component';
+import { OrderDetailsComponent } from './order-details/order-details.component';
+import { CreateOrderComponent } from './create-order/create-order.component';
+import { OrdersSentComponent } from './orders-sent/orders-sent.component';
+import { OrdersDeliveredComponent } from './orders-delivered/orders-delivered.component';
 
 export function playerFactory() {
   return player;
@@ -26,7 +31,12 @@ export function playerFactory() {
     SignupComponent,
     LoginComponent,
     AdmindashboardComponent,
-    UserdashboardComponent
+    UserdashboardComponent,
+    OrdersComponent,
+    OrderDetailsComponent,
+    CreateOrderComponent,
+    OrdersSentComponent,
+    OrdersDeliveredComponent
   ],
   imports: [
     BrowserModule,

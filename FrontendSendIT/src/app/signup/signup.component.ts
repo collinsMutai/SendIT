@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { AnimationItem } from 'lottie-web';
+import { AnimationOptions } from 'ngx-lottie';
 
 @Component({
   selector: 'app-signup',
@@ -11,5 +13,11 @@ export class SignupComponent implements OnInit {
 
   ngOnInit(): void {
   }
+options: AnimationOptions = {
+  path: '/assets/lottie/login.json',
+};
 
+animationCreated(animationItem: AnimationItem): void {
+  console.log(animationItem);
+}
 }
