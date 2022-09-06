@@ -34,7 +34,7 @@
 .adminBtns {
   position: relative;
   color: #ffffff;
-  font-size: 18px;
+  font-size: 16px;
   text-transform: uppercase;
   font-weight: 700;
   line-height: 0.9;
@@ -42,8 +42,4 @@
   background-color: #d08d57;
   padding: 15px;
   width: 250px;
-}
-.map img{
-    width: 100%;
-    height: 250px;
 }

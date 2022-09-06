@@ -1,0 +1,19 @@
+*{
+    padding: 10px;
+    margin-bottom: 20px;
+}
+.content{
+    display: flex;
+    justify-content: space-evenly;
+    gap: 20px;
+}
+.brown-text {
+    color: #d08d57;
+  }
+  p{
+    padding: 10px;
+  }
+img{
+    width: 400px;
+    height: 300px;
+}

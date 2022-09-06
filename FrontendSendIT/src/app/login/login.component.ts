@@ -1,6 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { NgForm } from '@angular/forms';
 import { AnimationItem } from 'lottie-web';
 import { AnimationOptions } from 'ngx-lottie';
+import { loginuser } from '../interfaces/interfaces';
 
 @Component({
   selector: 'app-login',
@@ -8,6 +10,10 @@ import { AnimationOptions } from 'ngx-lottie';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
+email!: string
+password!:string
+
+@ViewChild('form') form!: NgForm
 
   constructor() { }
 
@@ -19,6 +25,12 @@ export class LoginComponent implements OnInit {
   
   animationCreated(animationItem: AnimationItem): void {
     console.log(animationItem);
+  }
+
+  onSubmit(){
+    const user: loginuser = this.form.value
+    console.log(user);
+    
   }
 
 }
