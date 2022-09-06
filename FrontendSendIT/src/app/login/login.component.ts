@@ -24,12 +24,11 @@ password!:string
   };
   
   animationCreated(animationItem: AnimationItem): void {
-    console.log(animationItem);
+
   }
 
   onSubmit(){
     const user: loginuser = this.form.value
-    console.log(user);
     
   }
 

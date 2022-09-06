@@ -6,6 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./userdashboard.component.css']
 })
 export class UserdashboardComponent implements OnInit {
+  today= Date.now()
 
   constructor() { }
 

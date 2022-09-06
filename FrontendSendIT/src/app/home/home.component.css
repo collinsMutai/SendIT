@@ -24,3 +24,7 @@ img {
 .social-icons i:hover{
   transform: scale(1.5);
 }
+.img-logo img{
+  width: 150px;
+  height: 60px;
+}

@@ -7,9 +7,10 @@ import { Router } from '@angular/router';
   styleUrls: ['./admindashboard.component.css']
 })
 export class AdmindashboardComponent implements OnInit {
-
-  constructor(private router:Router) { }
+  today= Date.now()
+  constructor() { }
 
   ngOnInit(): void {
+    
   }
 }
