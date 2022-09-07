@@ -16,6 +16,12 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SharedModule } from './Shared/shared.module';
 import { AppRoutingModule } from './app-routing/app-routing.module';
 import { RouterModule } from '@angular/router';
+import { StoreModule } from '@ngrx/store';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { EffectsModule } from '@ngrx/effects';
+import {environment} from '../environments/environment'
+import { OrderEffectsService } from './Redux/Effects/OrderEffects';
+import { OrderReducer } from './Redux/Reducer/OrderReducer';
 
 export function playerFactory() {
   return player;
@@ -42,7 +48,11 @@ export function playerFactory() {
     SharedModule,
     AppRoutingModule,
     RouterModule,
-    HttpClientModule
+    HttpClientModule,
+    StoreModule.forRoot({order: OrderReducer}),
+    StoreDevtoolsModule.instrument({name:'Order',maxAge:25, logOnly:environment.production}),
+    EffectsModule.forRoot([OrderEffectsService]),
+    // StoreModule.forRoot({ game: scoreboardReducer })
   ],
   providers: [],
   bootstrap: [AppComponent]

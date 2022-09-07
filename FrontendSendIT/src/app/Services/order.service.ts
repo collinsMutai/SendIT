@@ -8,6 +8,7 @@ import { Icustomer, IOrder } from '../interfaces/interfaces';
 })
 export class OrderService {
   baseUrl: string = "http://localhost:3000"
+  orders$!:Observable<IOrder[]>
   
   constructor(private http: HttpClient) { }
   getCustomers(): Observable<Icustomer>{
@@ -23,8 +24,8 @@ export class OrderService {
   getOrder(id:number): Observable<IOrder[]>{
     return this.http.get<IOrder[]>(`${this.baseUrl}/orders/${id}`)
   }
-  deleteOrder(id:number){
-    return this.http.delete(`${this.baseUrl}/orders/${id}`)
+  deleteOrder(id:number): Observable <{message:string}>{
+    return this.http.delete<{message:string}>(`${this.baseUrl}/orders/${id}`)
   }
   createOrder(order:IOrder){
     return this.http.post(`${this.baseUrl}/orders`, order)
