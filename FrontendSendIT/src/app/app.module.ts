@@ -7,6 +7,7 @@ import { SignupComponent } from './signup/signup.component';
 import { LoginComponent } from './login/login.component';
 import { UserdashboardComponent } from './userdashboard/userdashboard.component';
 import { CommonModule } from '@angular/common';
+import { HttpClientModule } from '@angular/common/http'
 
 import { LottieModule } from 'ngx-lottie';
 import player from 'lottie-web';
@@ -40,7 +41,8 @@ export function playerFactory() {
     [LottieModule.forRoot({ player: playerFactory })],
     SharedModule,
     AppRoutingModule,
-    RouterModule
+    RouterModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

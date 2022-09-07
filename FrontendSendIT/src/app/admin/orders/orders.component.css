@@ -47,6 +47,10 @@ span {
   border-color: #04aa6d;
   color: green;
 }
+.deleteBtns {
+  border-color: red;
+  color: red;
+}
 .btns:hover {
   background-color: #04aa6d;
   color: white;

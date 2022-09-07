@@ -12,6 +12,7 @@ const appRoutes:Routes =[
   {path:'admin', component: AdmindashboardComponent, children:[
     {path:'', component:OrdersComponent},
     {path:'orders', component:OrdersComponent},
+    {path:'order-details', component:OrderDetailsComponent},
     {path:'create',component:CreateOrderComponent},
     {path:'details', component:OrderDetailsComponent},
     {path:'sent', component:OrdersSentComponent},

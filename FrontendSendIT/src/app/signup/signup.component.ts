@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { AnimationItem } from 'lottie-web';
 import { AnimationOptions } from 'ngx-lottie';
-import { registeruser } from '../interfaces/interfaces';
+import { Icustomer } from '../interfaces/interfaces';
+import { OrderService } from '../Services/order.service';
 
 @Component({
   selector: 'app-signup',
@@ -15,7 +17,7 @@ export class SignupComponent implements OnInit {
   email!:string
   password!:string
 
-  constructor() { }
+  constructor(private orderService:OrderService, private router:Router) { }
 
   ngOnInit(): void {
     this.form = new FormGroup({
@@ -57,8 +59,12 @@ checkMinimum(): boolean{
   }
 }
 onSubmit(){
-  const user:registeruser=this.form.value
-  console.log(user);
+ 
+  this.orderService.registerCustomer(this.form.value).subscribe(
+    result =>{  
+      this.router.navigate(['/login'])
+    }
+  )
   
 }
 }

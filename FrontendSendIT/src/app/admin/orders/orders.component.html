@@ -1,37 +1,26 @@
 <div>
   <h2>Orders</h2>
-  <div class="card-container">
-    <div class="container">
+  <div class="search">
+    <!-- [(ngModel)]="filter"  -->
+    <input type="text" placeholder="search item..." />
+  </div>
+
+  <div class="card-container" >
+    <div class="container" *ngFor="let order of orders$ | async">
       <h2>
-        Order Name <br /><span>Order description</span><br /><span
-          >Order sent by</span
-        >
+        {{ order.senderName }} <br />{{ order.senderEmail }}
+        <br />
       </h2>
-      <button class="btn btns">View</button>
-    </div>
-    <div class="container">
-      <h2>
-        Order Name <br /><span>Order description</span><br /><span
-          >Order sent by</span
-        >
-      </h2>
-      <button class="btn btns">View</button>
-    </div>
-    <div class="container">
-      <h2>
-        Order Name <br /><span>Order description</span><br /><span
-          >Order sent by</span
-        >
-      </h2>
-      <button class="btn btns">View</button>
-    </div>
-    <div class="container">
-      <h2>
-        Order Name <br /><span>Order description</span><br /><span
-          >Order sent by</span
-        >
-      </h2>
-      <button class="btn btns">View</button>
+      <p>
+        {{ order.receiverName }}<br />
+        {{ order.receiverEmail }}
+      </p>
+      <button class="btn btns" (click)="orderDetails(order.id)" routerLink="/admin/order-details">View</button>
+      <button class="btn deleteBtns" (click)="deleteOrder(order.id)">
+        Delete
+      </button>
     </div>
   </div>
+  <div *ngIf="errorMessage"><p>error: {{errorMessage}}</p></div>
 </div>
+

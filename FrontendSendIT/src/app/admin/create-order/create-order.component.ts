@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { IOrder } from 'src/app/interfaces/interfaces';
+import { OrderService } from 'src/app/Services/order.service';
 
 @Component({
   selector: 'app-create-order',
@@ -14,16 +17,18 @@ export class CreateOrderComponent implements OnInit {
   receiverEmail!:string
   origin!:string
   destination!:string
-  weight!:string
-  price=0
-  constructor() { }
+  dispatchedDate!:string
+  deliveryDate!:string
+  weight!:number
+  price!:number
+  constructor(private orderService:OrderService, private router:Router) { }
 
   ngOnInit(): void {
     this.form = new FormGroup({
       senderName: new FormControl(null, [Validators.required]),
       receiverName: new FormControl(null, [Validators.required]),
-      SenderEmail: new FormControl(null, [Validators.required, Validators.email]),
-      ReceiverEmail: new FormControl(null, [Validators.required, Validators.email]),
+      senderEmail: new FormControl('select', [Validators.required]),
+      receiverEmail: new FormControl('select', [Validators.required]),
       origin: new FormControl(null, [Validators.required]),
       destination: new FormControl(null, [Validators.required]),
       dispatchedDate: new FormControl(null, [Validators.required]),
@@ -34,7 +39,8 @@ export class CreateOrderComponent implements OnInit {
     });
   }
 onSubmit(){
-  console.log(this.form.value);
-  
+  this.orderService.createOrder(this.form.value).subscribe(result =>{
+    this.router.navigate(['/admin/orders'])
+  })
 }
 }

@@ -1,0 +1,49 @@
+{
+  "customers": [
+    {
+      "id": 1,
+      "name": "user 1",
+      "email": "user@gmail.com",
+      "password": "Password@1"
+    },
+    {
+      "id": 2,
+      "name": "user 2",
+      "email": "user2@gmail.com",
+      "password": "Password@1"
+    },
+    {
+      "id": 3,
+      "name": "user 3",
+      "email": "user3@gmail.com",
+      "password": "Password@1"
+    },
+    {
+      "name": "wqxx",
+      "email": "xx@gmail.com",
+      "password": "Password@1",
+      "id": 4
+    },
+    {
+      "name": "d1eqfewww",
+      "email": "sa@gmail.com",
+      "password": "Password@1",
+      "id": 5
+    }
+  ],
+  "orders": [
+    {
+      "senderName": "bcvbx",
+      "receiverName": "ccc",
+      "senderEmail": "user2@gmail.com",
+      "receiverEmail": "user3@gmail.com",
+      "origin": "gbvbc",
+      "destination": "ccccc",
+      "dispatchedDate": "2022-09-30",
+      "deliveryDate": "2022-09-27",
+      "weight": "2222",
+      "price": "222",
+      "id": 1
+    }
+  ]
+}
