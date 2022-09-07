@@ -1,1 +1,64 @@
-<p>create-order works!</p>
+<div>
+  <h2>Create Order</h2>
+  <div class="card-container">
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+      <div class="form-control flexInput">
+        <label for="">Sender Name</label>
+        <input type="text" formControlName="senderName" class="form-control" />
+        <label for="">Receiver Name</label>
+        <input type="text" formControlName="receiverName" class="form-control" />
+      </div>
+
+      <div class="form-control flexInput">
+        <label for="">Sender Email</label>
+        <select formControlName="senderEmail">
+          <option value="select">Select email</option>
+          <option value="user1@gmail.com">user1@gmail.com</option>
+          <option value="user2@gmail.com">user2@gmail.com</option>
+          <option value="user3@gmail.com">user3@gmail.com</option>
+        </select>
+        <label for="">Receiver Email</label>
+        <select formControlName="receiverEmail">
+          <option value="select">Select email</option>
+          <option value="user1@gmail.com">user1@gmail.com</option>
+          <option value="user2@gmail.com">user2@gmail.com</option>
+          <option value="user3@gmail.com">user3@gmail.com</option>
+        </select>
+      </div>
+
+      <div class="form-control flexInput">
+        <label for="">Origin</label>
+        <input type="text" formControlName="origin" class="form-control" />
+        <label for="">Destination</label>
+        <input type="text" formControlName="destination" class="form-control" />
+      </div>
+ 
+      <div class="form-control flexInput">
+        <label for="">Dispatched Date</label>
+        <input
+          type="date"
+          formControlName="dispatchedDate"
+          class="form-control"
+        />
+        <label for="">Delivery Date</label>
+        <input
+          type="date"
+          formControlName="deliveryDate"
+          class="form-control"
+        />
+      </div>
+     
+      <div class="form-control flexInput">
+        <label for="">Weight</label>
+        <input type="text" formControlName="weight" class="form-control" />
+        <label for="">Price</label>
+        <input type="text" formControlName="price" class="form-control" />
+      </div>
+     
+
+      <button [disabled]="!form.valid" type="submit" class="form-control">
+        Send Order
+      </button>
+    </form>
+  </div>
+</div>

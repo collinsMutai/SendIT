@@ -1,18 +1,65 @@
 <div class="container">
+  <div class="content">
     <div class="image">
-        <ng-lottie [options]="options" (animationCreated)="animationCreated($event)"></ng-lottie>
+      <ng-lottie
+        [options]="options"
+        (animationCreated)="animationCreated($event)"
+      ></ng-lottie>
     </div>
     <div class="text">
-        <div class="img-logo">
-            <img src="/assets/images/logo.png" alt="">
-        </div>
-        <h1>SendIT Courier <br><span class="brown-text">Service</span></h1>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe minima nam, quisquam nisi architecto odio quos.</p>
-        <div class="social-icons">
-            <i class="fa-brands fa-instagram"></i>
-            <i class="fa-brands fa-facebook-f"></i>
-            <i class="fa-brands fa-twitter"></i>
-        </div>
+      <div class="img-logo">
+        <img src="/assets/images/logo.png" alt="" />
+      </div>
+      <h1>SendIT Courier <br /><span class="brown-text">Service</span></h1>
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe minima
+        nam, quisquam nisi architecto odio quos.
+      </p>
+      <div class="social-icons">
+        <i class="fa-brands fa-instagram"></i>
+        <i class="fa-brands fa-facebook-f"></i>
+        <i class="fa-brands fa-twitter"></i>
+      </div>
     </div>
-    
+  </div>
+  <div class="about">
+    <div class="about-content">
+      <h3>Our Story</h3>
+      <h2>About Us</h2>
+      <p>
+        Delivery made easier. We ensure fast, safe and affordable parcel
+        delivery. We have been in business for over 20 years and our company is
+        family-owned. We take integrity, honesty and customer satisfaction
+        seriuously. Join us today by signing up with a free customer account.
+      </p>
+      <button>
+        <a routerLink="signup">Get Started</a>
+      </button>
+    </div>
+    <div class="about-image">
+      <img src="/assets/images/about.jpg" alt="" />
+    </div>
+  </div>
+  <div class="services">
+    <h3>WHY US</h3>
+    <h2>Why Choose Us</h2>
+    <div class="services-content">
+      <div class="flex-icons">
+        <i class="fa-regular fa-face-smile"></i>
+        <h4>24/7 Customer support</h4>
+      </div>
+      <div class="flex-icons">
+        <i class="fa-solid fa-truck-fast"></i>
+        <h4>On-time delivery</h4>
+      </div>
+      <div class="flex-icons">
+        <i class="fa-solid fa-people-group"></i>
+        <h4>Friendly staff</h4>
+      </div>
+      <div class="flex-icons">
+        <i class="fa-solid fa-globe"></i>
+        <h4>Country-wide delivery</h4>
+      </div>
+    </div>
+  </div>
 </div>
