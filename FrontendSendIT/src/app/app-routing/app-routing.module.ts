@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterModule, Routes } from '@angular/router';
+import { Route, RouterModule, Routes, UrlSegment } from '@angular/router';
 import { HomeComponent } from '../home/home.component';
 import { SignupComponent } from '../signup/signup.component';
 import { LoginComponent } from '../login/login.component';
@@ -11,7 +11,8 @@ const appRoutes:Routes = [
   {path:'signup', component:SignupComponent},
   {path:'login', component:LoginComponent},
   {path:'', loadChildren:()=>
-    import('../admin/admin.module').then((m)=>m.AdminModule) 
+    import('../admin/admin.module').then((m)=>m.AdminModule),
+    canLoad: [(route:Route, segments: UrlSegment[])=> true]
 },
   {path:'user', component:UserdashboardComponent}
 

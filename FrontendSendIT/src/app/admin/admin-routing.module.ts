@@ -7,12 +7,13 @@ import { OrderDetailsComponent } from './order-details/order-details.component';
 import { OrdersSentComponent } from './orders-sent/orders-sent.component';
 import { AdmindashboardComponent } from './admindashboard/admindashboard.component';
 import { OrdersDeliveredComponent } from './orders-delivered/orders-delivered.component';
+import { AuthGuardGuard } from '../Guards/auth-guard.guard';
 
 const appRoutes:Routes =[
-  {path:'admin', component: AdmindashboardComponent, children:[
+  {path:'admin', canActivate:[AuthGuardGuard]  ,component: AdmindashboardComponent, children:[
     {path:'', component:OrdersComponent},
     {path:'orders', component:OrdersComponent},
-    {path:'order-details', component:OrderDetailsComponent},
+    {path:'order-details/:id', component:OrderDetailsComponent},
     {path:'create',component:CreateOrderComponent},
     {path:'details', component:OrderDetailsComponent},
     {path:'sent', component:OrdersSentComponent},

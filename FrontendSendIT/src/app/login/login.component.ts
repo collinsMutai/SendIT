@@ -1,8 +1,10 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { Router } from '@angular/router';
 import { AnimationItem } from 'lottie-web';
 import { AnimationOptions } from 'ngx-lottie';
 import { loginuser } from '../interfaces/interfaces';
+import { AuthService } from '../Services/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -15,7 +17,10 @@ password!:string
 
 @ViewChild('form') form!: NgForm
 
-  constructor() { }
+  constructor(private authService:AuthService,  private router:Router) { 
+    localStorage.setItem("email",'admin@gmail.com')
+    localStorage.setItem("password",'Password@1')
+  }
 
   ngOnInit(): void {
   }
@@ -28,8 +33,22 @@ password!:string
   }
 
   onSubmit(){
+    const token = localStorage.setItem("token", 'cvbnhssgh672772j$5')
+
+    let email = localStorage.getItem("email")
+    let password = localStorage.getItem("password")
+
     const user: loginuser = this.form.value
+
+    if(user.email === email || user.password === password){
+
+      console.log(user.email);
+      this.router.navigate(['/admin'])
+    }else{
+      this.router.navigate(['/signup'])
+    }
     
   }
+  }
 
-}
+

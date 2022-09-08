@@ -33,16 +33,16 @@
   ],
   "orders": [
     {
-      "senderName": "bcvbx",
-      "receiverName": "ccc",
-      "senderEmail": "user2@gmail.com",
-      "receiverEmail": "user3@gmail.com",
-      "origin": "gbvbc",
-      "destination": "ccccc",
-      "dispatchedDate": "2022-09-30",
-      "deliveryDate": "2022-09-27",
-      "weight": "2222",
-      "price": "222",
+      "senderName": "kjhg",
+      "receiverName": "oiu",
+      "senderEmail": "user1@gmail.com",
+      "receiverEmail": "user1@gmail.com",
+      "origin": "lg",
+      "destination": "kjhgc",
+      "dispatchedDate": "2022-10-06",
+      "deliveryDate": "2022-09-28",
+      "weight": "765",
+      "price": "8765",
       "id": 1
     }
   ]

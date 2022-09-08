@@ -1,26 +1,39 @@
-<div>
+<div class="containerDiv">
   <h2>Orders</h2>
   <div class="search">
-    <!-- [(ngModel)]="filter"  -->
-    <input type="text" placeholder="search item..." />
+    
+    <input type="text" placeholder="search item..." [(ngModel)]="filteredText" />
   </div>
 
-  <div class="card-container" >
-    <div class="container" *ngFor="let order of orders$ | async">
+  <div class="card-container" *ngIf="orders$ | async as orders">
+    <div class="container" *ngFor="let order of orders | search: filteredText" >
       <h2>
         {{ order.senderName }} <br />{{ order.senderEmail }}
         <br />
       </h2>
-      <p>
+      <p class="cardParagraph">
         {{ order.receiverName }}<br />
         {{ order.receiverEmail }}
       </p>
-      <button class="btn btns" (click)="orderDetails(order.id)" routerLink="/admin/order-details">View</button>
-      <button class="btn deleteBtns" (click)="deleteOrder(order.id)">
-        Delete
-      </button>
+      <div class="orderBtns">
+        <button
+          class="btn viewBtns"
+          (click)="orderDetails(order.id)"
+    
+        >
+          View
+        </button>
+        <button class="btn deleteBtns" (click)="deleteOrder(order.id)">
+          Delete
+        </button>
+        <button class="btn deliverBtns" (click)="orderDelivered(order.id)">
+          Delivered
+        </button>
+      </div>
     </div>
   </div>
-  <div *ngIf="errorMessage"><p>error: {{errorMessage}}</p></div>
-</div>
 
+  <div *ngIf="errorMessage">
+    <p>error: {{ errorMessage }}</p>
+  </div>
+</div>

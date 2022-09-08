@@ -21,13 +21,14 @@ export class OrderService {
   getOrders() : Observable <IOrder[]>{
     return this.http.get<IOrder[]>(`${this.baseUrl}/orders`)
   }
-  getOrder(id:number): Observable<IOrder[]>{
+  getOrderDetails(id:number): Observable<IOrder[]>{
     return this.http.get<IOrder[]>(`${this.baseUrl}/orders/${id}`)
   }
+  
   deleteOrder(id:number): Observable <{message:string}>{
     return this.http.delete<{message:string}>(`${this.baseUrl}/orders/${id}`)
   }
-  createOrder(order:IOrder){
-    return this.http.post(`${this.baseUrl}/orders`, order)
+  createOrder(order:IOrder):Observable<{message:string}>{
+    return this.http.post<{message:string}>(`${this.baseUrl}/orders`, order)
   }
 }

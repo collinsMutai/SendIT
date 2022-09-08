@@ -5,11 +5,12 @@ import { OrdersComponent } from './orders/orders.component';
 import { CreateOrderComponent } from './create-order/create-order.component';
 // import { OrdersDeliveredComponent } from '../orders-delivered/orders-delivered.component';
 import { OrdersSentComponent } from './orders-sent/orders-sent.component';
-import {  ReactiveFormsModule } from '@angular/forms';
+import {  FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AdminRoutingModule } from './admin-routing.module';
 import { RouterModule } from '@angular/router';
 import { AdmindashboardComponent } from './admindashboard/admindashboard.component';
 import { OrdersDeliveredComponent } from './orders-delivered/orders-delivered.component';
+import { SearchPipe } from '../Pipes/search.pipe';
 
 
 
@@ -20,14 +21,15 @@ import { OrdersDeliveredComponent } from './orders-delivered/orders-delivered.co
     CreateOrderComponent,
     OrdersDeliveredComponent,
     OrdersSentComponent,
-    AdmindashboardComponent
+    AdmindashboardComponent,
+    SearchPipe
   ],
   imports: [
     CommonModule,
     ReactiveFormsModule,
     AdminRoutingModule,
-    RouterModule
-    
+    RouterModule,
+    FormsModule,
   ]
 })
 export class AdminModule { }

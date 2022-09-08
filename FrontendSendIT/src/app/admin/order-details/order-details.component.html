@@ -1,7 +1,7 @@
 <div class="container">
     <h1>Order <span class="brown-text">Details</span></h1>
 
-    <div class="content">
+    <div class="content" *ngIf="order$ | async as ord">
         <div class="text">
             <p>Order name</p>
             <p>Sent by</p>

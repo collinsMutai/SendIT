@@ -35,6 +35,7 @@ export function playerFactory() {
     SignupComponent,
     LoginComponent,
     UserdashboardComponent,
+    
   
    
     
@@ -52,7 +53,6 @@ export function playerFactory() {
     StoreModule.forRoot({order: OrderReducer}),
     StoreDevtoolsModule.instrument({name:'Order',maxAge:25, logOnly:environment.production}),
     EffectsModule.forRoot([OrderEffectsService]),
-    // StoreModule.forRoot({ game: scoreboardReducer })
   ],
   providers: [],
   bootstrap: [AppComponent]
