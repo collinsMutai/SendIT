@@ -4,7 +4,6 @@ import { Route, RouterModule, Routes, UrlSegment } from '@angular/router';
 import { HomeComponent } from '../home/home.component';
 import { SignupComponent } from '../signup/signup.component';
 import { LoginComponent } from '../login/login.component';
-import { UserdashboardComponent } from '../userdashboard/userdashboard.component';
 
 const appRoutes:Routes = [
   {path: '', component:HomeComponent},
@@ -14,7 +13,10 @@ const appRoutes:Routes = [
     import('../admin/admin.module').then((m)=>m.AdminModule),
     canLoad: [(route:Route, segments: UrlSegment[])=> true]
 },
-  {path:'user', component:UserdashboardComponent}
+  {path:'', loadChildren:()=>
+    import('../user/user.module').then((m)=>m.UserModule),
+    canLoad: [(route:Route, segments: UrlSegment[])=> true]
+}
 
 ]
 

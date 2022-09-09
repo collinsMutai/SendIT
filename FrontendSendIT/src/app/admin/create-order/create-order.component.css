@@ -7,6 +7,7 @@
   justify-content: left;
   align-items: flex-start;
   width: 700px;
+  background-color: #004138;
 }
 form {
   display: flex;
@@ -25,6 +26,10 @@ input {
   outline: none;
   margin-bottom: 15px;
   width: 100%;
+  color: #000;
+}
+select{
+  color: #000;
 }
 label {
   text-align: center;

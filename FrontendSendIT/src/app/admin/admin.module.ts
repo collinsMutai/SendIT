@@ -11,6 +11,7 @@ import { RouterModule } from '@angular/router';
 import { AdmindashboardComponent } from './admindashboard/admindashboard.component';
 import { OrdersDeliveredComponent } from './orders-delivered/orders-delivered.component';
 import { SearchPipe } from '../Pipes/search.pipe';
+import { SharedModule } from '../Shared/shared.module';
 
 
 
@@ -30,6 +31,7 @@ import { SearchPipe } from '../Pipes/search.pipe';
     AdminRoutingModule,
     RouterModule,
     FormsModule,
+    SharedModule
   ]
 })
 export class AdminModule { }

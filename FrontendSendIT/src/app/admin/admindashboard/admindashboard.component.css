@@ -1,6 +1,8 @@
 .container {
   display: flex;
   gap: 20px;
+  background-color: #004138;
+
 }
 
 .brown-text {

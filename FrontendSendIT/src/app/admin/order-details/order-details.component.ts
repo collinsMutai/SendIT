@@ -12,6 +12,7 @@ import * as Actions from '../../Redux/Actions/OrdersActions'
 export class OrderDetailsComponent implements OnInit {
   id!:number
   order$=this.store.select(getOrder)
+  
   constructor(private route:ActivatedRoute, private store: Store<OrderState>) { }
 
   ngOnInit(): void {

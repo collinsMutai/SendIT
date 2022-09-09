@@ -7,8 +7,10 @@
   justify-content: center;
   position: relative;
 }
+
 .container {
   padding: 50px 10px;
+  background-color: #004138;
 }
 .content {
   display: flex;

@@ -1,17 +1,16 @@
 <div class="container">
-    <h1>Order <span class="brown-text">Details</span></h1>
-
-    <div class="content" *ngIf="order$ | async as ord">
-        <div class="text">
-            <p>Order name</p>
-            <p>Sent by</p>
-            <p>Weight</p>
-            <p>Price</p>
-            <p>Pick up location</p>
-          </div>
-          <div class="image">
-            <img src="/assets/images/map-placeholder.png" alt="" />
-          </div>
+  <h1>Order <span class="brown-text">Details</span></h1>
+<div class="content" *ngIf="order$ | async as ord">
+    <div class="text">
+      <p>{{ ord.senderName }}</p>
+      <p>{{ ord.receiverName }}</p>
+      <p>{{ ord.weight }}</p>
+      <p>{{ ord.price }}</p>
+      <p>{{ ord.origin }}</p>
+      <p>{{ ord.destination }}</p>
     </div>
-  
+    <div class="image">
+      <app-map></app-map>
+    </div>
+  </div>
 </div>

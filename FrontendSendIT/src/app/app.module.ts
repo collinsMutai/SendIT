@@ -5,7 +5,6 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { SignupComponent } from './signup/signup.component';
 import { LoginComponent } from './login/login.component';
-import { UserdashboardComponent } from './userdashboard/userdashboard.component';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http'
 
@@ -22,6 +21,8 @@ import { EffectsModule } from '@ngrx/effects';
 import {environment} from '../environments/environment'
 import { OrderEffectsService } from './Redux/Effects/OrderEffects';
 import { OrderReducer } from './Redux/Reducer/OrderReducer';
+import { GoogleMapsModule } from '@angular/google-maps'
+
 
 export function playerFactory() {
   return player;
@@ -34,7 +35,7 @@ export function playerFactory() {
     HomeComponent,
     SignupComponent,
     LoginComponent,
-    UserdashboardComponent,
+    
     
   
    
@@ -53,6 +54,7 @@ export function playerFactory() {
     StoreModule.forRoot({order: OrderReducer}),
     StoreDevtoolsModule.instrument({name:'Order',maxAge:25, logOnly:environment.production}),
     EffectsModule.forRoot([OrderEffectsService]),
+    GoogleMapsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
