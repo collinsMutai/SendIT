@@ -16,6 +16,7 @@ export class OrdersComponent implements OnInit {
   orders$ = this.store.select(getOrders);
   errorMessage: string = '';
   filteredText = '';
+ 
   constructor(
     private orderService: OrderService,
     private store: Store<OrderState>,
@@ -34,6 +35,7 @@ export class OrdersComponent implements OnInit {
   }
   loadOrders() {
     this.store.dispatch(Actions.LoadOrders());
+  
   }
   deleteOrder(id: number = 0) {
     this.store.dispatch(Actions.DeleteOrder({ id }));

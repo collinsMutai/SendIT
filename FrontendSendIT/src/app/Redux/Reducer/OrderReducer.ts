@@ -4,7 +4,7 @@ import {
   createSelector,
   on,
 } from '@ngrx/store';
-import { IOrder } from 'src/app/interfaces/interfaces';
+import { Icustomer, IOrder } from 'src/app/interfaces/interfaces';
 import * as Actions from '../Actions/OrdersActions';
 
 export interface OrderState {
@@ -14,6 +14,7 @@ export interface OrderState {
   deleteMessage: string;
   orderid: number;
   addMessage: string;
+  customers: Icustomer[];
 }
 
 const initialState: OrderState = {
@@ -23,6 +24,7 @@ const initialState: OrderState = {
   deleteMessage: '',
   orderid: 0,
   addMessage: '',
+  customers: [],
 };
 
 const getProductFeatureState = createFeatureSelector<OrderState>('order');
@@ -58,10 +60,15 @@ export const OrderReducer = createReducer(
   }),
   on(Actions.SelectedId, (state, action): OrderState => {
     return { ...state, orderid: action.id };
-  })
-  ,on(Actions.AddOrderSuccess,(state,action):OrderState=>{
+  }),on(Actions.AddOrderSuccess,(state,action):OrderState=>{
     return{...state, addMessage:action.addMessage}
 }),on(Actions.AddOrderFailure,(state,action):OrderState=>{
+    return{...state, error:action.error}
+
+})
+  ,on(Actions.RegisterCustomerSuccess,(state,action):OrderState=>{
+    return{...state, addMessage:action.addMessage}
+}),on(Actions.RegisterCustomerFailure,(state,action):OrderState=>{
     return{...state, error:action.error}
 
 })

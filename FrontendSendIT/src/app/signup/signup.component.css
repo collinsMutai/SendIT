@@ -53,3 +53,14 @@ input.ng-valid.ng-touched {
 .brown-text {
   color: #d08d57;
 }
+@media only screen and (max-width: 600px) {
+  .container {
+    padding: 20px;
+  }
+  .content {
+    flex-direction: column;
+  }
+  .form {
+    order: 2;
+  }
+}

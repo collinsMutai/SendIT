@@ -1,34 +1,38 @@
-<div>
-  <div class="container">
-    <div class="content">
-      <p>{{ today | date: "medium" }}</p>
-      <h2>Welcome Admin <span class="brown-text">Name.</span></h2>
-      <div class="sent">
-        <h2>Orders Sent</h2>
-        <div class="card-container">
-          <div class="containerDiv">
-            <h3>Order Name</h3>
-            <p class="pText">Order description <br />Order sent by</p>
-            <button class="btn btns">View</button>
-          </div>
-          <div class="containerDiv">
-            <h3>Order Name</h3>
-            <p class="pText">Order description <br />Order sent by</p>
-            <button class="btn btns">View</button>
-          </div>
-        </div>
-      </div>
-      <div class="delivered">
-        <h2>Orders Delivered</h2>
-        <div class="card-container">
-          <div class="containerDiv">
-            <h3>Order Name</h3>
-            <p class="pText">Order description <br />Order sent by</p>
-            <button class="btn btns">View</button>
-          </div>
-        </div>
+<div class="containerDiv">
+  <h2>Welcome User</h2>
+
+  <div class="card-container" *ngIf="orders$ | async as orders">
+    <div class="container" *ngFor="let order of orders">
+      <h2>
+        {{ order.senderName }} <br />{{ order.senderEmail }}
+        <br />
+      </h2>
+      <p class="cardParagraph">
+        {{ order.receiverName }}<br />
+        {{ order.receiverEmail }}
+      </p>
+      <div class="orderBtns">
+        <button class="btn viewBtns" (click)="orderDetails( order.receiverEmail, order.senderEmail, order.origin)">
+          View
+        </button>
       </div>
     </div>
   </div>
-  <app-map></app-map>
+  <div class="view-details" *ngIf="display">
+    
+    
+    <button (click)="close()">Close</button>
+      <div class="details" >
+        
+        <h3>{{senderEmail}}</h3>
+        <div class="image">
+          <app-map></app-map>
+        </div>
+      </div>
+   
+  </div>
+
+  <div *ngIf="errorMessage">
+    <p>error: {{ errorMessage }}</p>
+  </div>
 </div>

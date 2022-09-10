@@ -41,4 +41,13 @@ export class OrderEffectsService {
         ))
     )
 })
+  addCustomer=createEffect(()=>{
+    return this.actions.pipe(
+        ofType(OrdersActions.RegisterCustomer),
+        mergeMap(action=>this.orderService.createCustomer(action.newCustomer).pipe(
+            map(res=>OrdersActions.RegisterCustomerSuccess({addMessage:res.message})),
+            catchError(error=>of(OrdersActions.RegisterCustomerFailure({error:error})))
+        ))
+    )
+})
 }

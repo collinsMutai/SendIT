@@ -1,24 +1,15 @@
-<div class="container">
-  <div class="navLinks">
-    <button><a routerLink="">Home</a></button>
-    <button>
-      <a routerLink="user">Customer</a>
-    </button>
-    <button>
-      <a routerLink="admin">Admin</a>
-    </button>
+<nav class="navbar">
+  <div class="logo" routerLink="/">
+    <img src="../assets/images/logo.png" alt="" />
   </div>
-  <div class="login">
-    <button>
-      <a routerLink="signup">SignUp</a>
-    </button>
-    <button>
-      <a routerLink="login">Login</a>
-    </button>
-    <button>
-      <a href="">Logout</a>
-    </button>
-  </div>
-</div>
+  <ul class="nav-links">
+    <input type="checkbox" id="checkbox_toggle" />
+    <label for="checkbox_toggle" class="hamburger">&#9776;</label>
+    <div class="menu">
+      <li><a routerLink="/">Home</a></li>
+      <li><a routerLink="login">Login</a></li>
+    </div>
+  </ul>
+</nav>
 <router-outlet></router-outlet>
 <app-footer></app-footer>

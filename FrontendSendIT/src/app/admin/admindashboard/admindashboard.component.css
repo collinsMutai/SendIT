@@ -2,9 +2,7 @@
   display: flex;
   gap: 20px;
   background-color: #004138;
-
 }
-
 .brown-text {
   color: #d08d57;
 }
@@ -43,4 +41,9 @@
 }
 .side{
  width: 600px;
+}
+@media only screen and (max-width: 600px) {
+  .container{
+    flex-wrap: wrap;
+  }
 }

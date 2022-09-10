@@ -41,6 +41,12 @@
       "email": "juhgh@gmail.com",
       "password": "Password@1",
       "id": 7
+    },
+    {
+      "name": "assfghfj",
+      "email": "sd@gmail.com",
+      "password": "Password@1",
+      "id": 8
     }
   ],
   "orders": [
@@ -56,6 +62,19 @@
       "weight": "444",
       "price": "8765",
       "id": 1
+    },
+    {
+      "senderName": "sdfsgd",
+      "receiverName": "afg",
+      "senderEmail": "user2@gmail.com",
+      "receiverEmail": "user1@gmail.com",
+      "origin": "sd",
+      "destination": "ccvv",
+      "dispatchedDate": "2022-10-05",
+      "deliveryDate": "2022-10-03",
+      "weight": "333",
+      "price": "333",
+      "id": 2
     }
   ]
 }

@@ -1,20 +1,31 @@
 <div class="container">
-    
-    <div class="content">
-        <div class="form">
-            <h1>Login <span class="brown-text">Customer</span></h1>
-            <form #form="ngForm" (ngSubmit)="onSubmit()">
-                <label for="email">Email</label>
-                <input type="email" ngModel name="email" required email #email="ngModel">
-                <p class="error" *ngIf="!email.valid && email.touched">*Please enter a valid email!</p>
-                <label for="password">Password</label>
-                <input type="text" ngModel name="password" required>
-                <button [disabled]="!form.valid" type="submit">Login</button>
-            </form>
-        </div>
-        <div class="image">
-            <ng-lottie [options]="options" (animationCreated)="animationCreated($event)"></ng-lottie>
-        </div>
-       
+  <div class="content">
+    <div class="form">
+      <h1>Login <span class="brown-text">Customer</span></h1>
+      <form #form="ngForm" (ngSubmit)="onSubmit()">
+        <label for="email">Email</label>
+        <input
+          type="email"
+          ngModel
+          name="email"
+          required
+          email
+          #email="ngModel"
+        />
+        <p class="error" *ngIf="!email.valid && email.touched">
+          *Please enter a valid email!
+        </p>
+        <label for="password">Password</label>
+        <input type="text" ngModel name="password" required />
+        <button [disabled]="!form.valid" type="submit">Login</button>
+      </form>
     </div>
+    <div class="image">
+      <ng-lottie
+        [options]="options"
+        (animationCreated)="animationCreated($event)"
+      ></ng-lottie>
+    </div>
+  </div>
 </div>
+<app-error></app-error>

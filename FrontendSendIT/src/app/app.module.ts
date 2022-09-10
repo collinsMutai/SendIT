@@ -51,9 +51,9 @@ export function playerFactory() {
     AppRoutingModule,
     RouterModule,
     HttpClientModule,
-    StoreModule.forRoot({order: OrderReducer}),
+    StoreModule.forRoot({}),
     StoreDevtoolsModule.instrument({name:'Order',maxAge:25, logOnly:environment.production}),
-    EffectsModule.forRoot([OrderEffectsService]),
+    EffectsModule.forRoot([]),
     GoogleMapsModule
   ],
   providers: [],

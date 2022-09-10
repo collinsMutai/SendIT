@@ -36,3 +36,16 @@ img{
 .copyright p{
     text-align: center;
 }
+@media only screen and (max-width: 600px) {
+    .container{
+        padding: 20px;
+    }
+    .footer-top{
+        flex-wrap: wrap;
+        margin: 0;
+    }
+    .footer-bottom{
+        flex-wrap: wrap;
+        margin: 0;
+    }
+  }

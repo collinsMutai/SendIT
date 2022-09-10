@@ -1,5 +1,5 @@
 import { createAction, props } from "@ngrx/store";
-import { IOrder } from "src/app/interfaces/interfaces";
+import { Icustomer, IOrder } from "src/app/interfaces/interfaces";
 
 export const SelectedId= createAction('SelectedId', props<{id:number}>())
 
@@ -26,5 +26,14 @@ export const AddOrderSuccess= createAction('AddOrderSuccess',
 props<{addMessage:string}>()
 )
 export const AddOrderFailure= createAction('AddOrderFailure',
+props<{error:string}>()
+)
+export const RegisterCustomer= createAction('RegisterCustomer',
+props<{newCustomer:Icustomer}>()
+)
+export const RegisterCustomerSuccess= createAction('RegisterCustomerSuccess',
+props<{addMessage:string}>()
+)
+export const RegisterCustomerFailure= createAction('RegisterCustomerFailure',
 props<{error:string}>()
 )

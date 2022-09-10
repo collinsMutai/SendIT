@@ -5,7 +5,7 @@
 .content{
     display: flex;
     /* justify-content: space-evenly; */
-    gap: 20px;
+    gap: 150px;
 }
 .brown-text {
     color: #d08d57;

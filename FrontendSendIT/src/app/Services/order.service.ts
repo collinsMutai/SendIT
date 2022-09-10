@@ -31,4 +31,7 @@ export class OrderService {
   createOrder(order:IOrder):Observable<{message:string}>{
     return this.http.post<{message:string}>(`${this.baseUrl}/orders`, order)
   }
+  createCustomer(customer:Icustomer):Observable<{message:string}>{
+    return this.http.post<{message:string}>(`${this.baseUrl}/customers`, customer)
+  }
 }

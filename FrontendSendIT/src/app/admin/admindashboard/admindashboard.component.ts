@@ -9,7 +9,6 @@ import { Router } from '@angular/router';
 export class AdmindashboardComponent implements OnInit {
   today= Date.now()
   constructor() { }
-
   ngOnInit(): void {
     
   }

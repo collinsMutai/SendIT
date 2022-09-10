@@ -1,10 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { Store } from '@ngrx/store';
 import { AnimationItem } from 'lottie-web';
 import { AnimationOptions } from 'ngx-lottie';
 import { Icustomer } from '../interfaces/interfaces';
+import { OrderState } from '../Redux/Reducer/OrderReducer';
 import { OrderService } from '../Services/order.service';
+import * as Actions from '../../../src/app/Redux/Actions/OrdersActions'
+
 
 @Component({
   selector: 'app-signup',
@@ -18,7 +22,7 @@ export class SignupComponent implements OnInit {
   password!:string
   
 
-  constructor(private orderService:OrderService, private router:Router) { }
+  constructor(private orderService:OrderService, private router:Router, private store:Store<OrderState>) { }
 
   ngOnInit(): void {
     this.form = new FormGroup({
@@ -60,12 +64,8 @@ checkMinimum(): boolean{
   }
 }
 onSubmit(){
+  this.store.dispatch(Actions.RegisterCustomer({newCustomer: this.form.value}))
+  this.router.navigate(['/login'])
  
-  this.orderService.registerCustomer(this.form.value).subscribe(
-    result =>{  
-      this.router.navigate(['/login'])
-    }
-  )
-  
 }
 }
