@@ -5,7 +5,7 @@ import { OrdersComponent } from './orders/orders.component';
 import { CreateOrderComponent } from './create-order/create-order.component';
 // import { OrdersDeliveredComponent } from '../orders-delivered/orders-delivered.component';
 import { OrdersSentComponent } from './orders-sent/orders-sent.component';
-import {  FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AdminRoutingModule } from './admin-routing.module';
 import { RouterModule } from '@angular/router';
 import { AdmindashboardComponent } from './admindashboard/admindashboard.component';
@@ -20,8 +20,6 @@ import { OrderEffectsService } from '../Redux/Effects/OrderEffects';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from 'src/environments/environment';
 
-
-
 @NgModule({
   declarations: [
     OrderDetailsComponent,
@@ -30,7 +28,7 @@ import { environment } from 'src/environments/environment';
     OrdersDeliveredComponent,
     OrdersSentComponent,
     AdmindashboardComponent,
-    SearchPipe
+    SearchPipe,
   ],
   imports: [
     CommonModule,
@@ -40,8 +38,6 @@ import { environment } from 'src/environments/environment';
     FormsModule,
     SharedModule,
     NgxPaginationModule,
-    StoreModule.forFeature('order',OrderReducer),
-    EffectsModule.forFeature([OrderEffectsService]),
-  ]
+  ],
 })
-export class AdminModule { }
+export class AdminModule {}

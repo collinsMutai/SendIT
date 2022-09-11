@@ -37,3 +37,9 @@ props<{addMessage:string}>()
 export const RegisterCustomerFailure= createAction('RegisterCustomerFailure',
 props<{error:string}>()
 )
+
+export const LoadCustomers = createAction('LoadCustomers')
+export const LoadCustomersSuccess = createAction('LoadCustomersSuccess',
+props<{customers:Icustomer[]}>())
+export const LoadCustomersFailure = createAction('LoadCustomersFailure',
+props<{error:string}>())

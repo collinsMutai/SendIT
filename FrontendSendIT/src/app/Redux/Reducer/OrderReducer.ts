@@ -15,6 +15,7 @@ export interface OrderState {
   orderid: number;
   addMessage: string;
   customers: Icustomer[];
+  customersError: string;
 }
 
 const initialState: OrderState = {
@@ -25,6 +26,7 @@ const initialState: OrderState = {
   orderid: 0,
   addMessage: '',
   customers: [],
+  customersError:''
 };
 
 const getProductFeatureState = createFeatureSelector<OrderState>('order');
@@ -43,6 +45,10 @@ export const getOrder = createSelector(
   getOrderid,
   (state, id) => state.orders.find((order) => order.id === id)
 );
+export const getCustomers = createSelector(
+  getProductFeatureState,
+  (state) => state.customers
+);
 
 export const OrderReducer = createReducer(
   initialState,
@@ -60,7 +66,8 @@ export const OrderReducer = createReducer(
   }),
   on(Actions.SelectedId, (state, action): OrderState => {
     return { ...state, orderid: action.id };
-  }),on(Actions.AddOrderSuccess,(state,action):OrderState=>{
+  })
+  ,on(Actions.AddOrderSuccess,(state,action):OrderState=>{
     return{...state, addMessage:action.addMessage}
 }),on(Actions.AddOrderFailure,(state,action):OrderState=>{
     return{...state, error:action.error}
@@ -71,5 +78,11 @@ export const OrderReducer = createReducer(
 }),on(Actions.RegisterCustomerFailure,(state,action):OrderState=>{
     return{...state, error:action.error}
 
+}),
+on(Actions.LoadCustomersSuccess, (state, action): OrderState => {
+  return { ...state, customers: action.customers };
+}),
+on(Actions.LoadCustomersFailure, (state, action): OrderState => {
+  return { ...state, customersError: action.error };
 })
 );

@@ -3,17 +3,18 @@ import { AnimationItem } from 'lottie-web';
 import { AnimationOptions } from 'ngx-lottie';
 
 @Component({
-  selector: 'app-home',
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.css']
+  selector: 'app-notfound',
+  templateUrl: './notfound.component.html',
+  styleUrls: ['./notfound.component.css']
 })
-export class HomeComponent implements OnInit {
+export class NotfoundComponent implements OnInit {
+
   constructor() { }
-  
-  ngOnInit(): void { }
-  
+
+  ngOnInit(): void {
+  }
   options: AnimationOptions = {
-    path: '/assets/lottie/deliverymotorbike.json',
+    path: '/assets/lottie/lf30_editor_9kzn22bx.json',
   };
   
   animationCreated(animationItem: AnimationItem): void {

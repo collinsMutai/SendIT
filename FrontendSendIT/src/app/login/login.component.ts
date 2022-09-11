@@ -3,7 +3,7 @@ import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AnimationItem } from 'lottie-web';
 import { AnimationOptions } from 'ngx-lottie';
-import { loginuser } from '../interfaces/interfaces';
+import { Iloginuser} from '../interfaces/interfaces';
 import { AuthService } from '../Services/auth.service';
 
 @Component({
@@ -28,9 +28,7 @@ password!:string
     path: '/assets/lottie/login.json',
   };
   
-  animationCreated(animationItem: AnimationItem): void {
-
-  }
+  animationCreated(animationItem: AnimationItem): void {}
 
   onSubmit(){
     const token = localStorage.setItem("token", 'cvbnhssgh672772j$5')
@@ -38,17 +36,14 @@ password!:string
     let email = localStorage.getItem("email")
     let password = localStorage.getItem("password")
 
-    const user: loginuser = this.form.value
+    const user: Iloginuser = this.form.value
 
     if(user.email === email || user.password === password){
-
-      console.log(user.email);
       this.router.navigate(['/admin'])
     }else{
-      this.router.navigate(['/signup'])
+      this.router.navigate(['/user'])
     }
     
   }
   }
-
 

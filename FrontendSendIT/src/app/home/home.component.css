@@ -1,8 +1,12 @@
 .container {
   background-color: #004138;
 }
+.image{
+  width: 100%;
+}
 .content {
   display: flex;
+  align-items: center;
   color: #fff;
   width: 100vw;
   height: 100vh;
@@ -122,5 +126,8 @@ button a {
   }
   .flex-icons i {
     font-size: 40px;
+  }
+  .image{
+    width: 100%;
   }
 }

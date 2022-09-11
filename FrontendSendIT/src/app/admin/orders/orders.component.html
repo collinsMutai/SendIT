@@ -9,7 +9,7 @@
   </div>
 
   <div class="card-container" *ngIf="orders$ | async as orders">
-    <div class="container" *ngFor="let order of orders | search: filteredText">
+    <div  class="container" *ngFor="let order of orders | search: filteredText">
       <h2>
         {{ order.senderName }} <br />{{ order.senderEmail }}
         <br />

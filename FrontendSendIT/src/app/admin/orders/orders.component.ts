@@ -1,9 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { catchError, Observable, of } from 'rxjs';
-import { IOrder } from 'src/app/interfaces/interfaces';
-import { OrderService } from 'src/app/Services/order.service';
 import { Store } from '@ngrx/store';
-import { getOrders, OrderState } from '../../Redux/Reducer/OrderReducer';
+import { getCustomers, getOrders, OrderState } from '../../Redux/Reducer/OrderReducer';
 import * as Actions from '../../Redux/Actions/OrdersActions';
 import { ActivatedRoute, Router } from '@angular/router';
 
@@ -14,11 +11,11 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class OrdersComponent implements OnInit {
   orders$ = this.store.select(getOrders);
+  customers$ = this.store.select(getCustomers)
   errorMessage: string = '';
   filteredText = '';
  
   constructor(
-    private orderService: OrderService,
     private store: Store<OrderState>,
     private router: Router,
     private route: ActivatedRoute
@@ -29,26 +26,23 @@ export class OrdersComponent implements OnInit {
     this.loadCustomers();
   }
   loadCustomers() {
-    this.orderService.getCustomers().subscribe((result) => {
-      console.log(result);
-    });
+    this.store.dispatch(Actions.LoadCustomers())
   }
   loadOrders() {
     this.store.dispatch(Actions.LoadOrders());
-  
   }
   deleteOrder(id: number = 0) {
     this.store.dispatch(Actions.DeleteOrder({ id }));
     this.store.dispatch(Actions.LoadOrders());
-    console.log(id);
   }
   orderDetails(id: number = 0) {
     this.store.dispatch(Actions.SelectedId({ id }));
-    console.log(id);
-
     this.router.navigate([`/admin/order-details/${id}`], {
       relativeTo: this.route,
     });
   }
-  orderDelivered(id: number = 0) {}
+  orderDelivered(id: number = 0) {
+    console.log(id);
+    
+  }
 }

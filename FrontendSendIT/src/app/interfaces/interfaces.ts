@@ -1,11 +1,11 @@
-export interface loginuser{
+export interface Iloginuser{
     email:string,
     password:string
-    error: string
-    message:string
-    token:string
-    role:string
-    name:string
+    error?: string
+    message?:string
+    token?:string
+    role?:string
+    name?:string
 }
 export interface Icustomer{
     id?:number,

@@ -1,4 +1,4 @@
-<div>
+<div class="containerDiv">
   <h2>Create Order</h2>
   <div class="card-container">
     <form [formGroup]="form" (ngSubmit)="onSubmit()">
@@ -6,33 +6,43 @@
         <label for="">Sender Name</label>
         <input type="text" formControlName="senderName" class="form-control" />
         <label for="">Receiver Name</label>
-        <input type="text" formControlName="receiverName" class="form-control" />
+        <input
+          type="text"
+          formControlName="receiverName"
+          class="form-control"
+        />
       </div>
-
-      <div class="form-control flexInput">
+      <div
+        class="form-control flexInput"
+        *ngIf="customers$ | async as customers"
+      >
         <label for="">Sender Email</label>
         <select formControlName="senderEmail">
           <option value="select">Select Sender Email</option>
-          <option value="user1@gmail.com">user1@gmail.com</option>
-          <option value="user2@gmail.com">user2@gmail.com</option>
-          <option value="user3@gmail.com">user3@gmail.com</option>
+          <option
+            value="{{ customer.email }}"
+            *ngFor="let customer of customers"
+          >
+            {{ customer.email }}
+          </option>
         </select>
         <label for="">Receiver Email</label>
-        <select formControlName="receiverEmail">
+        <select formControlName="senderEmail">
           <option value="select">Select Receiver Email</option>
-          <option value="user1@gmail.com">user1@gmail.com</option>
-          <option value="user2@gmail.com">user2@gmail.com</option>
-          <option value="user3@gmail.com">user3@gmail.com</option>
+          <option
+            value="{{ customer.email }}"
+            *ngFor="let customer of customers"
+          >
+            {{ customer.email }}
+          </option>
         </select>
       </div>
-
       <div class="form-control flexInput">
         <label for="">Origin</label>
         <input type="text" formControlName="origin" class="form-control" />
         <label for="">Destination</label>
         <input type="text" formControlName="destination" class="form-control" />
       </div>
- 
       <div class="form-control flexInput">
         <label for="">Dispatched Date</label>
         <input
@@ -47,15 +57,12 @@
           class="form-control"
         />
       </div>
-     
       <div class="form-control flexInput">
         <label for="">Weight</label>
         <input type="text" formControlName="weight" class="form-control" />
         <label for="">Price</label>
         <input type="text" formControlName="price" class="form-control" />
       </div>
-     
-
       <button [disabled]="!form.valid" type="submit" class="form-control">
         Send Order
       </button>

@@ -11,13 +11,10 @@ export class OrderService {
   orders$!:Observable<IOrder[]>
   
   constructor(private http: HttpClient) { }
-  getCustomers(): Observable<Icustomer>{
-    return this.http.get<Icustomer>(`${this.baseUrl}/customers`)
+  
+  createOrder(order:IOrder):Observable<{message:string}>{
+    return this.http.post<{message:string}>(`${this.baseUrl}/orders`, order)
   }
-  registerCustomer(customer:Icustomer[]): Observable<Icustomer>{
-    return this.http.post<Icustomer>(`${this.baseUrl}/customers`, customer)
-  }
-
   getOrders() : Observable <IOrder[]>{
     return this.http.get<IOrder[]>(`${this.baseUrl}/orders`)
   }
@@ -28,10 +25,12 @@ export class OrderService {
   deleteOrder(id:number): Observable <{message:string}>{
     return this.http.delete<{message:string}>(`${this.baseUrl}/orders/${id}`)
   }
-  createOrder(order:IOrder):Observable<{message:string}>{
-    return this.http.post<{message:string}>(`${this.baseUrl}/orders`, order)
-  }
+
   createCustomer(customer:Icustomer):Observable<{message:string}>{
     return this.http.post<{message:string}>(`${this.baseUrl}/customers`, customer)
   }
+  getCustomers(): Observable<Icustomer[]>{
+    return this.http.get<Icustomer[]>(`${this.baseUrl}/customers`)
+  }
+
 }

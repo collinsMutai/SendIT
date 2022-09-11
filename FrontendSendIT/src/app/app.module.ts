@@ -1,16 +1,13 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { SignupComponent } from './signup/signup.component';
 import { LoginComponent } from './login/login.component';
 import { CommonModule } from '@angular/common';
-import { HttpClientModule } from '@angular/common/http'
-
+import { HttpClientModule } from '@angular/common/http';
 import { LottieModule } from 'ngx-lottie';
 import player from 'lottie-web';
-
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SharedModule } from './Shared/shared.module';
 import { AppRoutingModule } from './app-routing/app-routing.module';
@@ -18,29 +15,23 @@ import { RouterModule } from '@angular/router';
 import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { EffectsModule } from '@ngrx/effects';
-import {environment} from '../environments/environment'
+import { environment } from '../environments/environment';
 import { OrderEffectsService } from './Redux/Effects/OrderEffects';
 import { OrderReducer } from './Redux/Reducer/OrderReducer';
-import { GoogleMapsModule } from '@angular/google-maps'
-
+import { GoogleMapsModule } from '@angular/google-maps';
+import { NotfoundComponent } from './notfound/notfound.component';
 
 export function playerFactory() {
   return player;
 }
 
-
 @NgModule({
   declarations: [
-    AppComponent,
+    AppComponent, 
     HomeComponent,
-    SignupComponent,
-    LoginComponent,
-    
-    
-  
-   
-    
-  ],
+     SignupComponent, 
+     LoginComponent, 
+     NotfoundComponent],
   imports: [
     BrowserModule,
     CommonModule,
@@ -51,12 +42,16 @@ export function playerFactory() {
     AppRoutingModule,
     RouterModule,
     HttpClientModule,
-    StoreModule.forRoot({}),
-    StoreDevtoolsModule.instrument({name:'Order',maxAge:25, logOnly:environment.production}),
+    StoreDevtoolsModule.instrument({
+      name: 'Order',
+      maxAge: 25,
+      logOnly: environment.production,
+    }),
     EffectsModule.forRoot([]),
-    GoogleMapsModule
+    StoreModule.forRoot({ order: OrderReducer }),
+    EffectsModule.forRoot([OrderEffectsService]),
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

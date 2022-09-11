@@ -1,40 +1,23 @@
-* {
-  padding: 10px;
-  margin-bottom: 20px;
+.containerDiv{
+  margin-left: 20px;
 }
-.card-container {
-  display: flex; 
-  justify-content: left; 
-  align-items: flex-start;
-  width: 100%;
+.flexInput input, select{
   background-color: #004138;
-}
-form {
-  display: flex;
-  flex-direction: column;
-  font-size: 16px;
-  width: 550px; 
-   justify-content: center;
-  align-items: center;
-}
-input {
-  padding: 5px;
-  margin-bottom: 5px;
   border-top: none;
   border-left: none;
   border-right: none;
-  border-bottom: 2px solid#fff;
-  outline: none;
-  margin-bottom: 15px;
+  border-bottom: 2px solid #fff;
+  margin-bottom: 50px;
   width: 100%;
-  color: #000;
+  color: #fff;
 }
 select{
-  color: #000;
+  background-color: #004138;
+  color: #fff;
 }
-label {
-  text-align: center;
-  margin-bottom: 5px;
+form{
+  display: flex;
+  flex-direction: column;
 }
 button {
   margin-top: 15px;
@@ -43,7 +26,7 @@ button {
   padding: 10px;
   font-size: 16px;
   text-transform: uppercase;
-  width: 50%;
+  width: 100%;
 }
 input.ng-invalid.ng-touched {
   border-left: 5px solid red;

@@ -7,74 +7,50 @@
       "password": "Password@1"
     },
     {
-      "id": 2,
-      "name": "user 2",
-      "email": "user2@gmail.com",
-      "password": "Password@1"
+      "name": "kjhgf",
+      "email": "jh@gmail.com",
+      "password": "Password@1",
+      "id": 2
     },
     {
-      "id": 3,
-      "name": "user 3",
-      "email": "user3@gmail.com",
-      "password": "Password@1"
+      "name": "jhgfghj",
+      "email": "skjhg@gmail.com",
+      "password": "Pasqord@1",
+      "id": 3
     },
     {
-      "name": "wqxx",
-      "email": "xx@gmail.com",
+      "name": "kjklkjhg",
+      "email": "kjhg@gmail.com",
       "password": "Password@1",
       "id": 4
-    },
-    {
-      "name": "d1eqfewww",
-      "email": "sa@gmail.com",
-      "password": "Password@1",
-      "id": 5
-    },
-    {
-      "name": "sazdnnnjjjbb",
-      "email": "hhjjjd@gmail.com",
-      "password": "Passsword@1",
-      "id": 6
-    },
-    {
-      "name": "bkjhg",
-      "email": "juhgh@gmail.com",
-      "password": "Password@1",
-      "id": 7
-    },
-    {
-      "name": "assfghfj",
-      "email": "sd@gmail.com",
-      "password": "Password@1",
-      "id": 8
     }
   ],
   "orders": [
     {
-      "senderName": "hhhh",
-      "receiverName": "hgfcx",
+      "senderName": "jhg",
+      "receiverName": "jhg",
       "senderEmail": "user2@gmail.com",
-      "receiverEmail": "user2@gmail.com",
-      "origin": "vvvv",
-      "destination": "jhgf",
-      "dispatchedDate": "2022-09-15",
+      "receiverEmail": "user3@gmail.com",
+      "origin": "jhg",
+      "destination": "gvbnm",
+      "dispatchedDate": "2022-09-21",
       "deliveryDate": "2022-09-21",
-      "weight": "444",
-      "price": "8765",
-      "id": 1
+      "weight": "765",
+      "price": "iuy",
+      "id": 2
     },
     {
-      "senderName": "sdfsgd",
-      "receiverName": "afg",
-      "senderEmail": "user2@gmail.com",
+      "senderName": "bvc",
+      "receiverName": "jhgf",
+      "senderEmail": "user1@gmail.com",
       "receiverEmail": "user1@gmail.com",
-      "origin": "sd",
-      "destination": "ccvv",
-      "dispatchedDate": "2022-10-05",
-      "deliveryDate": "2022-10-03",
-      "weight": "333",
-      "price": "333",
-      "id": 2
+      "origin": "nyeri",
+      "destination": "nairobi",
+      "dispatchedDate": "2022-09-07",
+      "deliveryDate": "2022-09-13",
+      "weight": "6789",
+      "price": "765",
+      "id": 3
     }
   ]
 }
