@@ -10,7 +10,7 @@ import { OrdersDeliveredComponent } from './orders-delivered/orders-delivered.co
 import { AuthGuardGuard } from '../Guards/auth-guard.guard';
 
 const appRoutes:Routes =[
-  {path:'admin', canActivate:[AuthGuardGuard]  ,component: AdmindashboardComponent, children:[
+  {path:'admin', canActivate:[AuthGuardGuard], canLoad:[AuthGuardGuard]  ,component: AdmindashboardComponent, children:[
     {path:'', component:OrdersComponent},
     {path:'orders', component:OrdersComponent},
     {path:'order-details/:id', component:OrderDetailsComponent},

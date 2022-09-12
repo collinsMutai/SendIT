@@ -14,7 +14,7 @@ export class OrdersComponent implements OnInit {
   customers$ = this.store.select(getCustomers)
   errorMessage: string = '';
   filteredText = '';
- 
+  clicked = false
   constructor(
     private store: Store<OrderState>,
     private router: Router,
@@ -43,6 +43,6 @@ export class OrdersComponent implements OnInit {
   }
   orderDelivered(id: number = 0) {
     console.log(id);
-    
+    this.clicked  = true
   }
 }

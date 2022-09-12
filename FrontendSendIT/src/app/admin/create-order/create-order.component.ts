@@ -22,7 +22,8 @@ export class CreateOrderComponent implements OnInit {
   dispatchedDate!:string
   deliveryDate!:string
   weight!:number
-  price!:number
+  price!:number 
+  
   customers$ = this.store.select(getCustomers)
   constructor(private router:Router, private store:Store<OrderState>) { }
 
@@ -39,6 +40,9 @@ export class CreateOrderComponent implements OnInit {
       weight: new FormControl(null, [Validators.required]),
       price: new FormControl(null, [Validators.required]),
     });
+    this.form.get('weight')!.valueChanges.subscribe(res=>{
+      this.form.get('price')!.setValue(res*1000)
+    })
     this.getCustomerEmail()
   }
 onSubmit(){

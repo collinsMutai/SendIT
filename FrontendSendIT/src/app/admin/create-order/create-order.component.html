@@ -59,9 +59,9 @@
       </div>
       <div class="form-control flexInput">
         <label for="">Weight</label>
-        <input type="text" formControlName="weight" class="form-control" />
+        <input type="text" formControlName="weight" class="form-control" [(ngModel)]="weight"/>
         <label for="">Price</label>
-        <input type="text" formControlName="price" class="form-control" />
+        <input type="text" formControlName="price" class="form-control" [(ngModel)]="price" />
       </div>
       <button [disabled]="!form.valid" type="submit" class="form-control">
         Send Order

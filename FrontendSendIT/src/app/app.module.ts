@@ -20,6 +20,7 @@ import { OrderEffectsService } from './Redux/Effects/OrderEffects';
 import { OrderReducer } from './Redux/Reducer/OrderReducer';
 import { GoogleMapsModule } from '@angular/google-maps';
 import { NotfoundComponent } from './notfound/notfound.component';
+import { ErrorComponent } from './error/error.component';
 
 export function playerFactory() {
   return player;
@@ -31,7 +32,7 @@ export function playerFactory() {
     HomeComponent,
      SignupComponent, 
      LoginComponent, 
-     NotfoundComponent],
+     NotfoundComponent, ErrorComponent],
   imports: [
     BrowserModule,
     CommonModule,

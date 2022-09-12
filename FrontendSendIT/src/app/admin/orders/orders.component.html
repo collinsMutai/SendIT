@@ -7,16 +7,17 @@
       [(ngModel)]="filteredText"
     />
   </div>
-
-  <div class="card-container" *ngIf="orders$ | async as orders">
-    <div  class="container" *ngFor="let order of orders | search: filteredText">
+<!-- *ngIf="clicked" appStyle [backgroundColor]="'red'" -->
+  <div class="card-container" *ngIf="orders$ | async as orders" >
+    <div   class="container" *ngFor="let order of orders | search: filteredText">
       <h2>
         {{ order.senderName }} <br />{{ order.senderEmail }}
         <br />
       </h2>
       <p class="cardParagraph">
         {{ order.receiverName }}<br />
-        {{ order.receiverEmail }}
+        {{ order.receiverEmail }} <br/>
+        {{order.price | currency: 'Kshs'}}
       </p>
       <div class="orderBtns">
         <button class="btn viewBtns" (click)="orderDetails(order.id)">
@@ -31,5 +32,5 @@
       </div>
     </div>
   </div>
-  <div></div>
+  
 </div>

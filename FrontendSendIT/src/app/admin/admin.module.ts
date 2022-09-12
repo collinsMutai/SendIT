@@ -19,6 +19,7 @@ import { EffectsModule } from '@ngrx/effects';
 import { OrderEffectsService } from '../Redux/Effects/OrderEffects';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from 'src/environments/environment';
+import { StyleDirective } from '../Directive/style.directive';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import { environment } from 'src/environments/environment';
     OrdersSentComponent,
     AdmindashboardComponent,
     SearchPipe,
+    StyleDirective
   ],
   imports: [
     CommonModule,
@@ -38,6 +40,7 @@ import { environment } from 'src/environments/environment';
     FormsModule,
     SharedModule,
     NgxPaginationModule,
+  
   ],
 })
 export class AdminModule {}

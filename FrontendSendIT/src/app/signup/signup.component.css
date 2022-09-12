@@ -1,5 +1,5 @@
 .container {
-  padding: 100px;
+  padding: 50px;
   justify-content: center;
   background-color: #004138;
 }
@@ -27,6 +27,7 @@ input {
   outline: none;
   margin-bottom: 15px;
   color: #000;
+  background-color: #004138;
 }
 label {
   text-align: center;

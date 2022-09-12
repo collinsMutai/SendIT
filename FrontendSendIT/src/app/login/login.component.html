@@ -4,12 +4,14 @@
         <div class="form">
             <h1>Login <span class="brown-text">Customer</span></h1>
             <form #form="ngForm" (ngSubmit)="onSubmit()">
+                <app-error *ngIf="logged" [message]=error  (close)="onClose()"></app-error>
                 <label for="email">Email</label>
                 <input type="email" ngModel name="email" required email #email="ngModel">
                 <p class="error" *ngIf="!email.valid && email.touched">*Please enter a valid email!</p>
                 <label for="password">Password</label>
                 <input type="text" ngModel name="password" required>
-                <button [disabled]="!form.valid" type="submit">Login</button>
+                <button  type="submit">Login</button>
+                <p class="newCustomer">New customer? <a href="/signup">Start here.</a></p>
             </form>
         </div>
         <div class="image">

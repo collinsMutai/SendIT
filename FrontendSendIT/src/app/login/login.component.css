@@ -26,6 +26,7 @@ input {
   border-bottom: 2px solid#fff;
   outline: none;
   margin-bottom: 15px;
+  background-color: #004138;
 }
 label {
   text-align: center;
@@ -41,6 +42,13 @@ button {
 }
 .brown-text {
   color: #d08d57;
+}
+.newCustomer{
+  text-align: center;
+}
+.newCustomer a{
+  color: #d08d57;
+  text-decoration: none;
 }
 input.ng-invalid.ng-touched {
   border-left: 5px solid red;

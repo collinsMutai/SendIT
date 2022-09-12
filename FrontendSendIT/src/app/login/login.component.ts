@@ -14,7 +14,8 @@ import { AuthService } from '../Services/auth.service';
 export class LoginComponent implements OnInit {
 email!: string
 password!:string
-
+logged = false
+error='All fields required'
 @ViewChild('form') form!: NgForm
 
   constructor(private authService:AuthService,  private router:Router) { 
@@ -31,6 +32,7 @@ password!:string
   animationCreated(animationItem: AnimationItem): void {}
 
   onSubmit(){
+    
     const token = localStorage.setItem("token", 'cvbnhssgh672772j$5')
 
     let email = localStorage.getItem("email")
@@ -44,6 +46,9 @@ password!:string
       this.router.navigate(['/user'])
     }
     
+  }
+  onClose(){
+    this.logged = false
   }
   }
 
