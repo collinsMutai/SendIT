@@ -22,7 +22,8 @@ const appRoutes: Routes = [
     path: '',
     loadChildren: () => import('../user/user.module').then((m) => m.UserModule),
   },
-  { path: '**', component: NotfoundComponent },
+  { path: 'notfound', component: NotfoundComponent },
+  { path: '**', redirectTo:"notfound"},
 ];
 
 @NgModule({

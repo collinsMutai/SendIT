@@ -4,7 +4,6 @@
 }
 .content{
     display: flex;
-    /* justify-content: space-evenly; */
     gap: 150px;
 }
 .brown-text {
@@ -16,4 +15,10 @@
 img{
     width: 400px;
     height: 300px;
+}
+@media (max-width: 768px) {
+  .content{
+    flex-direction: column;
+    gap: 50px;
+  }
 }

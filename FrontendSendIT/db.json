@@ -23,24 +23,17 @@
       "email": "kjhg@gmail.com",
       "password": "Password@1",
       "id": 4
+    },
+    {
+      "name": "collins",
+      "email": "collins@gmail.com",
+      "password": "Password@1",
+      "id": 5
     }
   ],
   "orders": [
     {
-      "senderName": "bvc",
-      "receiverName": "jhgf",
-      "senderEmail": "user1@gmail.com",
-      "receiverEmail": "user1@gmail.com",
-      "origin": "nyeri",
-      "destination": "nairobi",
-      "dispatchedDate": "2022-09-07",
-      "deliveryDate": "2022-09-13",
-      "weight": "6789",
-      "price": "765",
-      "id": 3
-    },
-    {
-      "senderName": "sd",
+      "senderName": "order six",
       "receiverName": "fdas",
       "senderEmail": "jh@gmail.com",
       "receiverEmail": "select",
@@ -50,7 +43,20 @@
       "deliveryDate": "2022-09-28",
       "weight": "777",
       "price": "900",
-      "id": 4
+      "id": 6
+    },
+    {
+      "senderName": "mbv",
+      "receiverName": "jhg",
+      "senderEmail": "skjhg@gmail.com",
+      "receiverEmail": "select",
+      "origin": "bbb",
+      "destination": "hhh",
+      "dispatchedDate": "2022-09-14",
+      "deliveryDate": "2022-09-06",
+      "weight": "666",
+      "price": 666000,
+      "id": 7
     }
   ]
 }

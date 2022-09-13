@@ -27,6 +27,7 @@ input {
   outline: none;
   margin-bottom: 15px;
   background-color: #004138;
+  color: #fff;
 }
 label {
   text-align: center;

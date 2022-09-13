@@ -4,7 +4,7 @@
         <h1>Fast Delivery <br><span class="brown-text">Register SendIT</span></h1>
       <form [formGroup]="form" (ngSubmit)="onSubmit()">
         <label for="">Name</label>
-        <input type="text" formControlName="name" class="form-control" />
+        <input type="text" formControlName="name" required class="form-control" />
         <div *ngIf="!form.get('name')?.valid && form.get('name')?.touched">
           <p class="error" *ngIf="!(form.get('name')?.errors)!['required']">
             *Please enter a username

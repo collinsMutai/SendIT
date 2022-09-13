@@ -7,16 +7,19 @@ import { Icustomer, IOrder } from '../interfaces/interfaces';
   providedIn: 'root'
 })
 export class OrderService {
-  baseUrl: string = "http://localhost:3000"
-  orders$!:Observable<IOrder[]>
+  baseUrl: string = "http://localhost:7003"
+  // orders$!:Observable<IOrder[]>
   
   constructor(private http: HttpClient) { }
   
   createOrder(order:IOrder):Observable<{message:string}>{
-    return this.http.post<{message:string}>(`${this.baseUrl}/orders`, order)
+    return this.http.post<{message:string}>(`${this.baseUrl}/parcel/addparcel`, order)
   }
   getOrders() : Observable <IOrder[]>{
-    return this.http.get<IOrder[]>(`${this.baseUrl}/orders`)
+    return this.http.get<IOrder[]>(`${this.baseUrl}/parcel/parcels`)
+
+
+
   }
   getOrderDetails(id:number): Observable<IOrder[]>{
     return this.http.get<IOrder[]>(`${this.baseUrl}/orders/${id}`)
@@ -27,10 +30,10 @@ export class OrderService {
   }
 
   createCustomer(customer:Icustomer):Observable<{message:string}>{
-    return this.http.post<{message:string}>(`${this.baseUrl}/customers`, customer)
+    return this.http.post<{message:string}>(`${this.baseUrl}/user/signup`, customer)
   }
   getCustomers(): Observable<Icustomer[]>{
-    return this.http.get<Icustomer[]>(`${this.baseUrl}/customers`)
+    return this.http.get<Icustomer[]>(`${this.baseUrl}/user/users`)
   }
 
 }

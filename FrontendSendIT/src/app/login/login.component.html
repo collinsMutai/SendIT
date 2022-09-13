@@ -9,8 +9,8 @@
                 <input type="email" ngModel name="email" required email #email="ngModel">
                 <p class="error" *ngIf="!email.valid && email.touched">*Please enter a valid email!</p>
                 <label for="password">Password</label>
-                <input type="text" ngModel name="password" required>
-                <button  type="submit">Login</button>
+                <input type="password" ngModel name="password" required>
+                <button [disabled]="!form.valid"  type="submit">Login</button>
                 <p class="newCustomer">New customer? <a href="/signup">Start here.</a></p>
             </form>
         </div>

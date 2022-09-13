@@ -8,7 +8,6 @@
   display: flex;
   align-items: center;
   color: #fff;
-  width: 100vw;
   height: 100vh;
 }
 .brown-text {
@@ -51,7 +50,7 @@ img {
   opacity: 1;
 }
 .about img {
-  width: 80%;
+  width: 100%;
 }
 .services {
   padding: 50px;

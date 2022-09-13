@@ -58,10 +58,10 @@
   <div class="view-details" *ngIf="display">
     <div class="details">
       <button (click)="close()" class="closeBtn"><i class="fa-solid fa-close"></i></button>
-      <h3>{{ senderEmail }}</h3>
-      <!-- <div class="image">
+      <h3>Sender: {{ senderEmail }}</h3>
+      <div class="image">
         <app-map></app-map>
-      </div> -->
+      </div>
     </div>
   </div>
   <div *ngIf="errorMessage">

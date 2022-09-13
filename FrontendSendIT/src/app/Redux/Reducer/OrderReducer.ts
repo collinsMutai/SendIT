@@ -51,6 +51,9 @@ export const getCustomers = createSelector(
 );
 
 export const OrderReducer = createReducer(
+
+
+  
   initialState,
   on(Actions.LoadOrdersSuccess, (state, action): OrderState => {
     return { ...state, orders: action.orders };
@@ -58,6 +61,10 @@ export const OrderReducer = createReducer(
   on(Actions.LoadOrdersFailure, (state, action): OrderState => {
     return { ...state, ordersError: action.error };
   }),
+
+
+
+
   on(Actions.DeleteOrderSuccess, (state, action): OrderState => {
     return { ...state, deleteMessage: action.deletemessage };
   }),

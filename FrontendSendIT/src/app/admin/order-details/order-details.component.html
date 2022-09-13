@@ -2,12 +2,12 @@
   <h1>Order <span class="brown-text">Details</span></h1>
 <div class="content" *ngIf="order$ | async as ord">
     <div class="text">
-      <p>{{ ord.senderName }}</p>
-      <p>{{ ord.receiverName }}</p>
-      <p>{{ ord.weight }}</p>
-      <p>{{ ord.price }}</p>
-      <p>{{ ord.origin }}</p>
-      <p>{{ ord.destination }}</p>
+      <p><strong style="color: #d08d57;">Sender:</strong>{{ ord.senderName }}</p>
+      <p><strong style="color: #d08d57;">Receiver:</strong>{{ ord.receiverName }}</p>
+      <p><strong style="color: #d08d57;">Weight:</strong>{{ ord.weight }}</p>
+      <p><strong style="color: #d08d57;">Price:</strong>{{ ord.price }}</p>
+      <p><strong style="color: #d08d57;">Origin:</strong>{{ ord.origin }}</p>
+      <p><strong style="color: #d08d57;">Destination:</strong>{{ ord.destination }}</p>
     </div>
     <div class="image">
       <app-map></app-map>
