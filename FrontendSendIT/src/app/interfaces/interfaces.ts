@@ -8,13 +8,13 @@ export interface Iloginuser{
     name?:string
 }
 export interface Icustomer{
-    id?:number,
+    id:string,
     name:string
     email:string
     password:string
 }
 export interface IOrder{
-    id?:number,
+    id:string,
     senderName:string
     receiverName:string
     senderEmail:string

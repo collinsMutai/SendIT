@@ -15,7 +15,7 @@ interface Extended extends Request {
 
 interface ExtendedRequest extends Request {
   body: {
-    id?:number,
+    id?:string,
     senderName:string
     receiverName:string
     senderEmail:string

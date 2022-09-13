@@ -5,7 +5,7 @@ import { v4 as uid } from 'uuid'
 import { sqlConfig } from '../Config/Config'
 import Connection from '../DatabaseHelpers/db'
 const db = new Connection()
-import { UserSchema, UserSchema2 } from '../Helper/UserValidator'
+import { UserSchema, } from '../Helper/UserValidator'
 import { Data } from '../Interfaces/interfaces'
 import bcrypt from 'bcrypt'
 

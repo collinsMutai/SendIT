@@ -10,14 +10,14 @@ import * as Actions from '../../Redux/Actions/OrdersActions'
   styleUrls: ['./order-details.component.css']
 })
 export class OrderDetailsComponent implements OnInit {
-  id!:number
+  id!:string
   order$=this.store.select(getOrder)
   
   constructor(private route:ActivatedRoute, private store: Store<OrderState>) { }
 
   ngOnInit(): void {
     this.route.params.subscribe((param)=>{
-      this.id=+param['id']
+      this.id=param['id']
     })
     this.store.dispatch(Actions.SelectedId({id:this.id}))
   }

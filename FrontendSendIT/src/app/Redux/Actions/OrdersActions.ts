@@ -1,7 +1,7 @@
 import { createAction, props } from "@ngrx/store";
 import { Icustomer, IOrder } from "src/app/interfaces/interfaces";
 
-export const SelectedId= createAction('SelectedId', props<{id:number}>())
+export const SelectedId= createAction('SelectedId', props<{id:string}>())
 
 
 export const LoadOrders = createAction('LoadOrders')
@@ -12,7 +12,7 @@ props<{error:string}>())
 
 
 export const DeleteOrder = createAction('DeleteOrder',
-props<{id:number}>())
+props<{id:string}>())
 export const DeleteOrderSuccess = createAction('DeleteOrderSuccess',
 props<{deletemessage:string}>())
 export const DeleteOrderFailure=createAction('DeleteOrderFailure',

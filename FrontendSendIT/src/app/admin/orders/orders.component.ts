@@ -32,17 +32,17 @@ export class OrdersComponent implements OnInit {
   loadOrders() {
     this.store.dispatch(Actions.LoadOrders());
   }
-  deleteOrder(id: number = 0) {
+  deleteOrder(id: string) {
     this.store.dispatch(Actions.DeleteOrder({ id }));
     this.store.dispatch(Actions.LoadOrders());
   }
-  orderDetails(id: number = 0) {
+  orderDetails(id: string) {
     this.store.dispatch(Actions.SelectedId({ id }));
     this.router.navigate([`/admin/order-details/${id}`], {
       relativeTo: this.route,
     });
   }
-  orderDelivered(id: number = 0) {
+  orderDelivered(id: string) {
     console.log(id);
     this.clicked  = true
   }

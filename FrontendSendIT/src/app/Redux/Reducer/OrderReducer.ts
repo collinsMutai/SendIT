@@ -12,7 +12,7 @@ export interface OrderState {
   ordersError: string;
   error: string;
   deleteMessage: string;
-  orderid: number;
+  orderid: string;
   addMessage: string;
   customers: Icustomer[];
   customersError: string;
@@ -23,7 +23,7 @@ const initialState: OrderState = {
   ordersError: '',
   error: '',
   deleteMessage: '',
-  orderid: 0,
+  orderid: '',
   addMessage: '',
   customers: [],
   customersError:''
