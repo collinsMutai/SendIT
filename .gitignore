@@ -2,3 +2,6 @@ FrontendSendIT/node_modules
 BackendSendIT/dist
 BackendSendIT/node_modules
 BackendSendIT/.env
+EmailServiceSendIT/node_modules
+EmailServiceSendIT/.env
+EmailServiceSendIT/dist

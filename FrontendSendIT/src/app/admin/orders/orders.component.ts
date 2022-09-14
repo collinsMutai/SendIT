@@ -45,5 +45,8 @@ export class OrdersComponent implements OnInit {
   orderDelivered(id: string) {
     console.log(id);
     this.clicked  = true
+    this.store.dispatch(Actions.DeliverOrder({ id }));
+    // this.store.dispatch(Actions.LoadOrders());
   }
+
 }

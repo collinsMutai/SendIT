@@ -39,6 +39,21 @@ export class OrderEffectsService {
       )
     );
   });
+  deliveredOrder = createEffect(() => {
+    return this.actions.pipe(
+      ofType(OrdersActions.DeliverOrder),
+      mergeMap((action) =>
+        this.orderService.deliverParcel(action.id).pipe(
+          map((res) =>
+            OrdersActions.DeliverOrderSuccess({ deliverMessage: res.message })
+          ),
+          catchError((error) =>
+            of(OrdersActions.DeliverOrderFailure({ error: error.message }))
+          )
+        )
+      )
+    );
+  });
 
   addProduct = createEffect(() => {
     return this.actions.pipe(

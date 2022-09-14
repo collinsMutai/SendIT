@@ -3,8 +3,8 @@ POST http://localhost:7003/user/signup
 Content-Type: application/json
 
 {
-    "name":"user5",
-    "email":"user5@gmail.com",
+    "name":"Cherumtai",
+    "email":"cherumtai@gmail.com",
     "password":"Password@1"
 }
 
@@ -43,14 +43,14 @@ POST http://localhost:7003/parcel/addparcel
 Content-Type: application/json
 
 {
-    "senderName": "joe",
-    "receiverName":"mary",
-    "senderEmail":"joe@gmail.com",
-    "receiverEmail":"mary@gmail.com",
+    "senderName": "collins",
+    "receiverName":"cherumtai",
+    "senderEmail":"collinsfrontend@gmail.com",
+    "receiverEmail":"cherumtai@gmail.com",
     "origin":"nyeri",
     "destination":"nairobi",
-    "dispatchedDate":"today",
-    "deliveryDate":"tomorrow",
+    "dispatchedDate":"2022-09-30",
+    "deliveryDate":"2022-09-29",
     "weight":100,
     "price":1000
 }
@@ -73,7 +73,7 @@ GET  http://localhost:7003/parcel/parcels
 GET  http://localhost:7003/parcel/parcels/ee908c02-8497-41c3-a8df-1f459b45b18d
 
 ###
-Get http://localhost:7000/project/complete/54cac16d-c214-4c22-8121-77d451800310
+Get http://localhost:7003/parcel/parcels/delivered/11a3abbc-6cb8-407d-801f-383542584e13
 
 ###
 

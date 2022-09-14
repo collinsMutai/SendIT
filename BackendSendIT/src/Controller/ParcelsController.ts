@@ -116,9 +116,20 @@ export const updateParcel: RequestHandler<{ id: string }> = async (
       res.json({ error })
   }
 }
-
-
-
+export const deliverParcel:RequestHandler<{id:string}> =async(req,res)=>{
+  try {
+      const id = req.params.id
+      const {recordset} =await db.exec('getParcel',{id})
+      if(!recordset[0]){
+       res.json({ message: 'Parcel Not Found' })
+      }else{
+        await db.exec('parcelDelivered', {id})
+      res.json({message:'Parcel Delivered'})
+    }
+  } catch (error:any) {
+     res.json({ error }) 
+  }
+}
 
 
 

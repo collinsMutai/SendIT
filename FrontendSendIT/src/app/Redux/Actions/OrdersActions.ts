@@ -18,6 +18,13 @@ props<{deletemessage:string}>())
 export const DeleteOrderFailure=createAction('DeleteOrderFailure',
 props<{error:string}>())
 
+export const DeliverOrder = createAction('DeliverOrder',
+props<{id:string}>())
+export const DeliverOrderSuccess = createAction('DeliverOrderSuccess',
+props<{deliverMessage:string}>())
+export const DeliverOrderFailure=createAction('DeliverOrderFailure',
+props<{error:string}>())
+
 
 export const AddOrder= createAction('AddOrder',
 props<{newOrder:IOrder}>()

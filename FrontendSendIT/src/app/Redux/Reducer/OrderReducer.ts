@@ -14,6 +14,7 @@ export interface OrderState {
   deleteMessage: string;
   orderid: string;
   addMessage: string;
+  deliverMessage:string,
   customers: Icustomer[];
   customersError: string;
 }
@@ -26,7 +27,8 @@ const initialState: OrderState = {
   orderid: '',
   addMessage: '',
   customers: [],
-  customersError:''
+  customersError:'',
+  deliverMessage:''
 };
 
 const getProductFeatureState = createFeatureSelector<OrderState>('order');
@@ -71,6 +73,13 @@ export const OrderReducer = createReducer(
   on(Actions.DeleteOrderFailure, (state, action): OrderState => {
     return { ...state, error: action.error };
   }),
+  on(Actions.DeliverOrderSuccess, (state, action): OrderState => {
+    return { ...state, deliverMessage: action.deliverMessage };
+  }),
+  on(Actions.DeliverOrderFailure, (state, action): OrderState => {
+    return { ...state, error: action.error };
+  }),
+
   on(Actions.SelectedId, (state, action): OrderState => {
     return { ...state, orderid: action.id };
   })
