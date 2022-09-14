@@ -6,6 +6,10 @@ export const UserSchema= Joi.object({
     password:Joi.string().required().min(8),
     name:Joi.string().required()
 })
+export const LoginSchema= Joi.object({
+    email:Joi.string().required().email(),
+    password:Joi.string().required().min(8),
+})
 
 export const ParcelSchema= Joi.object({
     senderName:Joi.string().required(),

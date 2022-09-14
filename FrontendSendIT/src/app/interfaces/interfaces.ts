@@ -7,6 +7,13 @@ export interface Iloginuser{
     role?:string
     name?:string
 }
+export interface LoginResponse {
+    message:string
+    role:string, 
+    name:string, 
+    token:string
+    error:boolean}
+export interface LoginDetails {email:string, password:string}
 export interface Icustomer{
     id:string,
     name:string

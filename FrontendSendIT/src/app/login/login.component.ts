@@ -3,52 +3,66 @@ import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AnimationItem } from 'lottie-web';
 import { AnimationOptions } from 'ngx-lottie';
-import { Iloginuser} from '../interfaces/interfaces';
+import { Iloginuser, LoginDetails } from '../interfaces/interfaces';
 import { AuthService } from '../Services/auth.service';
+import { OrderService } from '../Services/order.service';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  styleUrls: ['./login.component.css'],
 })
 export class LoginComponent implements OnInit {
-email!: string
-password!:string
-logged = false
-error='All fields required'
-@ViewChild('form') form!: NgForm
+  email!: string;
+  password!: string;
+  logged = false;
+  error = 'All fields required';
+  @ViewChild('form') form!: NgForm;
 
-  constructor(private authService:AuthService,  private router:Router) { 
-    localStorage.setItem("email",'admin@gmail.com')
-    localStorage.setItem("password",'Password@1')
+  constructor(
+    private authService: AuthService,
+    private router: Router,
+    private auth: OrderService
+  ) {
+    localStorage.setItem('email', 'admin@gmail.com');
+    localStorage.setItem('password', 'Password@1');
   }
+  errorMessage!: string;
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
   options: AnimationOptions = {
     path: '/assets/lottie/login.json',
   };
-  
+
   animationCreated(animationItem: AnimationItem): void {}
 
-  onSubmit(){
-    
-    const token = localStorage.setItem("token", 'cvbnhssgh672772j$5')
+  onSubmit() {
+    const user: LoginDetails = this.form.value;
+    this.auth.logUser(user).subscribe(
+      (response) => {
+        response.token ? localStorage.setItem('token', response.token) : '';
 
-    let email = localStorage.getItem("email")
-    let password = localStorage.getItem("password")
-
-    const user: Iloginuser = this.form.value
-
-    if(user.email === email || user.password === password){
-      this.router.navigate(['/admin'])
-    }else{
-      this.router.navigate(['/user'])
-    }
-    
+        this.redirect();
+      },
+      (error) => {
+        error = console.log(error);
+      }
+    );
   }
-  onClose(){
-    this.logged = false
-  }
-  }
+  redirect() {
+    this.auth.checkuser().subscribe((response) => {
+      localStorage.setItem('name', response.name);
+      localStorage.setItem('email', response.email);
+      localStorage.setItem('role', response.role);
 
+      if (response.role === 'admin') {
+        this.router.navigate(['/admin']);
+      } else {
+        this.router.navigate(['/user']);
+      }
+    });
+  }
+  onClose() {
+    this.logged = false;
+  }
+}

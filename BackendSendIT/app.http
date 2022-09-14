@@ -3,20 +3,20 @@ POST http://localhost:7003/user/signup
 Content-Type: application/json
 
 {
-    "name":"Cherumtai",
-    "email":"cherumtai@gmail.com",
+    "name":"Collins",
+    "email":"collinsfrontend@gmail.com",
     "password":"Password@1"
 }
 
 
 
 ###
-POST http://localhost:7000/user/login
+POST http://localhost:7003/user/login
 Content-Type: application/json
 
 {
-    "email":"user2@gmail.com",
-    "password":"12345678"
+    "email":"cherumtai@gmail.com",
+    "password":"Password@1"
 }
 
 
@@ -28,8 +28,8 @@ token:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjkwMmFmNDc0LWVkMjgtNGYwMy1hM
 
 ###
 
-GET  http://localhost:7000/user/check
-token:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjkwMmFmNDc0LWVkMjgtNGYwMy1hMTdkLWNhOTE4YzY4NWY0NSIsIm5hbWUiOiJ1c2VyMiIsImVtYWlsIjoidXNlcjJAZ21haWwuY29tIiwicm9sZSI6InVzZXIiLCJzdGF0dXMiOiIwIiwiaWF0IjoxNjYxOTE1NjczLCJleHAiOjE2NjE5MTkyNzN9.OOeFKRapCOhoUDIDTvflLeJx5nHlbHihow52jAdn_M8
+GET  http://localhost:7003/user/check
+token:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImQ1NmJjZWI4LTNlZDMtNDIyZC05ZDhhLWVkY2IyOTRkY2Q5NiIsIm5hbWUiOiJDaGVydW10YWkiLCJlbWFpbCI6ImNoZXJ1bXRhaUBnbWFpbC5jb20iLCJyb2xlIjoiY3VzdG9tZXIiLCJ3ZWxjb21lIjoiMSIsImlhdCI6MTY2MzE0NTU3NywiZXhwIjoxNjYzMTQ5MTc3fQ.USNc6PSYHrRdBjajqDVq7p86H-Wqkx0mHezOZIUYp6s
 
 
 
@@ -77,11 +77,11 @@ Get http://localhost:7003/parcel/parcels/delivered/11a3abbc-6cb8-407d-801f-38354
 
 ###
 
-PUT http://localhost:7003/parcel/parcels/update/04a600c5-d632-4bd4-922a-bc7ccfbe77db
+PUT http://localhost:7003/parcel/parcels/update/fac65ba9-b773-4be6-8e36-31b93d369518
 Content-Type: application/json
 
 {
-    "senderName": "jack",
+    "senderName": "updated",
     "receiverName":"doe",
     "senderEmail":"jack@gmail.com",
     "receiverEmail":"doe@gmail.com",
