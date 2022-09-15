@@ -4,7 +4,7 @@ Content-Type: application/json
 
 {
     "name":"Collins",
-    "email":"collinsfrontend@gmail.com",
+    "email":"user@gmail.com",
     "password":"Password@1"
 }
 
@@ -43,9 +43,9 @@ POST http://localhost:7003/parcel/addparcel
 Content-Type: application/json
 
 {
-    "senderName": "collins",
+    "senderName": "ckjjjollins",
     "receiverName":"cherumtai",
-    "senderEmail":"collinsfrontend@gmail.com",
+    "senderEmail":"collinshhhfrontend@gmail.com",
     "receiverEmail":"cherumtai@gmail.com",
     "origin":"nyeri",
     "destination":"nairobi",
@@ -63,7 +63,7 @@ Content-Type: application/json
     "user_id":"ffba3ac2-e3aa-47af-9575-79db177b2e80"}
 
 ###
-DELETE  http://localhost:7003/parcel/parcels/66b23eb6-fe07-4b4d-ac15-5f6d5d0183e0
+POST  http://localhost:7003/parcel/parcels/f10e330d-b384-42db-813e-5d9d1afbc05f
 
 
 ###

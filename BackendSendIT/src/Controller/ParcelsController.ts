@@ -76,7 +76,7 @@ export const addParcel = async (req: ExtendedRequest, res: Response) => {
         if(!recordset[0]){
          res.json({ message: 'Parcel Not Found' })
         }else{
-          await db.exec('deleteParcel', {id})
+          await db.exec('softDeleteParcel', {id})
         res.json({message:'Parcel Deleted'})
       }
     } catch (error:any) {

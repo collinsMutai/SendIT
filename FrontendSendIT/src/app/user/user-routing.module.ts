@@ -3,11 +3,12 @@ import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
 import { UserdashboardComponent } from './userdashboard/userdashboard.component';
 import { AuthGuardGuard } from '../Guards/auth-guard.guard';
+import { UserGuard } from '../Guards/user.guard';
 
 const appRoutes: Routes = [
   {
     path: '',
-    canActivate: [AuthGuardGuard],
+    canActivate: [UserGuard],
     component: UserdashboardComponent,
     children: [{ path: 'user', component: UserdashboardComponent }],
   },

@@ -7,8 +7,9 @@ import { AuthService } from '../Services/auth.service';
 })
 export class AuthGuardGuard implements CanActivate, CanLoad {
   constructor(private authService:AuthService, private router: Router){}
+ 
   canActivate(){
-    if(this.authService.isLoggedIn()){
+    if(localStorage.getItem('role') === 'admin'){
       return true
     }
     else{

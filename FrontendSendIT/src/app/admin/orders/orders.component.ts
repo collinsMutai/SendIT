@@ -33,6 +33,8 @@ export class OrdersComponent implements OnInit {
     this.store.dispatch(Actions.LoadOrders());
   }
   deleteOrder(id: string) {
+    console.log(id);
+    
     this.store.dispatch(Actions.DeleteOrder({ id }));
     this.store.dispatch(Actions.LoadOrders());
   }
