@@ -10,7 +10,7 @@ app.use('/user', router)
 app.use('/parcel', router)
 
 
-app.listen(7004,()=>{
+app.listen(7003,()=>{
     console.log("Application Running");
     
 })

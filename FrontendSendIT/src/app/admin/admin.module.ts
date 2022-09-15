@@ -13,6 +13,12 @@ import { SearchPipe } from '../Pipes/search.pipe';
 import { SharedModule } from '../Shared/shared.module';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { StyleDirective } from '../Directive/style.directive';
+import { HttpClientModule } from '@angular/common/http';
+import { StoreModule } from '@ngrx/store';
+import { EffectsModule } from '@ngrx/effects';
+import { OrderEffectsService } from '../Redux/Effects/OrderEffects';
+import { OrderReducer } from '../Redux/Reducer/OrderReducer';
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
 @NgModule({
   declarations: [
@@ -33,6 +39,12 @@ import { StyleDirective } from '../Directive/style.directive';
     FormsModule,
     SharedModule,
     NgxPaginationModule,
+    HttpClientModule,
+    StoreModule.forFeature('order', OrderReducer),
+    EffectsModule.forFeature([OrderEffectsService])
   ],
+  exports:[
+    RouterModule
+  ]
 })
 export class AdminModule {}

@@ -36,7 +36,9 @@ export class OrdersComponent implements OnInit {
     console.log(id);
     
     this.store.dispatch(Actions.DeleteOrder({ id }));
-    this.store.dispatch(Actions.LoadOrders());
+    this.loadOrders()
+    // this.store.dispatch(Actions.LoadOrders());
+    // this.router.navigate(['/admin'])
   }
   orderDetails(id: string) {
     this.store.dispatch(Actions.SelectedId({ id }));

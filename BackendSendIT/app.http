@@ -39,12 +39,12 @@ GET  http://localhost:7003/user/users
 
 # parcels
 ###
-POST http://localhost:7003/parcel/addparcel
+POST http://localhost:7003/parcel/add
 Content-Type: application/json
 
 {
-    "senderName": "ckjjjollins",
-    "receiverName":"cherumtai",
+    "senderName": "ckjjjokklkjjllins",
+    "receiverName":"cherjkkkjjumtai",
     "senderEmail":"collinshhhfrontend@gmail.com",
     "receiverEmail":"cherumtai@gmail.com",
     "origin":"nyeri",
@@ -63,21 +63,21 @@ Content-Type: application/json
     "user_id":"ffba3ac2-e3aa-47af-9575-79db177b2e80"}
 
 ###
-POST  http://localhost:7003/parcel/parcels/f10e330d-b384-42db-813e-5d9d1afbc05f
+GET  http://localhost:7003/parcel/delete/f10e330d-b384-42db-813e-5d9d1afbc05f
 
 
 ###
-GET  http://localhost:7003/parcel/parcels
+GET  http://localhost:7003/parcel/all
 
 ###
-GET  http://localhost:7003/parcel/parcels/ee908c02-8497-41c3-a8df-1f459b45b18d
+GET  http://localhost:7003/parcel/view/88c0e1c5-dab2-46b3-be34-b8fc7fd029e0
 
 ###
-Get http://localhost:7003/parcel/parcels/delivered/11a3abbc-6cb8-407d-801f-383542584e13
+Get http://localhost:7003/parcel/delivered/11a3abbc-6cb8-407d-801f-383542584e13
 
 ###
 
-PUT http://localhost:7003/parcel/parcels/update/fac65ba9-b773-4be6-8e36-31b93d369518
+PUT http://localhost:7003/parcel/update/88c0e1c5-dab2-46b3-be34-b8fc7fd029e0
 Content-Type: application/json
 
 {

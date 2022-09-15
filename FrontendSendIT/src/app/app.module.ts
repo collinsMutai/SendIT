@@ -43,14 +43,10 @@ export function playerFactory() {
     AppRoutingModule,
     RouterModule,
     HttpClientModule,
-    StoreDevtoolsModule.instrument({
-      name: 'Order',
-      maxAge: 25,
-      logOnly: environment.production,
-    }),
+    StoreModule.forRoot({}, {}),
     EffectsModule.forRoot([]),
-    StoreModule.forRoot({ order: OrderReducer }),
-    EffectsModule.forRoot([OrderEffectsService]),
+    StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
+    
   ],
   providers: [],
   bootstrap: [AppComponent],

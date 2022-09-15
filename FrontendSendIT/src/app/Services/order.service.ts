@@ -14,20 +14,20 @@ export class OrderService {
   constructor(private http: HttpClient, ) { }
   
   createOrder(order:IOrder):Observable<{message:string}>{
-    return this.http.post<{message:string}>(`${this.baseUrl}/parcel/addparcel`, order)
+    return this.http.post<{message:string}>(`${this.baseUrl}/parcel/add`, order)
   }
   getOrders() : Observable <IOrder[]>{
-    return this.http.get<IOrder[]>(`${this.baseUrl}/parcel/parcels`)
+    return this.http.get<IOrder[]>(`${this.baseUrl}/parcel/all`)
   }
   getOrderDetails(id:string): Observable<IOrder[]>{
-    return this.http.get<IOrder[]>(`${this.baseUrl}/parcel/parcels/${id}`)
+    return this.http.get<IOrder[]>(`${this.baseUrl}/parcel/view/${id}`)
   }
   
   deleteOrder(id:string): Observable <{message:string}>{
-    return this.http.delete<{message:string}>(`${this.baseUrl}/parcel/parcels/${id}`)
+    return this.http.get<{message:string}>(`${this.baseUrl}/parcel/delete/${id}`)
   }
   deliverParcel(id:string):Observable<{message:string}>{
-    return this.http.get<{message:string}>(`${this.baseUrl}/parcel/parcels/delivered/${id}`)
+    return this.http.get<{message:string}>(`${this.baseUrl}/parcel//delivered/${id}`)
   }
 
   createCustomer(customer:Icustomer):Observable<{message:string}>{

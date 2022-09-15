@@ -48,3 +48,20 @@ UPDATE ParcelsTable SET id=@id,senderName=@senderName,receiverName=@receiverName
      WHERE id =@id
 
 END
+
+
+CREATE PROCEDURE softDeleteParcel(@id VARCHAR(80))
+
+AS
+BEGIN
+    IF EXISTS(SELECT * FROM ParcelsTable WHERE id=@id)
+    BEGIN
+        UPDATE ParcelsTable SET is_deleted=1 WHERE id =@id
+    END
+    ELSE
+    BEGIN
+        RAISERROR ('No parcel with that ID',11,1);
+        RETURN
+    END
+
+END
