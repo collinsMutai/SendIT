@@ -3,6 +3,7 @@ import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { catchError, concatMap, map, mergeMap, of } from 'rxjs';
 import { OrderService } from 'src/app/Services/order.service';
 import * as OrdersActions from '../Actions/OrdersActions';
+const email = localStorage.getItem('email') as string
 
 @Injectable({
   providedIn: 'root',
@@ -98,4 +99,5 @@ export class OrderEffectsService {
       )
     );
   });
+ 
 }

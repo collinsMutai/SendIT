@@ -1,16 +1,17 @@
 import express, { json } from 'express'
-import router from './Routes/routes'
 import cors from 'cors'
+import routeru from './Routes/Userroutes'
+import routerp from './Routes/ParcelRoutes'
 
 const app= express()
 
 app.use(json())
 app.use(cors())
-app.use('/user', router)
-app.use('/parcel', router)
+app.use('/user', routeru)
+app.use('/parcel', routerp)
 
 
-app.listen(7003,()=>{
+app.listen(7002,()=>{
     console.log("Application Running");
     
 })

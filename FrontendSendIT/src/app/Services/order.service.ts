@@ -1,13 +1,13 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Icustomer, Iloginuser, IOrder, LoginDetails, LoginResponse } from '../interfaces/interfaces';
+import { Icustomer, IOrder, LoginDetails, LoginResponse } from '../interfaces/interfaces';
 
 @Injectable({
   providedIn: 'root'
 })
 export class OrderService {
-  baseUrl: string = "http://localhost:7003"
+  baseUrl: string = "http://localhost:7002"
   
   orders$!:Observable<IOrder[]>
   
@@ -27,7 +27,13 @@ export class OrderService {
     return this.http.get<{message:string}>(`${this.baseUrl}/parcel/delete/${id}`)
   }
   deliverParcel(id:string):Observable<{message:string}>{
-    return this.http.get<{message:string}>(`${this.baseUrl}/parcel//delivered/${id}`)
+    return this.http.get<{message:string}>(`${this.baseUrl}/parcel/delivered/${id}`)
+  }
+  sentParcel(email:string):Observable<IOrder[]>{
+    return this.http.get<IOrder[]>(`${this.baseUrl}/user/sent/${email}`)
+  }
+  receivedParcel(email:string):Observable<IOrder[]>{
+    return this.http.get<IOrder[]>(`${this.baseUrl}/user/received/${email}`)
   }
 
   createCustomer(customer:Icustomer):Observable<{message:string}>{
@@ -39,12 +45,5 @@ export class OrderService {
   logUser(details:LoginDetails):Observable<LoginResponse>{
     return this.http.post<LoginResponse>(`${this.baseUrl}/user/login`,details)
  }
- checkuser():Observable<{ name: string, role: string, email: string }>{
-  const token = localStorage.getItem('token') as string
-  return this.http.get<{ name: string, role: string, email: string }>(`${this.baseUrl}/user/check`,{
-    headers:new HttpHeaders({token})
-  }
-  )
-}
 
 }

@@ -13,10 +13,13 @@ export interface OrderState {
   error: string;
   deleteMessage: string;
   orderid: string;
+  sentorders:IOrder[],
   addMessage: string;
   deliverMessage:string,
   customers: Icustomer[];
+  customerid:string,
   customersError: string;
+  email:string
 }
 
 const initialState: OrderState = {
@@ -25,10 +28,13 @@ const initialState: OrderState = {
   error: '',
   deleteMessage: '',
   orderid: '',
+  sentorders:[],
   addMessage: '',
   customers: [],
+  customerid:'',
   customersError:'',
-  deliverMessage:''
+  deliverMessage:'',
+  email:''
 };
 
 const getProductFeatureState = createFeatureSelector<OrderState>('order');
@@ -37,6 +43,7 @@ export const getOrders = createSelector(
   getProductFeatureState,
   (state) => state.orders
 );
+
 
 export const getOrderid = createSelector(
   getProductFeatureState,
@@ -47,10 +54,22 @@ export const getOrder = createSelector(
   getOrderid,
   (state, id) => state.orders.find((order) => order.id === id)
 );
+
+
 export const getCustomers = createSelector(
   getProductFeatureState,
   (state) => state.customers
 );
+export const getCustomerid = createSelector(
+  getProductFeatureState,
+  (state) => state.customerid
+);
+export const getCustomer = createSelector(
+  getProductFeatureState,
+  getCustomerid,
+  (state, id) => state.customers.find((customer) => customer.id === id)
+);
+
 
 export const OrderReducer = createReducer(
 
@@ -82,8 +101,10 @@ export const OrderReducer = createReducer(
 
   on(Actions.SelectedId, (state, action): OrderState => {
     return { ...state, orderid: action.id };
-  })
-  ,on(Actions.AddOrderSuccess,(state,action):OrderState=>{
+  }),
+  
+  
+  on(Actions.AddOrderSuccess,(state,action):OrderState=>{
     return{...state, addMessage:action.addMessage}
 }),on(Actions.AddOrderFailure,(state,action):OrderState=>{
     return{...state, error:action.error}

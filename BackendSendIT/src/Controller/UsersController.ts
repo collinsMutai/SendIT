@@ -38,9 +38,9 @@ export const registerUser = async (req: ExtendedRequest, res: Response) => {
 export const getUsers: RequestHandler = async (req, res) => {
   try {
     const { recordset } = await db.exec("getUsers");
-    res.json(recordset);
+    res.status(200).json(recordset);
   } catch (error) {
-    res.json({ error });
+    res.status(400).json({ message: "User Not Fetched!" });
   }
 };
 
@@ -52,12 +52,7 @@ export const loginUser = async (req: ExtendedRequest, res: Response) => {
     if (error) {
       return res.json({ error: error.details[0].message });
     }
-    const user: User[] = await (
-      await pool
-        .request()
-        .input("email", mssql.VarChar, email)
-        .execute("getUser")
-    ).recordset;
+    const user: User[] = await (await db.exec("getUser", { email })).recordset;
 
     if (!user) {
       return res.json({ message: "User Not Found" });
@@ -77,17 +72,11 @@ export const loginUser = async (req: ExtendedRequest, res: Response) => {
     res.json({
       message: "Logged in",
       token,
+      email: user[0].email,
+      name: user[0].name,
+      role: user[0].role,
     });
   } catch (error) {
     res.json({ error });
-  }
-};
-export const checkUser = async (req: Extended, res: Response) => {
-  if (req.info) {
-    res.json({
-      name: req.info.name,
-      role: req.info.role,
-      email: req.info.email,
-    });
   }
 };

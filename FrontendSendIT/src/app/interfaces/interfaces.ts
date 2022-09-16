@@ -1,14 +1,7 @@
-export interface Iloginuser{
-    email:string,
-    password:string
-    error?: string
-    message?:string
-    token?:string
-    role?:string
-    name?:string
-}
+
 export interface LoginResponse {
     message:string
+    email:string
     role:string, 
     name:string, 
     token:string

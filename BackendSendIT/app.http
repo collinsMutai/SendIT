@@ -3,8 +3,8 @@ POST http://localhost:7003/user/signup
 Content-Type: application/json
 
 {
-    "name":"Collins",
-    "email":"user@gmail.com",
+    "name":"mercy",
+    "email":"mercy@gmail.com",
     "password":"Password@1"
 }
 
@@ -15,26 +15,26 @@ POST http://localhost:7003/user/login
 Content-Type: application/json
 
 {
-    "email":"cherumtai@gmail.com",
+    "email":"mercy@gmail.com",
     "password":"Password@1"
 }
 
 
 ###
 
-GET  http://localhost:7000/user/homepage
-token:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjkwMmFmNDc0LWVkMjgtNGYwMy1hMTdkLWNhOTE4YzY4NWY0NSIsIm5hbWUiOiJ1c2VyMiIsImVtYWlsIjoidXNlcjJAZ21haWwuY29tIiwicm9sZSI6InVzZXIiLCJzdGF0dXMiOiIwIiwiaWF0IjoxNjYxOTE1NjczLCJleHAiOjE2NjE5MTkyNzN9.OOeFKRapCOhoUDIDTvflLeJx5nHlbHihow52jAdn_M8
+GET  http://localhost:7003/user/homepage
+token:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjJiNDY3M2I2LTRhN2YtNGMyOC1hYzA0LTMyODdhMjhiY2M3ZCIsIm5hbWUiOiJ1c2VyMiIsImVtYWlsIjoidXNlcjJAZ21haWwuY29tIiwicm9sZSI6ImN1c3RvbWVyIiwid2VsY29tZSI6IjAiLCJpYXQiOjE2NjMyNDcyNjEsImV4cCI6MTY2MzI1MDg2MX0.0iBIcI8bRlXtNupwavCjYTIZSrV3EF_FQ_jw-JP_iNE
 
 
 ###
 
 GET  http://localhost:7003/user/check
-token:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImQ1NmJjZWI4LTNlZDMtNDIyZC05ZDhhLWVkY2IyOTRkY2Q5NiIsIm5hbWUiOiJDaGVydW10YWkiLCJlbWFpbCI6ImNoZXJ1bXRhaUBnbWFpbC5jb20iLCJyb2xlIjoiY3VzdG9tZXIiLCJ3ZWxjb21lIjoiMSIsImlhdCI6MTY2MzE0NTU3NywiZXhwIjoxNjYzMTQ5MTc3fQ.USNc6PSYHrRdBjajqDVq7p86H-Wqkx0mHezOZIUYp6s
-
+token:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjJiNDY3M2I2LTRhN2YtNGMyOC1hYzA0LTMyODdhMjhiY2M3ZCIsIm5hbWUiOiJ1c2VyMiIsImVtYWlsIjoidXNlcjJAZ21haWwuY29tIiwicm9sZSI6ImN1c3RvbWVyIiwid2VsY29tZSI6IjAiLCJpYXQiOjE2NjMyNDcyNjEsImV4cCI6MTY2MzI1MDg2MX0.0iBIcI8bRlXtNupwavCjYTIZSrV3EF_FQ_jw-JP_iNE
 
 
 ###
 GET  http://localhost:7003/user/users
+
 
 
 # parcels
@@ -44,9 +44,9 @@ Content-Type: application/json
 
 {
     "senderName": "ckjjjokklkjjllins",
-    "receiverName":"cherjkkkjjumtai",
-    "senderEmail":"collinshhhfrontend@gmail.com",
-    "receiverEmail":"cherumtai@gmail.com",
+    "receiverName":"mercy",
+    "senderEmail":"john@gmail.com",
+    "receiverEmail":"mercy@gmail.com",
     "origin":"nyeri",
     "destination":"nairobi",
     "dispatchedDate":"2022-09-30",
@@ -63,25 +63,38 @@ Content-Type: application/json
     "user_id":"ffba3ac2-e3aa-47af-9575-79db177b2e80"}
 
 ###
-GET  http://localhost:7003/parcel/delete/f10e330d-b384-42db-813e-5d9d1afbc05f
+GET  http://localhost:7003/parcel/delete/580bf847-7022-4be6-92bb-44a21de70cdd
 
 
 ###
 GET  http://localhost:7003/parcel/all
 
 ###
-GET  http://localhost:7003/parcel/view/88c0e1c5-dab2-46b3-be34-b8fc7fd029e0
+GET  http://localhost:7003/parcel/view/995a4109-3ef7-4561-9a68-3bbae685eb0b
 
 ###
 Get http://localhost:7003/parcel/delivered/11a3abbc-6cb8-407d-801f-383542584e13
 
 ###
+GET http://localhost:7003/user/sent/mercy@gmail.com
+###
+GET http://localhost:7003/user/received/mercy@gmail.com
 
-PUT http://localhost:7003/parcel/update/88c0e1c5-dab2-46b3-be34-b8fc7fd029e0
+###
+POST http://localhost:7003/user/received
 Content-Type: application/json
 
 {
-    "senderName": "updated",
+    "email":"user2@gmail.com"
+}
+
+###
+
+PUT http://localhost:7003/parcel/update/6583326d-16ed-4cc5-84ed-ee09cb77f93f
+Content-Type: application/json
+
+{
+    "senderName": "updated mercy",
     "receiverName":"doe",
     "senderEmail":"jack@gmail.com",
     "receiverEmail":"doe@gmail.com",

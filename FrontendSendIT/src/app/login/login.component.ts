@@ -3,7 +3,7 @@ import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AnimationItem } from 'lottie-web';
 import { AnimationOptions } from 'ngx-lottie';
-import { Iloginuser, LoginDetails } from '../interfaces/interfaces';
+import { LoginDetails } from '../interfaces/interfaces';
 import { AuthService } from '../Services/auth.service';
 import { OrderService } from '../Services/order.service';
 
@@ -24,8 +24,7 @@ export class LoginComponent implements OnInit {
     private router: Router,
     private auth: OrderService
   ) {
-    localStorage.setItem('email', 'admin@gmail.com');
-    localStorage.setItem('password', 'Password@1');
+    
   }
   errorMessage!: string;
 
@@ -40,28 +39,24 @@ export class LoginComponent implements OnInit {
     const user: LoginDetails = this.form.value;
     this.auth.logUser(user).subscribe(
       (response) => {
-        response.token ? localStorage.setItem('token', response.token) : '';
-
-        this.redirect();
+        console.log(response);
+        
+        localStorage.setItem('name', response.name);
+        localStorage.setItem('email', response.email);
+        
+        localStorage.setItem('role', response.role);
+        if (response.role === 'admin') {
+          this.router.navigate(['/admin']);
+        } else {
+          this.router.navigate(['/user']);
+        }
       },
       (error) => {
         error = console.log(error);
       }
     );
   }
-  redirect() {
-    this.auth.checkuser().subscribe((response) => {
-      localStorage.setItem('name', response.name);
-      localStorage.setItem('email', response.email);
-      localStorage.setItem('role', response.role);
-
-      if (response.role === 'admin') {
-        this.router.navigate(['/admin']);
-      } else {
-        this.router.navigate(['/user']);
-      }
-    });
-  }
+ 
   onClose() {
     this.logged = false;
   }
