@@ -1,10 +1,10 @@
 
-POST http://localhost:7003/user/signup
+POST http://localhost:7002/user/signup
 Content-Type: application/json
 
 {
-    "name":"mercy",
-    "email":"mercy@gmail.com",
+    "name":"collinsfrontenddev",
+    "email":"collinsfrontenddev@gmail.com",
     "password":"Password@1"
 }
 
@@ -33,20 +33,19 @@ token:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjJiNDY3M2I2LTRhN2YtNGMyOC1hY
 
 
 ###
-GET  http://localhost:7003/user/users
-
+GET  http://localhost:7002/user/users
 
 
 # parcels
 ###
-POST http://localhost:7003/parcel/add
+POST http://localhost:7002/parcel/add
 Content-Type: application/json
 
 {
     "senderName": "ckjjjokklkjjllins",
-    "receiverName":"mercy",
-    "senderEmail":"john@gmail.com",
-    "receiverEmail":"mercy@gmail.com",
+    "receiverName":"johh",
+    "senderEmail":"collinsfrontend@gmail.com",
+    "receiverEmail":"cherumtai@gmail.com",
     "origin":"nyeri",
     "destination":"nairobi",
     "dispatchedDate":"2022-09-30",

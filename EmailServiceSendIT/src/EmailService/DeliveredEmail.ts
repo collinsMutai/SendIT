@@ -3,9 +3,11 @@ import mssql from 'mssql'
 import dotenv from 'dotenv'
 import {sqlConfig} from '../Config/Config'
 dotenv.config()
+import Connection from "../DatabaseHelpers/db";
+const db = new Connection();
 import sendMail from '../Helpers/Email'
 interface IParcel{
-    id?:string,
+    id:string,
     senderName:string
     receiverName:string
     senderEmail:string
@@ -21,17 +23,7 @@ interface IParcel{
 
 const DeliveredEmail= async()=>{
 const pool = await mssql.connect(sqlConfig)
-const parcels:IParcel[]= await(await pool.request().query(`
-SELECT  senderName,
-receiverName,
-senderEmail,
-receiverEmail,
-origin,
-destination,
-dispatchedDate,
-deliveryDate,
-weight,
-price FROM CustomersTable c INNER JOIN ParcelsTable p ON p.senderEmail =Email WHERE senderEmail IS NOT NULL AND delivered=1`)).recordset
+const parcels:IParcel[]= await (await db.exec("deliveredEmail")).recordset
 console.log(parcels);
 
 
@@ -56,7 +48,8 @@ console.log(parcels);
         try {
             
             await sendMail(messageoption)
-            await  pool.request().query(`UPDATE ParcelsTable SET delivered=0 WHERE delivered=1`)
+            await db.exec("resetdeliveredEmail", { id: parcel.id });
+            // await  pool.request().query(`UPDATE ParcelsTable SET delivered=0 WHERE delivered=1`)
             console.log('Delivered Email is Sent');
             
         } catch (error) {

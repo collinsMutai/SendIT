@@ -3,9 +3,11 @@ import mssql from 'mssql'
 import dotenv from 'dotenv'
 import {sqlConfig} from '../Config/Config'
 dotenv.config()
+import Connection from "../DatabaseHelpers/db";
+const db = new Connection();
 import sendMail from '../Helpers/Email'
 interface IParcel{
-    id?:string,
+    id:string,
     senderName:string
     receiverName:string
     senderEmail:string
@@ -21,17 +23,8 @@ interface IParcel{
 
 const OnTransitEmail= async()=>{
 const pool = await mssql.connect(sqlConfig)
-const parcels:IParcel[]= await(await pool.request().query(`
-SELECT  senderName,
-receiverName,
-senderEmail,
-receiverEmail,
-origin,
-destination,
-dispatchedDate,
-deliveryDate,
-weight,
-price FROM CustomersTable c INNER JOIN ParcelsTable p ON p.senderEmail =Email WHERE senderEmail IS NOT NULL AND onTransit=0`)).recordset
+const parcels:IParcel[]= await (await db.exec("transitEmail")).recordset
+
 console.log(parcels);
 
 
@@ -55,7 +48,8 @@ console.log(parcels);
         try {
             
             await sendMail(messageoption)
-            await  pool.request().query(`UPDATE ParcelsTable SET onTransit=1 WHERE onTransit=0`)
+            await db.exec("resettransitEmail", { id: parcel.id });
+           
             console.log('On Transit Email Sent');
             
         } catch (error) {
@@ -83,7 +77,7 @@ console.log(parcels);
         try {
             
             await sendMail(messageoption)
-            // await  pool.request().query(`UPDATE ParcelsTable SET onTransit=1 WHERE onTransit=0`)
+            
             console.log('Email is Sent');
             
         } catch (error) {
