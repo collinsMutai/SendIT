@@ -6,7 +6,7 @@ import DeliveredEmail from './EmailService/DeliveredEmail'
 const app = express()
 
 const run =()=>{
-    cron.schedule('* * * * *', async()=>{
+    cron.schedule('* * * * * *', async()=>{
         console.log('cron is running');
         await WelcomeEmail()
         await OnTransitEmail()

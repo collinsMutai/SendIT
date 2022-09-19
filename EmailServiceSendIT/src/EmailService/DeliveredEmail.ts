@@ -23,7 +23,7 @@ interface IParcel{
 
 const DeliveredEmail= async()=>{
 const pool = await mssql.connect(sqlConfig)
-const parcels:IParcel[]= await (await db.exec("deliveredEmail")).recordset
+const parcels:IParcel[]= await (await db.exec("delivered")).recordset
 console.log(parcels);
 
 

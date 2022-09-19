@@ -3,8 +3,8 @@ POST http://localhost:7002/user/signup
 Content-Type: application/json
 
 {
-    "name":"collinsfrontenddev",
-    "email":"collinsfrontenddev@gmail.com",
+    "name":"cherumtai",
+    "email":"cherumtai@gmail.com",
     "password":"Password@1"
 }
 
@@ -40,8 +40,8 @@ Content-Type: application/json
 {
     "senderName": "mary",
     "receiverName":"johh",
-    "senderEmail":"user2@gmail.com",
-    "receiverEmail":"user1@gmail.com",
+    "senderEmail":"collinsfrontend@gmail.com",
+    "receiverEmail":"cherumtai@gmail.com",
     "origin":"nyeri",
     "destination":"nairobi",
     "dispatchedDate":"2022-09-30",
