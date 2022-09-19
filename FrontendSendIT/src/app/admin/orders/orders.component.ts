@@ -37,8 +37,6 @@ export class OrdersComponent implements OnInit {
     
     this.store.dispatch(Actions.DeleteOrder({ id }));
     this.loadOrders()
-    // this.store.dispatch(Actions.LoadOrders());
-    // this.router.navigate(['/admin'])
   }
   orderDetails(id: string) {
     this.store.dispatch(Actions.SelectedId({ id }));
@@ -50,7 +48,6 @@ export class OrdersComponent implements OnInit {
     console.log(id);
     this.clicked  = true
     this.store.dispatch(Actions.DeliverOrder({ id }));
-    // this.store.dispatch(Actions.LoadOrders());
   }
 
 }

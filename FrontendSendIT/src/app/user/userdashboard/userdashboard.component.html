@@ -1,79 +1,51 @@
 <div class="containerDiv">
-  <p>{{today | date:'medium'}}</p>
-  <h2>Welcome {{customer}}</h2>
+  <p>{{ today | date: "medium" }}</p>
+  <h2>Welcome {{ customer }}</h2>
   <div class="content">
     <div>
-
       <h3>Sent Parcels</h3>
-          <div class="card-container" >
-            <div class="container" *ngFor="let all of allsent">
-              <h2>
-                To: {{ all.receiverName }} 
-                <br />
-              </h2>
-              <p class="cardParagraph">
-                Email: {{ all.receiverEmail }}<br />
-               
-              </p>
-              <p class="cardParagraph">
-                Destination: {{ all.destination }}<br />
-               
-              </p>
-              <p class="cardParagraph">
-                Dispatched date: {{ all.dispatchedDate }}<br />
-               
-              </p>
-              <p class="cardParagraph">
-                Delivery date: {{ all.deliveryDate }}<br />
-               
-              </p>
-              <div class="orderBtns">
-                <button
-                  class="btn viewBtns"
-                 
-                >
-                  View
-                </button>
-              </div>
-            </div>
-          </div>
-    </div>
-    <div>
-
-      <h3>Received Parcels</h3>
-      <div class="card-container" >
-        <div class="container" *ngFor="let all of allreceived">
+      <div class="card-container">
+        <div class="container" *ngFor="let all of allsent">
           <h2>
-            To: {{ all.receiverName }} 
+            To: {{ all.receiverName }}
             <br />
           </h2>
-          <p class="cardParagraph">
-            Email: {{ all.receiverEmail }}<br />
-           
-          </p>
-          <p class="cardParagraph">
-            Destination: {{ all.destination }}<br />
-           
-          </p>
+          <p class="cardParagraph">Email: {{ all.receiverEmail }}<br /></p>
+          <p class="cardParagraph">Destination: {{ all.destination }}<br /></p>
           <p class="cardParagraph">
             Dispatched date: {{ all.dispatchedDate }}<br />
-           
           </p>
           <p class="cardParagraph">
             Delivery date: {{ all.deliveryDate }}<br />
-           
           </p>
           <div class="orderBtns">
-            <button
-              class="btn viewBtns"
-             
-            >
-              View
-            </button>
+            <button class="btn viewBtns">View</button>
           </div>
         </div>
       </div>
-  <!-- <div class="view-details" *ngIf="display">
+    </div>
+    <div>
+      <h3>Received Parcels</h3>
+      <div class="card-container">
+        <div class="container" *ngFor="let all of allreceived">
+          <h2>
+            From: {{ all.senderName }}
+            <br />
+          </h2>
+          <p class="cardParagraph">Email: {{ all.receiverEmail }}<br /></p>
+          <p class="cardParagraph">Destination: {{ all.destination }}<br /></p>
+          <p class="cardParagraph">
+            Dispatched date: {{ all.dispatchedDate }}<br />
+          </p>
+          <p class="cardParagraph">
+            Delivery date: {{ all.deliveryDate }}<br />
+          </p>
+          <div class="orderBtns">
+            <button class="btn viewBtns">View</button>
+          </div>
+        </div>
+      </div>
+      <!-- <div class="view-details" *ngIf="display">
     <div class="details">
       <button (click)="close()" class="closeBtn"><i class="fa-solid fa-close"></i></button>
       <h3>Sender: {{ senderEmail }}</h3>
@@ -82,7 +54,9 @@
       </div>
     </div>
   </div> -->
-  <div *ngIf="errorMessage">
-    <p>error: {{ errorMessage }}</p>
+      <div *ngIf="errorMessage">
+        <p>error: {{ errorMessage }}</p>
+      </div>
+    </div>
   </div>
 </div>

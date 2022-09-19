@@ -1,5 +1,5 @@
-<div class="containerDiv">
-  <h2>Orders</h2>
+<div class="containerDiv" *ngIf="orders$ | async as orders">
+  <h2>Parcels</h2>
   <div class="search">
     <input
       type="text"
@@ -7,8 +7,7 @@
       [(ngModel)]="filteredText"
     />
   </div>
-<!-- *ngIf="clicked" appStyle [backgroundColor]="'red'" -->
-  <div class="card-container" *ngIf="orders$ | async as orders" >
+  <div class="card-container" *ngIf="orders.length; else noParcels" >
     <div   class="container" *ngFor="let order of orders | search: filteredText">
       <h2>
         {{ order.senderName }} <br />{{ order.senderEmail }}
@@ -37,4 +36,8 @@
   
   
 </div>
+<!-- <pagination-controls class="page" (pageChange)="page =$event"></pagination-controls> -->
 
+<ng-template #noParcels>
+  <h3>No parcels available!!</h3>
+</ng-template>

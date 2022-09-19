@@ -1,38 +1,23 @@
-<div>
-    <h2>Orders on Transit</h2>
-    <div class="card-container">
-      <div class="container">
-        <h2>
-          Order Name <br /><span>Order description</span><br /><span
-            >Order sent by</span
-          >
-        </h2>
-        <button class="btn btns">View</button>
-      </div>
-      <div class="container">
-        <h2>
-          Order Name <br /><span>Order description</span><br /><span
-            >Order sent by</span
-          >
-        </h2>
-        <button class="btn btns">View</button>
-      </div>
-      <div class="container">
-        <h2>
-          Order Name <br /><span>Order description</span><br /><span
-            >Order sent by</span
-          >
-        </h2>
-        <button class="btn btns">View</button>
-      </div>
-      <div class="container">
-        <h2>
-          Order Name <br /><span>Order description</span><br /><span
-            >Order sent by</span
-          >
-        </h2>
-        <button class="btn btns">View</button>
-      </div>
+<div class="containerDiv">
+  <h2>Parcels on Transit</h2>
+  <div class="search">
+    <input
+      type="text"
+      placeholder="search item..."
+      [(ngModel)]="filteredText"
+    />
+  </div>
+  <div class="card-container" *ngIf="orders.length; else noParcels">
+    <div class="container" *ngFor="let order of orders | search: filteredText">
+      <p >Sender Name: {{ order.senderName }}</p>
+      <p >Sender Email: {{ order.senderEmail }} </p>
+      <p >Sender Origin: {{ order.origin }}</p>
+      <p >Receiver Name: {{ order.receiverName }}</p>
+      <p >Receiver Email: {{ order.receiverEmail }}</p>
+      <p >Receiver Origin: {{ order.destination }}</p>
     </div>
   </div>
-  
+</div>
+<ng-template #noParcels>
+  <h3>No parcels available!!</h3>
+</ng-template>

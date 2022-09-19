@@ -1,12 +1,14 @@
 <div class="container">
   <div class="content">
-    <p>{{today | date:'medium'}}</p>
-    <h2>Welcome Admin <span class="brown-text">Name.</span></h2>
+    <p>{{ today | date: "medium" }}</p>
+    <h2>
+      Welcome Admin <br /><span class="brown-text">{{ admin }}</span>
+    </h2>
     <div class="image">
-      <p routerLink="/admin/orders" class="adminBtns">orders</p>
-      <p routerLink="/admin/create" class="adminBtns">create order</p>
-      <p routerLink="/admin/sent" class="adminBtns">orders sent</p>
-      <p routerLink="/admin/delivered"  class="adminBtns">orders delivered</p>
+      <p routerLink="/admin/orders" class="adminBtns">Parcels</p>
+      <p routerLink="/admin/create" class="adminBtns">create parcel</p>
+      <p routerLink="/admin/sent" class="adminBtns">on Transit</p>
+      <p routerLink="/admin/delivered" class="adminBtns">Delivered</p>
     </div>
   </div>
   <div class="side">

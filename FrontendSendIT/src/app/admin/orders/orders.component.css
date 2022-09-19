@@ -1,7 +1,7 @@
 * {
-    padding: 10px;
-    margin-bottom: 20px;
-  }
+  padding: 10px;
+  margin-bottom: 20px;
+}
 .card-container {
   display: flex;
   flex-wrap: wrap;
@@ -9,7 +9,6 @@
 }
 .card:hover {
   box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
-
 }
 .container {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
@@ -20,11 +19,12 @@
   align-items: center;
   transition: 1s;
   border-radius: 15px;
+  height: 220px;
 }
-.cardParagraph{
+.cardParagraph {
   margin-top: -30px;
 }
-.container:hover{
+.container:hover {
   transform: scale(1.1);
 }
 .container h2,
@@ -60,19 +60,27 @@ span {
   border-color: red;
   color: red;
 }
-.deleteBtns:hover{
+.deleteBtns:hover {
   background-color: red;
   color: white;
 }
-.deliverBtns{
+.deliverBtns {
   border-color: grey;
   color: grey;
 }
-.deliverBtns:hover{
+.deliverBtns:hover {
   background-color: grey;
   color: white;
 }
-.orderBtns{
+.orderBtns {
   display: flex;
   background-color: #d08d57;
+}
+.page {
+  align-self: baseline;
+}
+@media only screen and (max-width: 600px) {
+  .container {
+    height: 200px;
+  }
 }

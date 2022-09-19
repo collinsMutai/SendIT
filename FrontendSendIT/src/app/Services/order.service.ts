@@ -35,7 +35,12 @@ export class OrderService {
   receivedParcel(email:string):Observable<IOrder[]>{
     return this.http.get<IOrder[]>(`${this.baseUrl}/user/received/${email}`)
   }
-
+  getOnTransit() : Observable <IOrder[]>{
+    return this.http.get<IOrder[]>(`${this.baseUrl}/parcel/ontransit`)
+  }
+  getDelivered() : Observable <IOrder[]>{
+    return this.http.get<IOrder[]>(`${this.baseUrl}/parcel/delivered`)
+  }
   createCustomer(customer:Icustomer):Observable<{message:string}>{
     return this.http.post<{message:string}>(`${this.baseUrl}/user/signup`, customer)
   }

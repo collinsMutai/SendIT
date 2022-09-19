@@ -1,13 +1,9 @@
 import { Request, RequestHandler, Response } from "express";
-import mssql from "mssql";
 import { v4 as uid } from "uuid";
-import { sqlConfig } from "../Config/Config";
 import Connection from "../DatabaseHelpers/db";
 const db = new Connection();
-import { ParcelSchema } from "../Helper/UserValidator";
 import { Data } from "../Interfaces/interfaces";
-import bcrypt from "bcrypt";
-
+import {ParcelSchema, SenderSchema} from '../Helper/UserValidator'
 interface Extended extends Request {
   info?: Data;
 }
@@ -43,6 +39,10 @@ export const addParcel = async (req: ExtendedRequest, res: Response) => {
       weight,
       price,
     } = req.body;
+    const { error, value } = ParcelSchema.validate(req.body);
+    if (error) {
+      return res.json({ error: error.details[0].message });
+    }
 
     db.exec("insertParcel", {
       id,
@@ -128,7 +128,11 @@ export const updateParcel: RequestHandler<{ id: string }> = async (
       deliveryDate: string;
       weight: string;
       price: string;
-    };
+      };
+      const { error, value } = ParcelSchema.validate(req.body);
+      if (error) {
+        return res.json({ error: error.details[0].message });
+      }
     const { recordset } = await db.exec("getParcel", { id });
     if (!recordset[0]) {
       res.status(404).json({ message: "Parcel Not Found" });
@@ -169,17 +173,23 @@ export const deliverParcel: RequestHandler<{ id: string }> = async (
     res.status(400).json({ message: "Parcel Not Delivered!" });
   }
 };
-export const sentParcels:RequestHandler<{ email: string }> = async (req, res) => {
+export const sentParcels: RequestHandler<{ email: string }> = async (
+  req,
+  res
+) => {
   try {
     const email = req.params.email;
-
+  
     const { recordset } = await db.exec("getSent", { email });
     res.status(200).json(recordset);
   } catch (error) {
     res.status(400).json({ message: "Parcels Not Found!" });
   }
 };
-export const receivedParcels:RequestHandler<{ email: string }> = async (req, res) => {
+export const receivedParcels: RequestHandler<{ email: string }> = async (
+  req,
+  res
+) => {
   try {
     const email = req.params.email;
 
@@ -187,5 +197,21 @@ export const receivedParcels:RequestHandler<{ email: string }> = async (req, res
     res.status(200).json(recordset);
   } catch (error) {
     res.status(400).json({ message: "Parcels Not Found!" });
+  }
+};
+export const getOnTransitParcels: RequestHandler = async (req, res) => {
+  try {
+    const { recordset } = await db.exec("onTransit");
+    res.status(200).json(recordset);
+  } catch (error) {
+    res.status(404).json({ message: "Parcels Not Found!" });
+  }
+};
+export const getDeliveredParcels: RequestHandler = async (req, res) => {
+  try {
+    const { recordset } = await db.exec("delivered");
+    res.status(200).json(recordset);
+  } catch (error) {
+    res.status(404).json({ message: "Parcels Not Found!" });
   }
 };

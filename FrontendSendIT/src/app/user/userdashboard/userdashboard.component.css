@@ -114,3 +114,9 @@ background-color: #d08d57;
   margin-top: 20px;
   background: transparent;
 }
+
+@media only screen and (max-width: 600px) {
+.content{
+  flex-direction: column;
+}
+}

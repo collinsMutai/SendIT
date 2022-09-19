@@ -39,11 +39,11 @@
   padding: 10px;
   width: 150px;
 }
-.side{
- width: 600px;
+.side {
+  width: 600px;
 }
 @media only screen and (max-width: 600px) {
-  .container{
+  .container {
     flex-wrap: wrap;
   }
 }

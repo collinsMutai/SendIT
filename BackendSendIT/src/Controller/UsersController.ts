@@ -9,6 +9,7 @@ import { Data, User } from "../Interfaces/interfaces";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 
+
 interface Extended extends Request {
   info?: Data;
 }
@@ -44,7 +45,6 @@ export const getUsers: RequestHandler = async (req, res) => {
   }
 };
 export const getNewUsers: RequestHandler = async (req, res) => {
-  
   try {
     const { recordset } = await db.exec("welcomeEmail");
     res.status(200).json(recordset);
@@ -70,34 +70,42 @@ export const getDeliveredUsers: RequestHandler = async (req, res) => {
   }
 };
 
-export const getResetNewUsers: RequestHandler<{ id: string }> = async (req, res) => {
+export const getResetNewUsers: RequestHandler<{ id: string }> = async (
+  req,
+  res
+) => {
   const id = req.params.id;
   try {
-    const { recordset } = await db.exec("resetwelcomeEmail",{id});
+    const { recordset } = await db.exec("resetwelcomeEmail", { id });
     res.status(200).json("Welcome Email Sent To New User");
   } catch (error) {
     res.status(400).json({ message: "User Not Fetched!" });
   }
 };
-export const getResetTransitUsers: RequestHandler<{ id: string }> = async (req, res) => {
+export const getResetTransitUsers: RequestHandler<{ id: string }> = async (
+  req,
+  res
+) => {
   const id = req.params.id;
   try {
-    const { recordset } = await db.exec("resettransitEmail",{id});
+    const { recordset } = await db.exec("resettransitEmail", { id });
     res.status(200).json("Transit Email Sent To New User");
   } catch (error) {
     res.status(400).json({ message: "User Not Fetched!" });
   }
 };
-export const getResetDeliveredUsers: RequestHandler<{ id: string }> = async (req, res) => {
+export const getResetDeliveredUsers: RequestHandler<{ id: string }> = async (
+  req,
+  res
+) => {
   const id = req.params.id;
   try {
-    const { recordset } = await db.exec("resetdeliveredEmail",{id});
+    const { recordset } = await db.exec("resetdeliveredEmail", { id });
     res.status(200).json("Delivered Email Sent To New User");
   } catch (error) {
     res.status(400).json({ message: "User Not Fetched!" });
   }
 };
-
 export const loginUser = async (req: ExtendedRequest, res: Response) => {
   try {
     const { name, email, password } = req.body;
@@ -107,11 +115,9 @@ export const loginUser = async (req: ExtendedRequest, res: Response) => {
       return res.json({ error: error.details[0].message });
     }
     const user: User[] = await (await db.exec("getUser", { email })).recordset;
-
     if (!user) {
       return res.json({ message: "User Not Found" });
     }
-
     const validPassword = await bcrypt.compare(password, user[0].password);
     if (!validPassword) {
       return res.json({ message: "Invalid password" });

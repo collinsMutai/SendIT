@@ -8,8 +8,6 @@ Content-Type: application/json
     "password":"Password@1"
 }
 
-
-
 ###
 POST http://localhost:7003/user/login
 Content-Type: application/json
@@ -21,13 +19,11 @@ Content-Type: application/json
 
 
 ###
-
 GET  http://localhost:7003/user/homepage
 token:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjJiNDY3M2I2LTRhN2YtNGMyOC1hYzA0LTMyODdhMjhiY2M3ZCIsIm5hbWUiOiJ1c2VyMiIsImVtYWlsIjoidXNlcjJAZ21haWwuY29tIiwicm9sZSI6ImN1c3RvbWVyIiwid2VsY29tZSI6IjAiLCJpYXQiOjE2NjMyNDcyNjEsImV4cCI6MTY2MzI1MDg2MX0.0iBIcI8bRlXtNupwavCjYTIZSrV3EF_FQ_jw-JP_iNE
 
 
 ###
-
 GET  http://localhost:7003/user/check
 token:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjJiNDY3M2I2LTRhN2YtNGMyOC1hYzA0LTMyODdhMjhiY2M3ZCIsIm5hbWUiOiJ1c2VyMiIsImVtYWlsIjoidXNlcjJAZ21haWwuY29tIiwicm9sZSI6ImN1c3RvbWVyIiwid2VsY29tZSI6IjAiLCJpYXQiOjE2NjMyNDcyNjEsImV4cCI6MTY2MzI1MDg2MX0.0iBIcI8bRlXtNupwavCjYTIZSrV3EF_FQ_jw-JP_iNE
 
@@ -42,10 +38,10 @@ POST http://localhost:7002/parcel/add
 Content-Type: application/json
 
 {
-    "senderName": "ckjjjokklkjjllins",
+    "senderName": "mary",
     "receiverName":"johh",
-    "senderEmail":"collinsfrontend@gmail.com",
-    "receiverEmail":"cherumtai@gmail.com",
+    "senderEmail":"user2@gmail.com",
+    "receiverEmail":"user1@gmail.com",
     "origin":"nyeri",
     "destination":"nairobi",
     "dispatchedDate":"2022-09-30",
@@ -55,41 +51,10 @@ Content-Type: application/json
 }
 
 ###
-POST http://localhost:7000/project/assignNewProject
-Content-Type: application/json
-
-{   "name":"project 1",
-    "user_id":"ffba3ac2-e3aa-47af-9575-79db177b2e80"}
+GET  http://localhost:7002/parcel/all
 
 ###
-GET  http://localhost:7003/parcel/delete/580bf847-7022-4be6-92bb-44a21de70cdd
-
-
-###
-GET  http://localhost:7003/parcel/all
-
-###
-GET  http://localhost:7003/parcel/view/995a4109-3ef7-4561-9a68-3bbae685eb0b
-
-###
-Get http://localhost:7003/parcel/delivered/11a3abbc-6cb8-407d-801f-383542584e13
-
-###
-GET http://localhost:7003/user/sent/mercy@gmail.com
-###
-GET http://localhost:7003/user/received/mercy@gmail.com
-
-###
-POST http://localhost:7003/user/received
-Content-Type: application/json
-
-{
-    "email":"user2@gmail.com"
-}
-
-###
-
-PUT http://localhost:7003/parcel/update/6583326d-16ed-4cc5-84ed-ee09cb77f93f
+PUT http://localhost:7002/parcel/update/6583326d-16ed-4cc5-84ed-ee09cb77f93f
 Content-Type: application/json
 
 {
@@ -104,3 +69,20 @@ Content-Type: application/json
     "weight":100,
     "price":1000
 }
+
+###
+GET  http://localhost:7002/parcel/delete/580bf847-7022-4be6-92bb-44a21de70cdd
+
+
+###
+GET  http://localhost:7002/parcel/view/995a4109-3ef7-4561-9a68-3bbae685eb0b
+
+###
+Get http://localhost:7002/parcel/delivered/11a3abbc-6cb8-407d-801f-383542584e13
+
+###
+GET http://localhost:7002/user/sent/jack@gmail.com
+###
+GET http://localhost:7002/user/received/mercy@gmail.com
+
+

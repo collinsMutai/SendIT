@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Store } from '@ngrx/store';
-import { getOrders, OrderState } from 'src/app/Redux/Reducer/OrderReducer';
-import * as Actions from '../../Redux/Actions/OrdersActions';
+import { IOrder } from 'src/app/interfaces/interfaces';
+import { OrderService } from 'src/app/Services/order.service';
 
 @Component({
   selector: 'app-orders-sent',
@@ -9,12 +8,19 @@ import * as Actions from '../../Redux/Actions/OrdersActions';
   styleUrls: ['./orders-sent.component.css']
 })
 export class OrdersSentComponent implements OnInit {
- 
-
-  constructor(private store: Store<OrderState>) { }
+ orders!: IOrder[]
+ filteredText = '';
+  constructor(private orderService: OrderService) { }
 
   ngOnInit(): void {
-    
+    this.loadTransit()
+  }
+  loadTransit(){
+    this.orderService.getOnTransit().subscribe((res)=>{
+      console.log(res);
+      this.orders = res
+      
+    })
   }
 
 }

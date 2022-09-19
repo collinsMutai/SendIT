@@ -8,6 +8,7 @@ import { Router } from '@angular/router';
 })
 export class AdmindashboardComponent implements OnInit {
   today= Date.now()
+  admin = localStorage.getItem('name');
   constructor() { }
   ngOnInit(): void {
     
