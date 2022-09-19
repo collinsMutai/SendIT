@@ -27,11 +27,16 @@ export const registerUser = async (req: ExtendedRequest, res: Response) => {
     const { name, email, password } = req.body;
     const { error, value } = UserSchema.validate(req.body);
     if (error) {
-      return res.json({ error: error.details[0].message });
+      return res.status(400).json({ error: error.details[0].message });
+    }
+    const { recordset } = await db.exec("getUser", {email});
+    if (recordset.length > 0) {
+      return res.status(400)
+        .send({ message: "Customer email already registered", success: false });
     }
     const hashedpassword = await bcrypt.hash(password, 10);
     db.exec("insertCustomer", { id, name, email, password: hashedpassword });
-    res.json({ message: "Customer Registered Successfully" });
+    res.status(200).json({ message: "Customer Registered Successfully" });
   } catch (error) {
     res.json({ error });
   }

@@ -13,13 +13,13 @@ import { VerifyToken } from "../Middleware/VerifyToken";
 
 const routerp = Router();
 
-routerp.post("/add", addParcel);
-routerp.get("/delete/:id", deleteParcel);
-routerp.get("/all", getParcels);
-routerp.get("/view/:id", getParcel);
-routerp.put("/update/:id", updateParcel);
-routerp.get("/delivered/:id", deliverParcel);
-routerp.get("/ontransit", getOnTransitParcels);
-routerp.get("/delivered", getDeliveredParcels);
+routerp.post("/add", VerifyToken,addParcel);
+routerp.get("/delete/:id", VerifyToken,deleteParcel);
+routerp.get("/all",  VerifyToken, getParcels);
+routerp.get("/view/:id", VerifyToken,getParcel);
+routerp.put("/update/:id", VerifyToken,updateParcel);
+routerp.get("/delivered/:id", VerifyToken,deliverParcel);
+routerp.get("/ontransit", VerifyToken,getOnTransitParcels);
+routerp.get("/delivered", VerifyToken,getDeliveredParcels);
 
 export default routerp;

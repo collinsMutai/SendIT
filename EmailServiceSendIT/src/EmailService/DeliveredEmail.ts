@@ -59,6 +59,34 @@ console.log(parcels);
 
 
     })
+    ejs.renderFile('templates/AdminDeliveredEmail.ejs',{senderName:parcel.senderName,receiverName:parcel.receiverName,parcelOrigin:parcel.origin, deliveryDate:parcel.deliveryDate,parcelDestination:parcel.destination} ,async(error,data)=>{
+
+        let messageoption={
+            from:process.env.EMAIL,
+            to:parcel.senderEmail,
+            subject:`Your Parcel to, ${parcel.receiverName} has been delivered`,
+            html:data,
+            attachments:[
+                {
+                    filename:'order.txt',
+                    content:`Your order details for : ${parcel.receiverName}`
+                }
+            ]
+        }
+
+        try {
+            
+            await sendMail(messageoption)
+            
+
+            
+        } catch (error) {
+            console.log(error);
+            
+        }
+
+
+    })
 
  }
 
