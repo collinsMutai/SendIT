@@ -4,6 +4,7 @@ import { FooterComponent } from './footer/footer.component';
 import { MapComponent } from './map/map.component';
 import { GoogleMapsModule } from '@angular/google-maps';
 import { SuccessComponent } from './success/success.component';
+import { GooglePlaceModule } from 'ngx-google-places-autocomplete';
 
 
 
@@ -15,7 +16,8 @@ import { SuccessComponent } from './success/success.component';
   ],
   imports: [
     CommonModule,
-    GoogleMapsModule
+    GoogleMapsModule,
+    GooglePlaceModule
   ],
   exports:[
  FooterComponent,

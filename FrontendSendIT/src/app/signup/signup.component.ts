@@ -73,9 +73,14 @@ export class SignupComponent implements OnInit {
     }
   }
   onSubmit() {
-    this.store.dispatch(
-      Actions.RegisterCustomer({ newCustomer: this.form.value })
-    );
+    console.log(this.form.value);
+    this.orderService.createCustomer(this.form.value).subscribe(res => {
+      console.log(res);
+      
+    })
+    // this.store.dispatch(
+    //   Actions.RegisterCustomer({ newCustomer: this.form.value })
+    // );
     this.router.navigate(['/login']);
   }
 }

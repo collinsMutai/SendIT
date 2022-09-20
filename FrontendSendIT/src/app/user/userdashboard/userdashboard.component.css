@@ -99,7 +99,8 @@ background-color: #d08d57;
   width: 80vw;
   margin: 50px auto;
   display: flex;
-  justify-content: space-evenly;
+  gap: 20px;
+  justify-content: center;
   justify-items: center;
   position: relative;
 }
@@ -113,6 +114,10 @@ background-color: #d08d57;
   outline: none;
   margin-top: 20px;
   background: transparent;
+}
+.mapText{
+  display: flex;
+  flex-direction: column;
 }
 
 @media only screen and (max-width: 600px) {

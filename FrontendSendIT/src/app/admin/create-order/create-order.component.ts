@@ -12,6 +12,7 @@ import * as Actions from '../../Redux/Actions/OrdersActions'
   styleUrls: ['./create-order.component.css']
 })
 export class CreateOrderComponent implements OnInit {
+
   form!:FormGroup
   senderName!:string
   receiverName!:string
@@ -24,9 +25,25 @@ export class CreateOrderComponent implements OnInit {
   weight!:number
   price!:number 
   
+  receiverLat!: number
+  receiverLng!: number
+  
+  senderLat!: number
+  senderLng!: number
   customers$ = this.store.select(getCustomers)
   constructor(private router:Router, private store:Store<OrderState>) { }
-
+  onAddressChangeReceiver(address:any) {
+    this.destination = address.formatted_address;
+    this.receiverLat = address.geometry.location.lat();
+    this.receiverLng = address.geometry.location.lng();
+  
+}
+  onAddressChangeSender(address:any) {
+    this.origin = address.formatted_address;
+    this.senderLat = address.geometry.location.lat();
+    this.senderLng = address.geometry.location.lng();
+  
+}
   ngOnInit(): void {
     this.form = new FormGroup({
       senderName: new FormControl(null, [Validators.required]),
@@ -39,16 +56,26 @@ export class CreateOrderComponent implements OnInit {
       deliveryDate: new FormControl(null, [Validators.required]),
       weight: new FormControl(null, [Validators.required]),
       price: new FormControl(null, [Validators.required]),
+      senderLat: new FormControl(null, [Validators.required]),
+      senderLng: new FormControl(null, [Validators.required]),
+      receiverLat: new FormControl(null, [Validators.required]),
+      receiverLng: new FormControl(null, [Validators.required]),
     });
     this.form.get('weight')!.valueChanges.subscribe(res=>{
-      this.form.get('price')!.setValue(res*1000)
+      this.form.get('price')!.setValue(res * 1000)
+      this.form.get('senderLat')!.setValue(this.senderLat)
+      this.form.get('senderLng')!.setValue(this.senderLng)
+      this.form.get('receiverLat')!.setValue(this.receiverLat)
+      this.form.get('receiverLng')!.setValue(this.receiverLng)
     })
     this.getCustomerEmail()
   }
 onSubmit(){
-  this.store.dispatch(Actions.AddOrder({newOrder: this.form.value}))
+  console.log(this.form.value);
+  
+  this.store.dispatch(Actions.AddOrder({ newOrder: { ...this.form.value } }))
   this.store.dispatch(Actions.LoadOrders())
-  this.router.navigate(['/admin'])
+  this.router.navigate(['/admin/orders'])
 }
 getCustomerEmail(){
   this.store.dispatch(Actions.LoadCustomers())

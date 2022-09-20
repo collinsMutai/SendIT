@@ -19,6 +19,7 @@ import { EffectsModule } from '@ngrx/effects';
 import { OrderEffectsService } from '../Redux/Effects/OrderEffects';
 import { OrderReducer } from '../Redux/Reducer/OrderReducer';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { GooglePlaceModule } from 'ngx-google-places-autocomplete';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,8 @@ import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
     NgxPaginationModule,
     HttpClientModule,
     StoreModule.forFeature('order', OrderReducer),
-    EffectsModule.forFeature([OrderEffectsService])
+    EffectsModule.forFeature([OrderEffectsService]),
+    GooglePlaceModule
   ],
   exports:[
     RouterModule

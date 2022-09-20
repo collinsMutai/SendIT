@@ -3,7 +3,7 @@ import { v4 as uid } from "uuid";
 import Connection from "../DatabaseHelpers/db";
 const db = new Connection();
 import { Data } from "../Interfaces/interfaces";
-import {ParcelSchema, SenderSchema} from '../Helper/UserValidator'
+import { ParcelSchema, SenderSchema } from "../Helper/UserValidator";
 interface Extended extends Request {
   info?: Data;
 }
@@ -21,6 +21,10 @@ interface ExtendedRequest extends Request {
     deliveryDate: string;
     weight: string;
     price: string;
+    receiverLat: number;
+    receiverLng: number;
+    senderLat: number;
+    senderLng: number;
   };
 }
 
@@ -38,13 +42,17 @@ export const addParcel = async (req: ExtendedRequest, res: Response) => {
       deliveryDate,
       weight,
       price,
+      receiverLat,
+      receiverLng,
+      senderLat,
+      senderLng,
     } = req.body;
     const { error, value } = ParcelSchema.validate(req.body);
     if (error) {
       return res.json({ error: error.details[0].message });
     }
 
-    db.exec("insertParcel", {
+    db.exec("ProjectCreateOrUpdate", {
       id,
       senderEmail,
       senderName,
@@ -56,6 +64,10 @@ export const addParcel = async (req: ExtendedRequest, res: Response) => {
       deliveryDate,
       weight,
       price,
+      receiverLat,
+      receiverLng,
+      senderLat,
+      senderLng,
     });
     res.status(200).json({ message: "Parcel created Successfully" });
   } catch (error) {
@@ -128,11 +140,11 @@ export const updateParcel: RequestHandler<{ id: string }> = async (
       deliveryDate: string;
       weight: string;
       price: string;
-      };
-      const { error, value } = ParcelSchema.validate(req.body);
-      if (error) {
-        return res.json({ error: error.details[0].message });
-      }
+    };
+    const { error, value } = ParcelSchema.validate(req.body);
+    if (error) {
+      return res.json({ error: error.details[0].message });
+    }
     const { recordset } = await db.exec("getParcel", { id });
     if (!recordset[0]) {
       res.status(404).json({ message: "Parcel Not Found" });
@@ -179,7 +191,7 @@ export const sentParcels: RequestHandler<{ email: string }> = async (
 ) => {
   try {
     const email = req.params.email;
-  
+
     const { recordset } = await db.exec("getSent", { email });
     res.status(200).json(recordset);
   } catch (error) {

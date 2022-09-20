@@ -33,7 +33,7 @@ export class OrdersComponent implements OnInit {
     this.store.dispatch(Actions.LoadOrders());
   }
   deleteOrder(id: string) {
-    console.log(id);
+    // console.log(id);
     
     this.store.dispatch(Actions.DeleteOrder({ id }));
     this.loadOrders()
@@ -46,8 +46,9 @@ export class OrdersComponent implements OnInit {
   }
   orderDelivered(id: string) {
     console.log(id);
-    this.clicked  = true
+    
     this.store.dispatch(Actions.DeliverOrder({ id }));
+
   }
 
 }

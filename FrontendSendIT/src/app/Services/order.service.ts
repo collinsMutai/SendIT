@@ -11,29 +11,44 @@ export class OrderService {
   
   orders$!:Observable<IOrder[]>
   
-  constructor(private http: HttpClient, ) { }
+  constructor(private http: HttpClient,) { }
+  
+ 
   
   createOrder(order:IOrder):Observable<{message:string}>{
     return this.http.post<{message:string}>(`${this.baseUrl}/parcel/add`, order)
   }
-  getOrders() : Observable <IOrder[]>{
-    return this.http.get<IOrder[]>(`${this.baseUrl}/parcel/all`)
+  getOrders(): Observable<IOrder[]>{
+        const token = localStorage.getItem('token') as string
+
+    return this.http.get<IOrder[]>(`${this.baseUrl}/parcel/all`
+    , {
+  headers:new HttpHeaders({token})
+})
   }
   getOrderDetails(id:string): Observable<IOrder[]>{
     return this.http.get<IOrder[]>(`${this.baseUrl}/parcel/view/${id}`)
   }
   
   deleteOrder(id:string): Observable <{message:string}>{
-    return this.http.get<{message:string}>(`${this.baseUrl}/parcel/delete/${id}`)
+    return this.http.delete<{message:string}>(`${this.baseUrl}/parcel/delete/${id}`)
   }
   deliverParcel(id:string):Observable<{message:string}>{
     return this.http.get<{message:string}>(`${this.baseUrl}/parcel/delivered/${id}`)
   }
-  sentParcel(email:string):Observable<IOrder[]>{
-    return this.http.get<IOrder[]>(`${this.baseUrl}/user/sent/${email}`)
+  sentParcel(email: string): Observable<IOrder[]>{
+    const token = localStorage.getItem('token') as string
+    
+    return this.http.get<IOrder[]>(`${this.baseUrl}/user/sent/${email}`    , {
+      headers:new HttpHeaders({token})
+    })
   }
   receivedParcel(email:string):Observable<IOrder[]>{
-    return this.http.get<IOrder[]>(`${this.baseUrl}/user/received/${email}`)
+    const token = localStorage.getItem('token') as string
+
+    return this.http.get<IOrder[]>(`${this.baseUrl}/user/received/${email}`    , {
+      headers:new HttpHeaders({token})
+    })
   }
   getOnTransit() : Observable <IOrder[]>{
     return this.http.get<IOrder[]>(`${this.baseUrl}/parcel/ontransit`)
@@ -47,8 +62,11 @@ export class OrderService {
   getCustomers(): Observable<Icustomer[]>{
     return this.http.get<Icustomer[]>(`${this.baseUrl}/user/users`)
   }
-  logUser(details:LoginDetails):Observable<LoginResponse>{
+  logUser(details: LoginResponse): Observable<LoginResponse>{
     return this.http.post<LoginResponse>(`${this.baseUrl}/user/login`,details)
  }
 
 }
+// , {
+//   headers:new HttpHeaders({token})
+// }
