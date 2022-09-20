@@ -3,7 +3,7 @@ import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AnimationItem } from 'lottie-web';
 import { AnimationOptions } from 'ngx-lottie';
-import { LoginDetails } from '../interfaces/interfaces';
+import { LoginDetails, LoginResponse } from '../interfaces/interfaces';
 import { AuthService } from '../Services/auth.service';
 import { OrderService } from '../Services/order.service';
 
@@ -36,13 +36,14 @@ export class LoginComponent implements OnInit {
   animationCreated(animationItem: AnimationItem): void {}
 
   onSubmit() {
-    const user: LoginDetails = this.form.value;
+    const user: LoginResponse = this.form.value;
     this.auth.logUser(user).subscribe(
       (response) => {
         console.log(response);
         
         localStorage.setItem('name', response.name);
         localStorage.setItem('email', response.email);
+        localStorage.setItem('token', response.token);
         
         localStorage.setItem('role', response.role);
         if (response.role === 'admin') {

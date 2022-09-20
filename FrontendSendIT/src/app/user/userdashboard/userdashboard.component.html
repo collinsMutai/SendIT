@@ -19,7 +19,7 @@
             Delivery date: {{ all.deliveryDate }}<br />
           </p>
           <div class="orderBtns">
-            <button class="btn viewBtns">View</button>
+            <button (click)="orderDetails(all.origin, all.destination, all.senderEmail, all.receiverEmail)"   class="btn viewBtns">View</button>
           </div>
         </div>
       </div>
@@ -41,19 +41,24 @@
             Delivery date: {{ all.deliveryDate }}<br />
           </p>
           <div class="orderBtns">
-            <button class="btn viewBtns">View</button>
+            <button (click)="orderDetails(all.origin, all.destination, all.senderEmail, all.receiverEmail)"   class="btn viewBtns">View</button>
           </div>
         </div>
       </div>
-      <!-- <div class="view-details" *ngIf="display">
+      <div class="view-details" *ngIf="display">
     <div class="details">
       <button (click)="close()" class="closeBtn"><i class="fa-solid fa-close"></i></button>
-      <h3>Sender: {{ senderEmail }}</h3>
+      <div class="mapText">
+
+        <h3>Sender: {{ senderEmail }}</h3>
+        <p>Origin: {{origin}}</p>
+        <p>Destination: {{destination}}</p>
+      </div>
       <div class="image">
         <app-map></app-map>
       </div>
     </div>
-  </div> -->
+  </div>
       <div *ngIf="errorMessage">
         <p>error: {{ errorMessage }}</p>
       </div>

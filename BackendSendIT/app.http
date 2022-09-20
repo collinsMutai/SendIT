@@ -3,17 +3,17 @@ POST http://localhost:7002/user/signup
 Content-Type: application/json
 
 {
-    "name":"cherumtai",
-    "email":"cherumtai@gmail.com",
+    "name":"user2",
+    "email":"user2@gmail.com",
     "password":"Password@1"
 }
 
 ###
-POST http://localhost:7003/user/login
+POST http://localhost:7002/user/login
 Content-Type: application/json
 
 {
-    "email":"mercy@gmail.com",
+    "email":"user2@gmail.com",
     "password":"Password@1"
 }
 
@@ -40,14 +40,18 @@ Content-Type: application/json
 {
     "senderName": "mary",
     "receiverName":"johh",
-    "senderEmail":"collinsfrontend@gmail.com",
-    "receiverEmail":"cherumtai@gmail.com",
+   "senderEmail":"user1@gmail.com",
+    "receiverEmail":"user2@gmail.com",
     "origin":"nyeri",
     "destination":"nairobi",
     "dispatchedDate":"2022-09-30",
     "deliveryDate":"2022-09-29",
     "weight":100,
-    "price":1000
+    "price":1000,
+    "receiverLat": 786677,
+  "receiverLng": 788899,
+  "senderLat": 99999,
+  "senderLng": 97777
 }
 
 ###
@@ -60,7 +64,7 @@ Content-Type: application/json
 {
     "senderName": "updated mercy",
     "receiverName":"doe",
-    "senderEmail":"jack@gmail.com",
+    "senderEmail":"lxwaihenya@gmail.com",
     "receiverEmail":"doe@gmail.com",
     "origin":"nyeri",
     "destination":"nairobi",
@@ -71,18 +75,18 @@ Content-Type: application/json
 }
 
 ###
-GET  http://localhost:7002/parcel/delete/580bf847-7022-4be6-92bb-44a21de70cdd
+DELETE   http://localhost:7002/parcel/delete/fcc94233-6ead-45a9-99e9-54cd8eb5ea16
 
 
 ###
 GET  http://localhost:7002/parcel/view/995a4109-3ef7-4561-9a68-3bbae685eb0b
 
 ###
-Get http://localhost:7002/parcel/delivered/11a3abbc-6cb8-407d-801f-383542584e13
+Get http://localhost:7002/parcel/delivered/db49d89f-0ca0-4c44-9773-10352befb919
 
 ###
 GET http://localhost:7002/user/sent/jack@gmail.com
 ###
-GET http://localhost:7002/user/received/mercy@gmail.com
+GET http://localhost:7002/user/received/user@gmail.com
 
 

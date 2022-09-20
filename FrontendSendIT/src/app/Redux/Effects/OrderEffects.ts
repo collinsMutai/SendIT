@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
-import { catchError, concatMap, map, mergeMap, of } from 'rxjs';
+import { Store } from '@ngrx/store';
+import { catchError, concatMap, map, mergeMap, of, tap } from 'rxjs';
 import { OrderService } from 'src/app/Services/order.service';
 import * as OrdersActions from '../Actions/OrdersActions';
 const email = localStorage.getItem('email') as string
@@ -9,7 +10,7 @@ const email = localStorage.getItem('email') as string
   providedIn: 'root',
 })
 export class OrderEffectsService {
-  constructor(private actions: Actions, private orderService: OrderService) {}
+  constructor(private actions: Actions, private orderService: OrderService, private store: Store) {}
 
   loadOrder = createEffect(() => {
     return this.actions.pipe(
@@ -45,6 +46,9 @@ export class OrderEffectsService {
       ofType(OrdersActions.DeliverOrder),
       mergeMap((action) =>
         this.orderService.deliverParcel(action.id).pipe(
+          tap(res => {
+            this.store.dispatch(OrdersActions.LoadOrders());
+          }),
           map((res) =>
             OrdersActions.DeliverOrderSuccess({ deliverMessage: res.message })
           ),
@@ -80,7 +84,7 @@ export class OrderEffectsService {
             OrdersActions.RegisterCustomerSuccess({ addMessage: res.message })
           ),
           catchError((error) =>
-            of(OrdersActions.RegisterCustomerFailure({ error: error }))
+            of(OrdersActions.RegisterCustomerFailure({ error: error.message }))
           )
         )
       )

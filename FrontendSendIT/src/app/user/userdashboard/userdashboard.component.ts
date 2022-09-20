@@ -21,6 +21,7 @@ export class UserdashboardComponent implements OnInit {
   errorMessage: string = '';
   display = false;
   origin!: string;
+  destination!:string
   senderEmail!: string;
   receiverEmail!: string;
   customer = localStorage.getItem('name');
@@ -40,20 +41,21 @@ export class UserdashboardComponent implements OnInit {
   loadSent(email: string) {
     this.OrderService.sentParcel(email).subscribe((res) => {
       this.allsent = res;
-      console.log(this.allsent);
+      // console.log(this.allsent);
     });
   }
   loadReceived(email: string) {
     this.OrderService.receivedParcel(email).subscribe((res) => {
       this.allreceived = res;
-      console.log(this.allsent);
+      console.log(this.allreceived);
     });
   }
-  // orderDetails(senderEmail: string, origin: string, receiverEmail: string) {
-  //   this.display = true;
-  //   this.origin = origin;
-  //   this.senderEmail = senderEmail;
-  // }
+  orderDetails(senderEmail: string, origin: string, receiverEmail: string, destination:string) {
+    this.display = true;
+    this.origin = origin;
+    this.destination = destination
+    this.senderEmail = senderEmail;
+  }
   close() {
     this.display = false;
   }

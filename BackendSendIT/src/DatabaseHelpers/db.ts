@@ -9,7 +9,7 @@ export default class Connection {
     const pool = mssql.connect(sqlConfig) as Promise<mssql.ConnectionPool>;
     return pool;
   }
-  createRequest(request: mssql.Request, data: { [c: string]: string }) {
+  createRequest(request: mssql.Request, data: { [c: string|number]: string|number }) {
     const keys = Object.keys(data);
     keys.map((keyName) => {
       const keyValue = data[keyName];
@@ -18,7 +18,7 @@ export default class Connection {
     });
     return request;
   }
-  async exec(procedureName: string, data: { [c: string]: string } = {}) {
+  async exec(procedureName: string, data: { [c: string | number]: string |number} = {}) {
     let pool = await this.pool;
     let request = (await pool.request()) as mssql.Request;
 

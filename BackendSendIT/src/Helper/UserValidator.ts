@@ -24,4 +24,11 @@ export const ParcelSchema = Joi.object({
   deliveryDate: Joi.string().required(),
   weight: Joi.number().required(),
   price: Joi.number().required(),
+
+  receiverLat: Joi.number().required(),
+  receiverLng: Joi.number().required(),
+  
+  senderLat: Joi.number().required(),
+  senderLng: Joi.number().required(),
+ 
 });

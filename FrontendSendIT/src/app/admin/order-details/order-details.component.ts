@@ -17,7 +17,8 @@ export class OrderDetailsComponent implements OnInit {
 
   ngOnInit(): void {
     this.route.params.subscribe((param)=>{
-      this.id=param['id']
+      this.id = param['id']
+  
     })
     this.store.dispatch(Actions.SelectedId({id:this.id}))
   }

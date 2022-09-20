@@ -39,9 +39,9 @@
       </div>
       <div class="form-control flexInput">
         <label for="">Origin</label>
-        <input type="text" formControlName="origin" class="form-control" />
+        <input type="text" ngx-google-places-autocomplete   (onAddressChange)="onAddressChangeSender($event)" formControlName="origin" class="form-control" />
         <label for="">Destination</label>
-        <input type="text" formControlName="destination" class="form-control" />
+        <input type="text"   ngx-google-places-autocomplete   (onAddressChange)="onAddressChangeReceiver($event)"  formControlName="destination" class="form-control" />
       </div>
       <div class="form-control flexInput">
         <label for="">Dispatched Date</label>
