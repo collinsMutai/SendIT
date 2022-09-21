@@ -30,7 +30,7 @@ export const registerUser = async (req: ExtendedRequest, res: Response) => {
       return res.status(400).json({ error: error.details[0].message });
     }
     const { recordset } = await db.exec("getUser", {email});
-    if (recordset) {
+    if (recordset.length > 0) {
       return res.status(400)
         .send({ message: "Customer username or email already exists!", success: false });
     }

@@ -25,7 +25,7 @@ export class UserdashboardComponent implements OnInit {
   senderEmail!: string;
   receiverEmail!: string;
   customer = localStorage.getItem('name');
-
+  p: number = 1;
   constructor(
     private store: Store<OrderState>,
     private router: Router,

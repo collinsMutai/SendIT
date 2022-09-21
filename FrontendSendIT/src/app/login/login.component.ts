@@ -40,6 +40,7 @@ export class LoginComponent implements OnInit {
     this.auth.logUser(user).subscribe(
       (response) => {
         
+        
         localStorage.setItem('name', response.name);
         localStorage.setItem('email', response.email);
         localStorage.setItem('token', response.token);

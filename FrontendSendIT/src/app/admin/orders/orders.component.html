@@ -7,16 +7,24 @@
       [(ngModel)]="filteredText"
     />
   </div>
-  <div class="card-container" *ngIf="orders.length; else noParcels" >
-    <div   class="container" *ngFor="let order of orders | search: filteredText">
+  <!--  | paginate: { itemsPerPage: 4, currentPage: p } -->
+  <div class="card-container" *ngIf="orders?.length; else noParcels">
+    <div
+      class="container"
+      *ngFor="
+        let order of orders
+          | search: filteredText
+          | paginate: { itemsPerPage: 2, currentPage: p }
+      "
+    >
       <h2>
         {{ order.senderName }} <br />{{ order.senderEmail }}
         <br />
       </h2>
       <p class="cardParagraph">
         {{ order.receiverName }}<br />
-        {{ order.receiverEmail }} <br/>
-        {{order.price | currency: 'Kshs'}}
+        {{ order.receiverEmail }} <br />
+        {{ order.price | currency: "Kshs" }}
       </p>
       <div class="orderBtns">
         <button class="btn viewBtns" (click)="orderDetails(order.id)">
@@ -30,13 +38,9 @@
         </button>
       </div>
     </div>
-    
-
+    <pagination-controls (pageChange)="p = $event"></pagination-controls>
   </div>
-  
-  
 </div>
-<!-- <pagination-controls class="page" (pageChange)="page =$event"></pagination-controls> -->
 
 <ng-template #noParcels>
   <h3>No parcels available!!</h3>

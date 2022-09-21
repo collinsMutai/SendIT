@@ -6,8 +6,8 @@
       <label for="checkbox_toggle" class="hamburger">&#9776;</label>
       <div class="menu">
         <li><a routerLink="/">Home</a></li>
-        <li><a routerLink="login">Login</a></li>
-        <li><a routerLink="logout" (click)="onLogout()">Logout</a></li>
+        <li><a routerLink="login" *ngIf="authService.isLoggedIn">Login</a></li>
+        <li><a routerLink="logout" (click)="onLogout()" *ngIf="authService.isLoggedIn">Logout</a></li>
       </div>
     </ul>
   </nav>

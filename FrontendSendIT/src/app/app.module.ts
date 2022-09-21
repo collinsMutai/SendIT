@@ -22,6 +22,7 @@ import { GoogleMapsModule } from '@angular/google-maps';
 import { NotfoundComponent } from './notfound/notfound.component';
 import { ErrorComponent } from './error/error.component';
 import { SuccessComponent } from './Shared/success/success.component';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 export function playerFactory() {
   return player;

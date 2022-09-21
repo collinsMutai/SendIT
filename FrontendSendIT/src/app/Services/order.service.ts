@@ -19,9 +19,7 @@ export class OrderService {
   constructor(private http: HttpClient) {}
 
   createOrder(order: IOrder): Observable<{ message: string }> {
-    return this.http.post<{ message: string }>(
-      `${this.baseUrl}/parcel/add`,
-      order,
+    return this.http.post<{ message: string }>(`${this.baseUrl}/parcel/add`, order,
       {
         headers: new HttpHeaders({ token: this.token }),
       }
@@ -55,17 +53,17 @@ export class OrderService {
     );
   }
   sentParcel(email: string): Observable<IOrder[]> {
-    const token = localStorage.getItem('token') as string;
+    
 
     return this.http.get<IOrder[]>(`${this.baseUrl}/user/sent/${email}`, {
-      headers: new HttpHeaders({ token }),
+      headers: new HttpHeaders({ token: this.token}),
     });
   }
   receivedParcel(email: string): Observable<IOrder[]> {
-    const token = localStorage.getItem('token') as string;
+   
 
     return this.http.get<IOrder[]>(`${this.baseUrl}/user/received/${email}`, {
-      headers: new HttpHeaders({ token }),
+      headers: new HttpHeaders({ token: this.token }),
     });
   }
   getOnTransit(): Observable<IOrder[]> {
@@ -90,6 +88,7 @@ export class OrderService {
   logUser(details: LoginResponse): Observable<LoginResponse> {
     return this.http.post<LoginResponse>(`${this.baseUrl}/user/login`, details);
   }
+  
 }
 // , {
 //   headers:new HttpHeaders({token})

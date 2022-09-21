@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from './Services/auth.service';
+import { OrderService } from './Services/order.service';
 
 @Component({
   selector: 'app-root',
@@ -9,7 +10,7 @@ import { AuthService } from './Services/auth.service';
 export class AppComponent implements OnInit{
   title = 'SendIT';
   
-constructor(public authService:AuthService) {
+constructor(public authService:AuthService, public orderService:OrderService) {
   
 }
 ngOnInit(): void {

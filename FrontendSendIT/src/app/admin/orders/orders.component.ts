@@ -15,7 +15,7 @@ export class OrdersComponent implements OnInit {
   errorMessage: string = '';
   filteredText = '';
   clicked = false
-  page:number=1
+  p: number = 1;
   constructor(
     private store: Store<OrderState>,
     private router: Router,
