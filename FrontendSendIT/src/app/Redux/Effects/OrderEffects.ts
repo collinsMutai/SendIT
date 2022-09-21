@@ -31,6 +31,9 @@ export class OrderEffectsService {
       ofType(OrdersActions.DeleteOrder),
       mergeMap((action) =>
         this.orderService.deleteOrder(action.id).pipe(
+          tap(res => {
+            this.store.dispatch(OrdersActions.LoadOrders());
+          }),
           map((res) =>
             OrdersActions.DeleteOrderSuccess({ deletemessage: res.message })
           ),

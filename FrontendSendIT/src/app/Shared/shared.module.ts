@@ -21,7 +21,8 @@ import { GooglePlaceModule } from 'ngx-google-places-autocomplete';
   ],
   exports:[
  FooterComponent,
- MapComponent
+    MapComponent,
+ SuccessComponent
   ]
 })
 export class SharedModule { }

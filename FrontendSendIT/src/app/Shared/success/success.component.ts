@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'app-success',
@@ -6,10 +6,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./success.component.css']
 })
 export class SuccessComponent implements OnInit {
-
+  @Input() message!: string;
+  @Output() end = new EventEmitter<void>();
   constructor() { }
+  ngOnInit(): void { }
+  close() {
+    this.end.emit();
 
-  ngOnInit(): void {
   }
-
 }

@@ -2,6 +2,7 @@
   <div class="content">
     <div class="form">
         <h1>Fast Delivery <br><span class="brown-text">Register SendIT</span></h1>
+        <app-success *ngIf="show" [message]=message (close)="close()"></app-success>
       <form [formGroup]="form" (ngSubmit)="onSubmit()">
         <label for="">Name</label>
         <input type="text" formControlName="name" required class="form-control" />

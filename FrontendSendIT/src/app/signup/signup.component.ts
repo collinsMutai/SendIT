@@ -19,12 +19,19 @@ export class SignupComponent implements OnInit {
   name!: string;
   email!: string;
   password!: string;
+  message!: string;
+  login: boolean = false;
+  show = false;
+
+  close() {
+    this.login = true;
+  }
 
   constructor(
     private orderService: OrderService,
     private router: Router,
     private store: Store<OrderState>
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.form = new FormGroup({
@@ -43,7 +50,7 @@ export class SignupComponent implements OnInit {
     path: '/assets/lottie/login.json',
   };
 
-  animationCreated(animationItem: AnimationItem): void {}
+  animationCreated(animationItem: AnimationItem): void { }
   checkSpecialCharacters(
     control: FormControl
   ): { [s: string]: boolean } | null {
@@ -72,15 +79,26 @@ export class SignupComponent implements OnInit {
       return false;
     }
   }
+
   onSubmit() {
-    console.log(this.form.value);
-    this.orderService.createCustomer(this.form.value).subscribe(res => {
-      console.log(res);
+    this.orderService.createCustomer(this.form.value).subscribe({
+      next: (data) => {
+        this.message = data.message;
+        this.show = true
+      },
+
+      error: (error) => {
+        this.message = error.error.message;
+        console.log(error)
       
-    })
-    // this.store.dispatch(
-    //   Actions.RegisterCustomer({ newCustomer: this.form.value })
-    // );
-    this.router.navigate(['/login']);
+        this.show = true
+      },
+
+      complete: () => console.log('Created user'),
+    }),
+      setTimeout(() => {
+        
+        this.show = false
+      }, 200);
   }
 }
