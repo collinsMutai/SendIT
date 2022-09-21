@@ -7,10 +7,11 @@ import { Router } from '@angular/router';
 export class AuthService {
 
   constructor(private router:Router) { }
-  isLoggedIn(){
+ 
+  isLoggedIn() {
     return !!localStorage.getItem('token')
   }
-  logout(){
+  logout() {
     this.router.navigate(['/'])
     localStorage.clear()
   }

@@ -30,13 +30,13 @@ export const registerUser = async (req: ExtendedRequest, res: Response) => {
       return res.status(400).json({ error: error.details[0].message });
     }
     const { recordset } = await db.exec("getUser", {email});
-    if (recordset.length > 0) {
+    if (recordset) {
       return res.status(400)
-        .send({ message: "Customer email already registered", success: false });
+        .send({ message: "Customer username or email already exists!", success: false });
     }
     const hashedpassword = await bcrypt.hash(password, 10);
     db.exec("insertCustomer", { id, name, email, password: hashedpassword });
-    res.status(200).json({ message: "Customer Registered Successfully" });
+    res.status(200).json({ message: "Customer Registered Successfully!" });
   } catch (error) {
     res.json({ error });
   }

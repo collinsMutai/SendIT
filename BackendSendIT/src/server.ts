@@ -11,7 +11,7 @@ app.use('/user', routeru)
 app.use('/parcel', routerp)
 
 
-app.listen(7002,()=>{
+app.listen(7003,()=>{
     console.log("Application Running");
     
 })

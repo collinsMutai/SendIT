@@ -2,7 +2,7 @@
   <p>{{ today | date: "medium" }}</p>
   <h2>Welcome {{ customer }}</h2>
   <div class="content">
-    <div>
+    <div class="left">
       <h3>Sent Parcels</h3>
       <div class="card-container">
         <div class="container" *ngFor="let all of allsent">
@@ -24,7 +24,7 @@
         </div>
       </div>
     </div>
-    <div>
+    <div class="right">
       <h3>Received Parcels</h3>
       <div class="card-container">
         <div class="container" *ngFor="let all of allreceived">

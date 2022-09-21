@@ -8,11 +8,11 @@ import { AuthService } from './Services/auth.service';
 })
 export class AppComponent implements OnInit{
   title = 'SendIT';
+  
 constructor(public authService:AuthService) {
   
 }
 ngOnInit(): void {
-  
 }
 onLogout(){
   this.authService.logout()

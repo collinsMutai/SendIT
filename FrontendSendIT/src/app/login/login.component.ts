@@ -39,7 +39,6 @@ export class LoginComponent implements OnInit {
     const user: LoginResponse = this.form.value;
     this.auth.logUser(user).subscribe(
       (response) => {
-        console.log(response);
         
         localStorage.setItem('name', response.name);
         localStorage.setItem('email', response.email);

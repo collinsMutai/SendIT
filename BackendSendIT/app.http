@@ -1,15 +1,15 @@
 
-POST http://localhost:7002/user/signup
+POST http://localhost:7003/user/signup
 Content-Type: application/json
 
 {
-    "name":"user2",
-    "email":"user2@gmail.com",
+    "name":"collins",
+    "email":"collinlskfrontend@gmail.com",
     "password":"Password@1"
 }
 
 ###
-POST http://localhost:7002/user/login
+POST http://localhost:7003/user/login
 Content-Type: application/json
 
 {
@@ -29,12 +29,12 @@ token:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjJiNDY3M2I2LTRhN2YtNGMyOC1hY
 
 
 ###
-GET  http://localhost:7002/user/users
+GET  http://localhost:7003/user/users
 
 
 # parcels
 ###
-POST http://localhost:7002/parcel/add
+POST http://localhost:7003/parcel/add
 Content-Type: application/json
 
 {
@@ -55,10 +55,10 @@ Content-Type: application/json
 }
 
 ###
-GET  http://localhost:7002/parcel/all
+GET  http://localhost:7003/parcel/all
 
 ###
-PUT http://localhost:7002/parcel/update/6583326d-16ed-4cc5-84ed-ee09cb77f93f
+PUT http://localhost:7003/parcel/update/6583326d-16ed-4cc5-84ed-ee09cb77f93f
 Content-Type: application/json
 
 {
@@ -75,18 +75,18 @@ Content-Type: application/json
 }
 
 ###
-DELETE   http://localhost:7002/parcel/delete/fcc94233-6ead-45a9-99e9-54cd8eb5ea16
+DELETE   http://localhost:7003/parcel/delete/fcc94233-6ead-45a9-99e9-54cd8eb5ea16
 
 
 ###
-GET  http://localhost:7002/parcel/view/995a4109-3ef7-4561-9a68-3bbae685eb0b
+GET  http://localhost:7003/parcel/view/995a4109-3ef7-4561-9a68-3bbae685eb0b
 
 ###
-Get http://localhost:7002/parcel/delivered/db49d89f-0ca0-4c44-9773-10352befb919
+Get http://localhost:7003/parcel/delivered/db49d89f-0ca0-4c44-9773-10352befb919
 
 ###
-GET http://localhost:7002/user/sent/jack@gmail.com
+GET http://localhost:7003/user/sent/jack@gmail.com
 ###
-GET http://localhost:7002/user/received/user@gmail.com
+GET http://localhost:7003/user/received/user@gmail.com
 
 
