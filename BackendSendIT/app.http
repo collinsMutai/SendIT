@@ -1,19 +1,20 @@
-
+# Sign up user
 POST http://localhost:7003/user/signup
 Content-Type: application/json
 
 {
-    "name":"user2",
-    "email":"user2@gmail.com",
+    "name":"collins",
+    "email":"collinsfrontend@gmail.com",
     "password":"Password@1"
 }
 
+# Login user
 ###
 POST http://localhost:7003/user/login
 Content-Type: application/json
 
 {
-    "email":"user2@gmail.com",
+    "email":"collinsfrontend@gmail.com",
     "password":"Password@1"
 }
 
@@ -23,24 +24,28 @@ GET  http://localhost:7003/user/homepage
 token:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjJiNDY3M2I2LTRhN2YtNGMyOC1hYzA0LTMyODdhMjhiY2M3ZCIsIm5hbWUiOiJ1c2VyMiIsImVtYWlsIjoidXNlcjJAZ21haWwuY29tIiwicm9sZSI6ImN1c3RvbWVyIiwid2VsY29tZSI6IjAiLCJpYXQiOjE2NjMyNDcyNjEsImV4cCI6MTY2MzI1MDg2MX0.0iBIcI8bRlXtNupwavCjYTIZSrV3EF_FQ_jw-JP_iNE
 
 
+
 ###
 GET  http://localhost:7003/user/check
 token:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjJiNDY3M2I2LTRhN2YtNGMyOC1hYzA0LTMyODdhMjhiY2M3ZCIsIm5hbWUiOiJ1c2VyMiIsImVtYWlsIjoidXNlcjJAZ21haWwuY29tIiwicm9sZSI6ImN1c3RvbWVyIiwid2VsY29tZSI6IjAiLCJpYXQiOjE2NjMyNDcyNjEsImV4cCI6MTY2MzI1MDg2MX0.0iBIcI8bRlXtNupwavCjYTIZSrV3EF_FQ_jw-JP_iNE
 
 
+# Fetch all users
 ###
 GET  http://localhost:7003/user/users
 
 
-# parcels
+# Add parcels
 ###
 POST http://localhost:7003/parcel/add
 Content-Type: application/json
+token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmMGQ1OThjLWIzMDktNDkzOC1iNjBjLWQ5OTJmMGE4NzEzMCIsIm5hbWUiOiJjb2xsaW5zIiwiZW1haWwiOiJjb2xsaW5zZnJvbnRlbmRAZ21haWwuY29tIiwicm9sZSI6ImFkbWluIiwid2VsY29tZSI6IjAiLCJpYXQiOjE2NjM5MTQzMzEsImV4cCI6MTY2MzkxNzkzMX0.S_QcJLY-G94pkLoyZ78YHEn4e-ZmtQMS3vKYewyz-QQ
+
 
 {
     "senderName": "mary",
     "receiverName":"johh",
-   "senderEmail":"user2@gmail.com",
+   "senderEmail":"user1@gmail.com",
     "receiverEmail":"user1@gmail.com",
     "origin":"nyeri",
     "destination":"nairobi",
@@ -49,20 +54,28 @@ Content-Type: application/json
     "weight":100,
     "price":1000,
     "receiverLat": 786677,
-  "receiverLng": 788899,
-  "senderLat": 99999,
-  "senderLng": 97777
+    "receiverLng": 788899,
+    "senderLat": 99999,
+    "senderLng": 97777
 }
 
+
+# View all parcels
 ###
 GET  http://localhost:7003/parcel/all
+token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmMGQ1OThjLWIzMDktNDkzOC1iNjBjLWQ5OTJmMGE4NzEzMCIsIm5hbWUiOiJjb2xsaW5zIiwiZW1haWwiOiJjb2xsaW5zZnJvbnRlbmRAZ21haWwuY29tIiwicm9sZSI6ImFkbWluIiwid2VsY29tZSI6IjAiLCJpYXQiOjE2NjM5MDI3NDksImV4cCI6MTY2MzkwNjM0OX0.-Nh0ylyVcCZHWVpGhQDTUA8V7fusJR00BsisnPWtAgE
 
+
+
+# Update parcel
 ###
-PUT http://localhost:7003/parcel/update/6583326d-16ed-4cc5-84ed-ee09cb77f93f
+PUT http://localhost:7003/parcel/update/8c420cab-7c2d-4766-a15f-91437c57cc10
 Content-Type: application/json
+token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmMGQ1OThjLWIzMDktNDkzOC1iNjBjLWQ5OTJmMGE4NzEzMCIsIm5hbWUiOiJjb2xsaW5zIiwiZW1haWwiOiJjb2xsaW5zZnJvbnRlbmRAZ21haWwuY29tIiwicm9sZSI6ImFkbWluIiwid2VsY29tZSI6IjAiLCJpYXQiOjE2NjM5MDI3NDksImV4cCI6MTY2MzkwNjM0OX0.-Nh0ylyVcCZHWVpGhQDTUA8V7fusJR00BsisnPWtAgE
+
 
 {
-    "senderName": "updated mercy",
+    "senderName": "new eeddupdated mercy",
     "receiverName":"doe",
     "senderEmail":"lxwaihenya@gmail.com",
     "receiverEmail":"doe@gmail.com",
@@ -71,22 +84,39 @@ Content-Type: application/json
     "dispatchedDate":"today",
     "deliveryDate":"tomorrow",
     "weight":100,
-    "price":1000
+    "price":1000,
+    "receiverLat": 786677,
+    "receiverLng": 788899,
+    "senderLat": 99999,
+    "senderLng": 97777
 }
 
+
+# Soft delete
 ###
-DELETE   http://localhost:7003/parcel/delete/fcc94233-6ead-45a9-99e9-54cd8eb5ea16
+DELETE   http://localhost:7003/parcel/delete/8c420cab-7c2d-4766-a15f-91437c57cc10
+token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmMGQ1OThjLWIzMDktNDkzOC1iNjBjLWQ5OTJmMGE4NzEzMCIsIm5hbWUiOiJjb2xsaW5zIiwiZW1haWwiOiJjb2xsaW5zZnJvbnRlbmRAZ21haWwuY29tIiwicm9sZSI6ImFkbWluIiwid2VsY29tZSI6IjAiLCJpYXQiOjE2NjM5MDI3NDksImV4cCI6MTY2MzkwNjM0OX0.-Nh0ylyVcCZHWVpGhQDTUA8V7fusJR00BsisnPWtAgE
 
 
+# View one parcel
 ###
-GET  http://localhost:7003/parcel/view/995a4109-3ef7-4561-9a68-3bbae685eb0b
+GET  http://localhost:7003/parcel/view/5bd98561-d3af-4f57-8537-133a31c1f387
+token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmMGQ1OThjLWIzMDktNDkzOC1iNjBjLWQ5OTJmMGE4NzEzMCIsIm5hbWUiOiJjb2xsaW5zIiwiZW1haWwiOiJjb2xsaW5zZnJvbnRlbmRAZ21haWwuY29tIiwicm9sZSI6ImFkbWluIiwid2VsY29tZSI6IjAiLCJpYXQiOjE2NjM5MDI3NDksImV4cCI6MTY2MzkwNjM0OX0.-Nh0ylyVcCZHWVpGhQDTUA8V7fusJR00BsisnPWtAgE
 
-###
-Get http://localhost:7003/parcel/delivered/db49d89f-0ca0-4c44-9773-10352befb919
 
+# deliver a parcel
 ###
-GET http://localhost:7003/user/sent/jack@gmail.com
+Get http://localhost:7003/parcel/delivered/8c420cab-7c2d-4766-a15f-91437c57cc10
+token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmMGQ1OThjLWIzMDktNDkzOC1iNjBjLWQ5OTJmMGE4NzEzMCIsIm5hbWUiOiJjb2xsaW5zIiwiZW1haWwiOiJjb2xsaW5zZnJvbnRlbmRAZ21haWwuY29tIiwicm9sZSI6ImFkbWluIiwid2VsY29tZSI6IjAiLCJpYXQiOjE2NjM5MDI3NDksImV4cCI6MTY2MzkwNjM0OX0.-Nh0ylyVcCZHWVpGhQDTUA8V7fusJR00BsisnPWtAgE
+
+
+# send by user
 ###
-GET http://localhost:7003/user/received/user@gmail.com
+GET http://localhost:7003/user/sent/user2@gmail.com
+
+
+# received by user
+###
+GET http://localhost:7003/user/received/user1@gmail.com
 
 

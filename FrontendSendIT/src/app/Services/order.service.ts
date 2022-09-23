@@ -13,67 +13,74 @@ import {
 })
 export class OrderService {
   baseUrl: string = 'http://localhost:7003';
-  token = localStorage.getItem('token') as string;
+  
   orders$!: Observable<IOrder[]>;
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
   createOrder(order: IOrder): Observable<{ message: string }> {
+    const token = localStorage.getItem('token') as string;
     return this.http.post<{ message: string }>(`${this.baseUrl}/parcel/add`, order,
       {
-        headers: new HttpHeaders({ token: this.token }),
+        headers: new HttpHeaders({ token}),
       }
     );
   }
   getOrders(): Observable<IOrder[]> {
+    const token = localStorage.getItem('token') as string;
     return this.http.get<IOrder[]>(`${this.baseUrl}/parcel/all`, {
-      headers: new HttpHeaders({ token: this.token }),
+      headers: new HttpHeaders({ token }),
     });
   }
   getOrderDetails(id: string): Observable<IOrder[]> {
+    const token = localStorage.getItem('token') as string;
     return this.http.get<IOrder[]>(`${this.baseUrl}/parcel/view/${id}`, {
-      headers: new HttpHeaders({ token: this.token }),
+      headers: new HttpHeaders({ token}),
     });
   }
 
   deleteOrder(id: string): Observable<{ message: string }> {
+    const token = localStorage.getItem('token') as string;
     return this.http.delete<{ message: string }>(
       `${this.baseUrl}/parcel/delete/${id}`,
       {
-        headers: new HttpHeaders({ token: this.token }),
+        headers: new HttpHeaders({ token}),
       }
     );
   }
   deliverParcel(id: string): Observable<{ message: string }> {
+    const token = localStorage.getItem('token') as string;
     return this.http.get<{ message: string }>(
       `${this.baseUrl}/parcel/delivered/${id}`,
       {
-        headers: new HttpHeaders({ token: this.token }),
+        headers: new HttpHeaders({ token }),
       }
     );
   }
   sentParcel(email: string): Observable<IOrder[]> {
-    
+    const token = localStorage.getItem('token') as string;
 
     return this.http.get<IOrder[]>(`${this.baseUrl}/user/sent/${email}`, {
-      headers: new HttpHeaders({ token: this.token}),
+      headers: new HttpHeaders({ token }),
     });
   }
   receivedParcel(email: string): Observable<IOrder[]> {
-   
+    const token = localStorage.getItem('token') as string;
 
     return this.http.get<IOrder[]>(`${this.baseUrl}/user/received/${email}`, {
-      headers: new HttpHeaders({ token: this.token }),
+      headers: new HttpHeaders({ token }),
     });
   }
   getOnTransit(): Observable<IOrder[]> {
+    const token = localStorage.getItem('token') as string;
     return this.http.get<IOrder[]>(`${this.baseUrl}/parcel/ontransit`, {
-      headers: new HttpHeaders({ token: this.token }),
+      headers: new HttpHeaders({ token}),
     });
   }
   getDelivered(): Observable<IOrder[]> {
+    const token = localStorage.getItem('token') as string;
     return this.http.get<IOrder[]>(`${this.baseUrl}/parcel/delivered`, {
-      headers: new HttpHeaders({ token: this.token }),
+      headers: new HttpHeaders({ token }),
     });
   }
   createCustomer(customer: Icustomer): Observable<{ message: string }> {
@@ -88,8 +95,6 @@ export class OrderService {
   logUser(details: LoginResponse): Observable<LoginResponse> {
     return this.http.post<LoginResponse>(`${this.baseUrl}/user/login`, details);
   }
-  
+
 }
-// , {
-//   headers:new HttpHeaders({token})
-// }
+

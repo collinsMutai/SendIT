@@ -9,32 +9,34 @@ import * as Actions from '../Actions/OrdersActions';
 
 export interface OrderState {
   orders: IOrder[];
+  sentOrders: IOrder[];
   ordersError: string;
   error: string;
   deleteMessage: string;
   orderid: string;
-  sentorders:IOrder[],
+  sentorders: IOrder[],
   addMessage: string;
-  deliverMessage:string,
+  deliverMessage: string,
   customers: Icustomer[];
-  customerid:string,
+  customerid: string,
   customersError: string;
-  email:string
+  email: string
 }
 
 const initialState: OrderState = {
   orders: [],
+  sentOrders: [],
   ordersError: '',
   error: '',
   deleteMessage: '',
   orderid: '',
-  sentorders:[],
+  sentorders: [],
   addMessage: '',
   customers: [],
-  customerid:'',
-  customersError:'',
-  deliverMessage:'',
-  email:''
+  customerid: '',
+  customersError: '',
+  deliverMessage: '',
+  email: ''
 };
 
 const getProductFeatureState = createFeatureSelector<OrderState>('order');
@@ -42,6 +44,10 @@ const getProductFeatureState = createFeatureSelector<OrderState>('order');
 export const getOrders = createSelector(
   getProductFeatureState,
   (state) => state.orders
+);
+export const getSentOrders = createSelector(
+  getProductFeatureState,
+  (state) => state.sentOrders
 );
 
 
@@ -74,12 +80,19 @@ export const getCustomer = createSelector(
 export const OrderReducer = createReducer(
 
 
-  
+
   initialState,
   on(Actions.LoadOrdersSuccess, (state, action): OrderState => {
     return { ...state, orders: action.orders };
   }),
   on(Actions.LoadOrdersFailure, (state, action): OrderState => {
+    return { ...state, ordersError: action.error };
+  }),
+
+  on(Actions.LoadSentOrdersSuccess, (state, action): OrderState => {
+    return { ...state, sentOrders: action.sentOrders };
+  }),
+  on(Actions.LoadSentOrdersFailure, (state, action): OrderState => {
     return { ...state, ordersError: action.error };
   }),
 
@@ -102,24 +115,24 @@ export const OrderReducer = createReducer(
   on(Actions.SelectedId, (state, action): OrderState => {
     return { ...state, orderid: action.id };
   }),
-  
-  
-  on(Actions.AddOrderSuccess,(state,action):OrderState=>{
-    return{...state, addMessage:action.addMessage}
-}),on(Actions.AddOrderFailure,(state,action):OrderState=>{
-    return{...state, error:action.error}
 
-})
-  ,on(Actions.RegisterCustomerSuccess,(state,action):OrderState=>{
-    return{...state, addMessage:action.addMessage}
-}),on(Actions.RegisterCustomerFailure,(state,action):OrderState=>{
-    return{...state, error:action.error}
 
-}),
-on(Actions.LoadCustomersSuccess, (state, action): OrderState => {
-  return { ...state, customers: action.customers };
-}),
-on(Actions.LoadCustomersFailure, (state, action): OrderState => {
-  return { ...state, customersError: action.error };
-})
+  on(Actions.AddOrderSuccess, (state, action): OrderState => {
+    return { ...state, addMessage: action.addMessage }
+  }), on(Actions.AddOrderFailure, (state, action): OrderState => {
+    return { ...state, error: action.error }
+
+  })
+  , on(Actions.RegisterCustomerSuccess, (state, action): OrderState => {
+    return { ...state, addMessage: action.addMessage }
+  }), on(Actions.RegisterCustomerFailure, (state, action): OrderState => {
+    return { ...state, error: action.error }
+
+  }),
+  on(Actions.LoadCustomersSuccess, (state, action): OrderState => {
+    return { ...state, customers: action.customers };
+  }),
+  on(Actions.LoadCustomersFailure, (state, action): OrderState => {
+    return { ...state, customersError: action.error };
+  })
 );

@@ -18,7 +18,7 @@ export class MapComponent implements OnInit {
   customers$ = this.store.select(getCustomers)
   ngOnInit(): void {
     let email = localStorage.getItem('email') as string
-    // console.log((email));
+    
     this.loadCustomers()
     this.OrderService.receivedParcel(email).subscribe((res) => {
       let received = res.filter(el=>el)

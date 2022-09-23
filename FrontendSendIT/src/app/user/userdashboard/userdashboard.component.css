@@ -125,7 +125,10 @@ background-color: #d08d57;
   display: flex;
   flex-direction: column;
 }
-
+.paginate{
+  display: flex;
+  flex-direction: column;
+}
 @media only screen and (max-width: 600px) {
 .content{
   flex-direction: column;

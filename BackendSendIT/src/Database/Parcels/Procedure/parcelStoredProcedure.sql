@@ -1,6 +1,7 @@
 CREATE OR ALTER PROCEDURE ProjectCreateOrUpdate ( @id VARCHAR(80),@senderName VARCHAR(200),@receiverName VARCHAR(200),
     @senderEmail VARCHAR(200),@receiverEmail VARCHAR(200),@origin VARCHAR(200),@destination VARCHAR(200),
-    @dispatchedDate VARCHAR(200),@deliveryDate VARCHAR(200),@weight INT,@price INT )
+    @dispatchedDate VARCHAR(200),@deliveryDate VARCHAR(200),@weight INT,@price INT,
+     @senderLat INT , @senderLng INT , @receiverLat INT , @receiverLng INT )
 AS
 BEGIN
      DECLARE @exists BIT;
@@ -10,24 +11,24 @@ select @exists = count(id) FROM ParcelsTable where id = @id
         INSERT INTO ParcelsTable
 (id,senderName,receiverName,
     senderEmail,receiverEmail,origin,destination,
-    dispatchedDate,deliveryDate,weight,price)
+    dispatchedDate,deliveryDate,weight,price,senderLat, senderLng, receiverlat, receiverlng)
 VALUES
 (@id,@senderName,@receiverName,
     @senderEmail,@receiverEmail,@origin,@destination,
-    @dispatchedDate,@deliveryDate,@weight,@price)
+    @dispatchedDate,@deliveryDate,@weight,@price,@senderLat,@senderLng, @receiverLat, @receiverLng)
 END
     ELSE
         BEGIN
-             UPDATE ParcelsTable SET senderName=@senderName,receiverName=@receiverName,
+             UPDATE ParcelsTable SET id=@id,senderName=@senderName,receiverName=@receiverName,
     senderEmail=@senderEmail,receiverEmail=@receiverEmail,origin=@origin,destination=@destination,
-    dispatchedDate=@dispatchedDate,deliveryDate=@deliveryDate,weight=@weight,price=@price WHERE id=@id
+    dispatchedDate=@dispatchedDate,deliveryDate=@deliveryDate,weight=@weight,price=@price, senderLat=@senderLat, senderLng=@senderLng, receiverlat=@receiverLat, receiverlng=@receiverLngWHERE id=@id
         END
 END
 
 CREATE PROCEDURE getParcels
 AS
 BEGIN
-SELECT * FROM ParcelsTable
+SELECT * FROM ParcelsTable WHERE is_deleted=0 AND delivered=0
 END
 
 CREATE PROCEDURE getParcel(@id VARCHAR(80))

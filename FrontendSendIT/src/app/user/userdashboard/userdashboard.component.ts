@@ -4,7 +4,7 @@ import { Loader } from '@googlemaps/js-api-loader';
 import { Store } from '@ngrx/store';
 import { map, Observable } from 'rxjs';
 import { IOrder } from 'src/app/interfaces/interfaces';
-import { OrderState } from 'src/app/Redux/Reducer/OrderReducer';
+import { getSentOrders, OrderState } from 'src/app/Redux/Reducer/OrderReducer';
 import { OrderService } from 'src/app/Services/order.service';
 import * as Actions from '../../Redux/Actions/OrdersActions';
 
@@ -16,16 +16,20 @@ import * as Actions from '../../Redux/Actions/OrdersActions';
 export class UserdashboardComponent implements OnInit {
   today = Date.now();
 
-  allsent: IOrder[] = [];
-  allreceived: IOrder[] = [];
+  // allsent: IOrder[] = [];
+  sentOrders$ = this.store.select(getSentOrders);
+  receivedOrders$ = this.store.select(getSentOrders);
+  // allreceived: IOrder[] = [];
   errorMessage: string = '';
   display = false;
   origin!: string;
-  destination!:string
-  senderEmail!: string;
-  receiverEmail!: string;
+  destination!: string;
+  senderName!: string;
+  receiverName!: string;
   customer = localStorage.getItem('name');
   p: number = 1;
+  p1: number = 1;
+
   constructor(
     private store: Store<OrderState>,
     private router: Router,
@@ -35,26 +39,37 @@ export class UserdashboardComponent implements OnInit {
 
   ngOnInit(): void {
     const email = localStorage.getItem('email') ?? '';
+    this.store.select(getSentOrders).subscribe((res) => {
+      console.log(res);
+    });
+
     this.loadSent(email);
-    this.loadReceived(email)
+    this.loadReceived(email);
   }
   loadSent(email: string) {
-    this.OrderService.sentParcel(email).subscribe((res) => {
-      this.allsent = res;
-      // console.log(this.allsent);
-    });
+    this.store.dispatch(Actions.LoadSentOrders({ email: email }));
+    // this.OrderService.sentParcel(email).subscribe((res) => {
+    //   this.allsent = res;
+    // });
   }
   loadReceived(email: string) {
-    this.OrderService.receivedParcel(email).subscribe((res) => {
-      this.allreceived = res;
-      console.log(this.allreceived);
-    });
+    this.store.dispatch(Actions.LoadSentOrders({ email: email }));
+    // this.OrderService.receivedParcel(email).subscribe((res) => {
+    //   this.allreceived = res;
+    //   console.log(this.allreceived);
+    // });
   }
-  orderDetails(senderEmail: string, origin: string, receiverEmail: string, destination:string) {
+  orderDetails(
+    origin: string,
+    destination: string,
+    senderName: string,
+    receiverName: string
+  ) {
     this.display = true;
     this.origin = origin;
-    this.destination = destination
-    this.senderEmail = senderEmail;
+    this.destination = destination;
+    this.senderName = senderName;
+    this.receiverName = receiverName;
   }
   close() {
     this.display = false;

@@ -2,10 +2,15 @@
   <p>{{ today | date: "medium" }}</p>
   <h2>Welcome {{ customer }}</h2>
   <div class="content">
-    <div class="left">
+    <div class="left" *ngIf="sentOrders$ | async as allsent">
       <h3>Sent Parcels</h3>
-      <div class="card-container">
-        <div class="container" *ngFor="let all of allsent">
+      <div class="card-container" *ngIf="allsent?.length; else noParcels">
+        <div
+          class="container"
+          *ngFor="
+            let all of allsent | paginate: { itemsPerPage: 2, currentPage: p1 }
+          "
+        >
           <h2>
             To: {{ all.receiverName }}
             <br />
@@ -19,15 +24,36 @@
             Delivery date: {{ all.deliveryDate }}<br />
           </p>
           <div class="orderBtns">
-            <button (click)="orderDetails(all.origin, all.destination, all.senderEmail, all.receiverEmail)"   class="btn viewBtns">View</button>
+            <button
+              (click)="
+                orderDetails(
+                  all.origin,
+                  all.destination,
+                  all.senderEmail,
+                  all.receiverEmail
+                )
+              "
+              class="btn viewBtns"
+            >
+              View
+            </button>
           </div>
+        </div>
+        <div class="paginate">
+          <pagination-controls *ngIf="allsent.length>2" (pageChange)="p1 = $event"></pagination-controls>
         </div>
       </div>
     </div>
-    <div class="right">
+    <div class="right" *ngIf="receivedOrders$ | async as allreceived">
       <h3>Received Parcels</h3>
       <div class="card-container">
-        <div class="container" *ngFor="let all of allreceived">
+        <div
+          class="container"
+          *ngFor="
+            let all of allreceived
+              | paginate: { itemsPerPage: 2, currentPage: p }
+          "
+        >
           <h2>
             From: {{ all.senderName }}
             <br />
@@ -41,27 +67,47 @@
             Delivery date: {{ all.deliveryDate }}<br />
           </p>
           <div class="orderBtns">
-            <button (click)="orderDetails(all.origin, all.destination, all.senderEmail, all.receiverEmail)"   class="btn viewBtns">View</button>
+            <button
+              (click)="
+                orderDetails(
+                  all.origin,
+                  all.destination,
+                  all.senderName,
+                  all.receiverName
+                )
+              "
+              class="btn viewBtns"
+            >
+              View
+            </button>
           </div>
+        </div>
+        <div class="paginate">
+          <pagination-controls *ngIf="allreceived.length>2"    (pageChange)="p = $event"></pagination-controls>
         </div>
       </div>
       <div class="view-details" *ngIf="display">
-    <div class="details">
-      <button (click)="close()" class="closeBtn"><i class="fa-solid fa-close"></i></button>
-      <div class="mapText">
-
-        <h3>Sender: {{ senderEmail }}</h3>
-        <p>Origin: {{origin}}</p>
-        <p>Destination: {{destination}}</p>
+        <div class="details">
+          <button (click)="close()" class="closeBtn">
+            <i class="fa-solid fa-close"></i>
+          </button>
+          <div class="mapText">
+            <h3>Sender: {{ senderName }}</h3>
+            <p>Receiver: {{ receiverName }}</p>
+            <p>Origin: {{ origin }}</p>
+            <p>Destination: {{ destination }}</p>
+          </div>
+          <div class="image">
+            <app-map></app-map>
+          </div>
+        </div>
       </div>
-      <div class="image">
-        <app-map></app-map>
-      </div>
-    </div>
-  </div>
       <div *ngIf="errorMessage">
         <p>error: {{ errorMessage }}</p>
       </div>
     </div>
   </div>
 </div>
+<ng-template #noParcels>
+  <h3>No parcels available!!</h3>
+</ng-template>

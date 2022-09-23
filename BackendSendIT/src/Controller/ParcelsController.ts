@@ -79,7 +79,7 @@ export const getParcels: RequestHandler = async (req, res) => {
     const { recordset } = await db.exec("getParcels");
     res.status(200).json(recordset);
   } catch (error) {
-    res.status(404).json({ message: "Parcels Not Found!" });
+    res.status(404).json({ error });
   }
 };
 export const getParcel: RequestHandler<{ id: string }> = async (req, res) => {
@@ -129,6 +129,10 @@ export const updateParcel: RequestHandler<{ id: string }> = async (
       deliveryDate,
       weight,
       price,
+      receiverLat,
+      receiverLng,
+      senderLat,
+      senderLng,
     } = req.body as {
       senderName: string;
       receiverName: string;
@@ -140,6 +144,10 @@ export const updateParcel: RequestHandler<{ id: string }> = async (
       deliveryDate: string;
       weight: string;
       price: string;
+      receiverLat: string;
+      receiverLng: string;
+      senderLat: string;
+      senderLng: string;
     };
     const { error, value } = ParcelSchema.validate(req.body);
     if (error) {
@@ -149,7 +157,7 @@ export const updateParcel: RequestHandler<{ id: string }> = async (
     if (!recordset[0]) {
       res.status(404).json({ message: "Parcel Not Found" });
     } else {
-      await db.exec("updateParcel", {
+      await db.exec("ProjectCreateOrUpdate", {
         id,
         senderEmail,
         senderName,
@@ -161,6 +169,10 @@ export const updateParcel: RequestHandler<{ id: string }> = async (
         deliveryDate,
         weight,
         price,
+        receiverLat,
+        receiverLng,
+        senderLat,
+        senderLng,
       });
       res.status(200).json({ message: "Parcel Updated ..." });
     }

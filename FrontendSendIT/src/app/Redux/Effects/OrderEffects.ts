@@ -25,6 +25,19 @@ export class OrderEffectsService {
       )
     );
   });
+  loadSentOrder = createEffect(() => {
+    return this.actions.pipe(
+      ofType(OrdersActions.LoadSentOrders),
+      concatMap((action) =>
+        this.orderService.sentParcel(action.email).pipe(
+          map((sentOrders) => OrdersActions.LoadSentOrdersSuccess({ sentOrders })),
+          catchError((error) =>
+            of(OrdersActions.LoadSentOrdersFailure({ error: error.message }))
+          )
+        )
+      )
+    );
+  });
 
   deleteOrder = createEffect(() => {
     return this.actions.pipe(

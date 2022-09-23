@@ -85,6 +85,7 @@ export class SignupComponent implements OnInit {
       next: (data) => {
         this.message = data.message;
         this.show = true
+        this.router.navigate(['/login'])
       },
 
       error: (error) => {
@@ -99,6 +100,6 @@ export class SignupComponent implements OnInit {
       setTimeout(() => {
         
         this.show = false
-      }, 200);
+      }, 2000);
   }
 }
