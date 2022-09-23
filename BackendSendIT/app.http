@@ -3,8 +3,8 @@ POST http://localhost:7003/user/signup
 Content-Type: application/json
 
 {
-    "name":"collins",
-    "email":"collinsfrontend@gmail.com",
+    "name":"collinsfrontenddev",
+    "email":"collinsfrontenddev@gmail.com",
     "password":"Password@1"
 }
 
@@ -39,14 +39,14 @@ GET  http://localhost:7003/user/users
 ###
 POST http://localhost:7003/parcel/add
 Content-Type: application/json
-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmMGQ1OThjLWIzMDktNDkzOC1iNjBjLWQ5OTJmMGE4NzEzMCIsIm5hbWUiOiJjb2xsaW5zIiwiZW1haWwiOiJjb2xsaW5zZnJvbnRlbmRAZ21haWwuY29tIiwicm9sZSI6ImFkbWluIiwid2VsY29tZSI6IjAiLCJpYXQiOjE2NjM5MTQzMzEsImV4cCI6MTY2MzkxNzkzMX0.S_QcJLY-G94pkLoyZ78YHEn4e-ZmtQMS3vKYewyz-QQ
+token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImQyOTQyNjk1LTc4ZmYtNDg2Ny1hNjYyLTNlYWNlNjEyMzkxMiIsIm5hbWUiOiJjb2xsaW5zIiwiZW1haWwiOiJjb2xsaW5zZnJvbnRlbmRAZ21haWwuY29tIiwicm9sZSI6ImN1c3RvbWVyIiwid2VsY29tZSI6IjEiLCJpYXQiOjE2NjM5MTkxOTcsImV4cCI6MTY2MzkyMjc5N30.OudiE99upaYe2W2qCTIAJBR4hj-T0UZw9j32cqFxGOk
 
 
 {
-    "senderName": "mary",
+    "senderName": "new",
     "receiverName":"johh",
    "senderEmail":"user1@gmail.com",
-    "receiverEmail":"user1@gmail.com",
+    "receiverEmail":"jonathanndambuki16@gmail.com",
     "origin":"nyeri",
     "destination":"nairobi",
     "dispatchedDate":"2022-09-30",
@@ -107,7 +107,7 @@ token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmMGQ1OThjLWIzMDktNDkzOC1i
 # deliver a parcel
 ###
 Get http://localhost:7003/parcel/delivered/8c420cab-7c2d-4766-a15f-91437c57cc10
-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmMGQ1OThjLWIzMDktNDkzOC1iNjBjLWQ5OTJmMGE4NzEzMCIsIm5hbWUiOiJjb2xsaW5zIiwiZW1haWwiOiJjb2xsaW5zZnJvbnRlbmRAZ21haWwuY29tIiwicm9sZSI6ImFkbWluIiwid2VsY29tZSI6IjAiLCJpYXQiOjE2NjM5MDI3NDksImV4cCI6MTY2MzkwNjM0OX0.-Nh0ylyVcCZHWVpGhQDTUA8V7fusJR00BsisnPWtAgE
+token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImQyOTQyNjk1LTc4ZmYtNDg2Ny1hNjYyLTNlYWNlNjEyMzkxMiIsIm5hbWUiOiJjb2xsaW5zIiwiZW1haWwiOiJjb2xsaW5zZnJvbnRlbmRAZ21haWwuY29tIiwicm9sZSI6ImN1c3RvbWVyIiwid2VsY29tZSI6IjEiLCJpYXQiOjE2NjM5MTkxOTcsImV4cCI6MTY2MzkyMjc5N30.OudiE99upaYe2W2qCTIAJBR4hj-T0UZw9j32cqFxGOk
 
 
 # send by user
